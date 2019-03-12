@@ -82,32 +82,32 @@ Algunas de las operaciones matemáticas básicas que seguramente utilizaremos en
 
 | Expresión   | Código R          | Resultado |
 |-------------|-------------------|-----------|
-| $3+2$         | $3+2$               | 5         |
-| $3-2$         | $3-2$               | 1         |
-| $3\cdot2$         | $3*2$               | 6         |
-| $\frac{3}{2}$         | $3/2$               | 1.5       |
-| $3^2$         | $3$^$2$               | 9         |
-| $2^{-3}$      | $2$^($-3$)           | 0.125     |
-| $27^{1/3}$    | $27$^($1/3$)          | 3         |
-| $100^{1/2}$   | $sqrt(100)$         | 10        |
-| $ln(e)$       | $log(exp(1))$       | 1         |
-| $log_{10}(1000)$ | $log10(1000)$      | 3         |
-| $log_2$(8)     | $log2(8)$           | 3         |
-| $log_4$(16)    | $log(16, base = 4)$ | 2         |
-| $sen(0)$      | $sin(0)$            | 0         |
-| $\cos(2\pi)$  | $cos(2*pi)$          | 1         |
+| $$3+2$$         | $$3+2$$               | 5         |
+| $$3-2$$         | $$3-2$$               | 1         |
+| $$3\cdot2$$         | $$3*2$$               | 6         |
+| $$\frac{3}{2}$$         | $$3/2$$               | 1.5       |
+| $$3^2$$         | $$3$$^$$2$$               | 9         |
+| $$2^{-3}$$      | $$2$$^($$-3$$)           | 0.125     |
+| $$27^{1/3}$$    | $$27$$^($$1/3$$)          | 3         |
+| $$100^{1/2}$$   | $$sqrt(100)$$         | 10        |
+| $$ln(e)$$       | $$log(exp(1))$$       | 1         |
+| $$log_{10}(1000)$$ | $$log10(1000)$$      | 3         |
+| $$log_2$$(8)     | $$log2(8)$$           | 3         |
+| $$log_4$$(16)    | $$log(16, base = 4)$$ | 2         |
+| $$sen(0)$$      | $$sin(0)$$            | 0         |
+| $$\cos(2\pi)$$  | $$cos(2*pi)$$          | 1         |
 
 Es posible también utilizar operadores lógicos en `R`,
 | Expresión   | Código R          | Resultado |
 |-------------|-------------------|-----------|
-| $2\neq4$       | $2~~!=~4$               | TRUE       |
-| $3 = 2$         | $3==2$               | FALSE        |
-| $5\geq8$         | $5>=8$               | FALSE        |
-| $5\leq8$         | $5<=8$               | TRUE        |
-| $3 < 9$         | $3<9$               | TRUE         |
-| $3 > 9$         | $3>9$               | TRUE         |
-| $(5 \geq 8) \land (3 <9)$         | $(5 >= 8) \&(3<9)$               | FALSE         |
-| $(2 \neq  4) \lor (3=2)$         | $(2 !=4) | (3==2)$               | TRUE         |
+| $$2\neq4$$       | $$2~~!=~4$$               | TRUE       |
+| $$3 = 2$$         | $$3==2$$               | FALSE        |
+| $$5\geq8$$         | $$5>=8$$               | FALSE        |
+| $$5\leq8$$         | $$5<=8$$               | TRUE        |
+| $$3 < 9$$         | $$3<9$$               | TRUE         |
+| $$3 > 9$$         | $$3>9$$               | TRUE         |
+| $$(5 \geq 8) \land (3 <9)$$         | $$(5 >= 8) \&(3<9)$$               | FALSE         |
+| $$(2 \neq  4) \lor (3=2)$$         | $$(2 !=4) | (3==2)$$               | TRUE         |
 
 #### Instalación de paquetes
 La versión base de `R` viene con un conjunto de paquetes básicos como: `mgcv`,`KernSmooth`, `MASS`, `base`, `boot`,`datasets`, `graphics`, `lattice`, `methods`, `nlme`, `nnet`, `stats`, `tools`, `utils`, entre otros. Algunos de estos paquetes implementan funcionalidades estadísticas estándar, como los modelos lineales o las pruebas de hipotesis clásicas. Otros proveen infraestructura básica como por ejemplo para los sistemas gráficos, herramientas de análisis e interfaz, mientras que otras contienen bases de datos de prueba. Aquellos paquetes que no están incluídos en la distribución base pueden ser instalados mediante el *prompt*. Los paquetes pueden estar en repositorios, propios o comunitarios.
@@ -202,7 +202,7 @@ Como se mencionó anteriormente, durante la definición de una función no se es
 > myFunction2(x="a")
 Error in x - y : non-numeric argument to binary operator
 ```
-El error generado, es producido por el intento en ejecutar la operación $ x-y$ la cual no está definida para objetos del tipo `character` como lo es `"a"`. Dado que muchas veces estos errores no son muy específicos, se recomienda añadir un preámbulo de control interno a las funciones, definido por el usuario, según las necesidades y características de los argumentos.
+El error generado, es producido por el intento en ejecutar la operación $$ x-y$$ la cual no está definida para objetos del tipo `character` como lo es `"a"`. Dado que muchas veces estos errores no son muy específicos, se recomienda añadir un preámbulo de control interno a las funciones, definido por el usuario, según las necesidades y características de los argumentos.
 ```
 > myFunction3<-function(x,y=1){
      if(!is.numeric(x) | !is.numeric(y)){
@@ -769,7 +769,7 @@ Además de los operadores `%*%` y `%o%`, los productos internos y externos entre
 [6,]    6  3.0    6  3.0    6  3.0
 ```
 
-Estas funciones también se pueden usar con matrices. Por ejemplo, la sentencia `crossprod(X,Y)` (`tcrossprod()`) calcula el producto matricial $X^T Y$ ($X Y^T$), lo que nos será de gran interés cuando estudiemos los modelos lineales.
+Estas funciones también se pueden usar con matrices. Por ejemplo, la sentencia `crossprod(X,Y)` (`tcrossprod()`) calcula el producto matricial $$X^T Y$$ ($$X Y^T$$), lo que nos será de gran interés cuando estudiemos los modelos lineales.
 
 ```
 > X<-matrix(rep(1:3,3),ncol=3, nrow=3)
