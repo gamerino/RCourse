@@ -118,7 +118,7 @@ El repositorio más popular para `R` es el de la red del proyecto, *The Comprehe
 La instalación de un paquete se puede hacer de varias formas. Una de ellas es mediante la función `install.packages()`:
 
 ```
-install.packages("ggplot2")
+install.packages("BiocManager")
 ```
 
  Si usamos `RStudio` es posible ayudarnos con su asistente de instalación, que se encuentra en `Tools->Install Packages...`. También es posible instalar un paquete desde su archivo fuente, generalmente en formato `.tar.gz`. En una terminal, esto lo hacemos escribiendo:
@@ -130,22 +130,18 @@ Y en `RStudio` seleccionando la opción *Install from package archive files* que
 
 Los paquetes se instalan sólo una vez, luego cada vez que los necesitamos, solo debemos utilizar la función `library` para cargarla a nuestra sesión.
 ```
-library(ggplot2)
+library(BiocManager)
 ```
 
-Particularmente, en el área de la Bioinformática, `R` es muy utilizado, lo que ha motivado la creación de un repositorio exclusivo, [Bioconductor](http://www.bioconductor.org/). Este repositorio provee herramientas para el análisis de datos genómicos de secuenciación de alto rendimiento. Bioconductor usa el lenguaje de programación `R`, también es *open source* y *open development*. Cualquier investigador puede aportar su paquete a Bioconductor, cuyo equipo se encarga de revisar, corregir y realizar un seguimiento de los distintos aportes. Los paquetes depositados en Bioconductor se instalan utilizando funciones específicas del paquete [`BiocInstaller`](http://bioconductor.org/packages/BiocInstaller/). Por ejemplo, el paquete [`limma`](http://bioconductor.org/packages/limma/) se instala ejecutando:
+Particularmente, en el área de la Bioinformática, `R` es muy utilizado, lo que ha motivado la creación de un repositorio exclusivo, [Bioconductor](http://www.bioconductor.org/). Este repositorio provee herramientas para el análisis de datos genómicos de secuenciación de alto rendimiento. Bioconductor usa el lenguaje de programación `R`, también es *open source* y *open development*. Cualquier investigador puede aportar su paquete a Bioconductor, cuyo equipo se encarga de revisar, corregir y realizar un seguimiento de los distintos aportes. Los paquetes depositados en Bioconductor se instalan utilizando funciones específicas del paquete [`BiocManager`](https://cran.r-project.org/web/packages/BiocManager/index.html). Por ejemplo, el paquete [`limma`](http://bioconductor.org/packages/limma/) se instala ejecutando:
 
 ```
-source("https://bioconductor.org/biocLite.R")
-biocLite("limma")
+library(BiocManager)
+BiocManager::install("limma", version = "3.8")
 ```
 
-Esta ejecución lo que hace es cargar en el espacio de trabajo la función `biocLite()` de `BiocInstaller` sin instalar todo el paquete. Alternativamente, es posible instalar una vez `BiocInstaller` y luego, cada vez que se desee instalar un paquete, usar la función `biocLite()` cargando previamente el paquete, es decir:
+Esta ejecución lo que hace es cargar en el espacio de trabajo el paquete `BiocManager()` y luego emplear su función `install()` para instalar el paquete `limma`.
 
-```
-library(BiocInstaller)
-biocLite("limma")
-```
 ### Funciones definidas por el usuario
 
 `R` permite también utilizar funciones desarrolladas por los usuarios, sin importar si estas están contenidas en un paquete. La sintaxis base de las funciones de `R` es:

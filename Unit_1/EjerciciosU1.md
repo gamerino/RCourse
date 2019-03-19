@@ -6,15 +6,15 @@ Esta guía de ejercicios está destinada a fortalecer la formación práctica en
 
 #### Ejercicio 1: Operaciones básicas
 Obtenga el resultado de las siguientes operaciones con `R`, considerando tres posiciones decimales.
-- **a.** $(7-8)+ 53 − \frac{5}{6} +\sqrt{62}$
-- **b.** $ln(3) + \sqrt{2}\sin(\pi)-e^3$
-- **c.** $2 × (5 + 3) −\sqrt{6}+92$
+- **a.** $$(7-8)+ 53 − \frac{5}{6} +\sqrt{62}$$
+- **b.** $$ln(3) + \sqrt{2}\sin(\pi)-e^3$$
+- **c.** $$2 × (5 + 3) −\sqrt{6}+92$$
 
 #### Ejercicio 2: Vectores y secuencias
 **2.1** Cree un vector llamado `miVector` que contenga la secuencia de números de 3 a 90 en pasos de 3.
-**2.2** Considere dos vectores, $p=(3,5,6,9)$ y $q=(2,2,2,1)$.
-  - **a.** Defina $p$ y $q$
-  - **b.** Obtenga $p+q$ y $p-q$.
+**2.2** Considere dos vectores, $$p=(3,5,6,9)$$ y $$q=(2,2,2,1)$$.
+  - **a.** Defina $$p$$ y $$q$$
+  - **b.** Obtenga $$p+q$$ y $$p-q$$.
   **2.3**
 Cree los vectores `u=(1,2,3,5,7,11)`, `v=(1,2,4,6,8,11)`.
 - **a.** Obtenga las posiciones de los elementos de `v` que están en `u`
@@ -85,7 +85,7 @@ x <- c(34, 56, 55, 87, NA, 4, 77, NA, 21, NA, 39)
   - **a.** Un ciclo `for`
   - **b.** La función `lapply`
 
-**6.2** Cree un vector de longitud igual a la cantidad de observaciones de `iris` y donde cada elemento sea `mayor a 5` si se cumple que `Sepal.Length` es $>5$ o `menor a 5`, en caso contrario, utilizando
+**6.2** Cree un vector de longitud igual a la cantidad de observaciones de `iris` y donde cada elemento sea `mayor a 5` si se cumple que `Sepal.Length` es $$>5$$ o `menor a 5`, en caso contrario, utilizando
   - **a.** Un ciclo `for`
   - **b.** La función `apply`
   - **c.** La sentencia `ifelse`

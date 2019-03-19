@@ -89,7 +89,7 @@ De manera que:</li>
 </ul>
 <p>En el contexto de estos modelos es que se llevan a cabo los <em>procesos inferenciales</em>, que permiten obtener informaci&#xF3;n acerca de los par&#xE1;metros de una distribuci&#xF3;n a partir de estad&#xED;sticos obtenidos de una muestra de la poblaci&#xF3;n bajo estudio.</p>
 <p>Como los par&#xE1;metros poblacionales generalmente se desconocen, se utilizan datos muestrales para estimarlos junto con <strong>estad&#xED;sticos</strong>. Los <em>estad&#xED;sticos</em> son VA, es decir son funciones. Particularmente, dada una <em>muestra aleatoria</em> $X_1,~X_2,~...,~X_n$, (muestra de VAs iid), un estad&#xED;stico es una funci&#xF3;n medible <em>T* que asigna un n&#xFA;mero $T(X_{1},X_{2},...,X_{n})$, &#xFA;til para estimar un determinado par&#xE1;metro de la distribuci&#xF3;n de la que procede la muestra. Un valor particular de un estad&#xED;stico se conoce como *</em>estimador**.</p>
-<p>Un aspecto importante que se debe tener en cuenta en el an&#xE1;lisis descriptivo, es la presencia de <em>datos faltantes</em> (<em>missing data</em>) y la estrategia a utilizar para removerlos. Por un lado, si el n&#xFA;mero de datos faltantes no es elevado, se puede simplemente eliminar las observaciones y/o las variables que los contengan. Mientras que, si se desea mantener el total de las observaciones, la estrategia ser&#xE1; asignarles un valor determinado, proceso conocido como <em>imputaci&#xF3;n</em>. Existen distintos m&#xE9;todos de imputaci&#xF3;n, los cuales, al igual que la decisi&#xF3;n de qu&#xE9; hacer con los datos faltantes, deber&#xE1;n ser analizado en cada estudio en particular en funci&#xF3;n de caracter&#xED;sticas como n&#xFA;mero de observaciones, cantidad de variables con datos faltantes, importancia de las variables con datos faltantes, etc. </p>
+<p>Un aspecto importante que se debe tener en cuenta en el an&#xE1;lisis descriptivo, es la presencia de <em>datos faltantes</em> (<em>missing data</em>) y la estrategia a utilizar para removerlos. Por un lado, si el n&#xFA;mero de datos faltantes no es elevado, se puede simplemente eliminar las observaciones y/o las variables que los contengan. Mientras que, si se desea mantener el total de las observaciones, la estrategia ser&#xE1; asignarles un valor determinado, proceso conocido como <em>imputaci&#xF3;n</em>. Existen distintos m&#xE9;todos de imputaci&#xF3;n, los cuales, al igual que la decisi&#xF3;n de qu&#xE9; hacer con los datos faltantes, deber&#xE1;n ser analizado en cada estudio en particular en funci&#xF3;n de caracter&#xED;sticas como n&#xFA;mero de observaciones, cantidad de variables con datos faltantes, importancia de las variables con datos faltantes, etc.</p>
 <h2 id="2-2-estad-stica-descriptiva">2.2 Estad&#xED;stica Descriptiva</h2>
 <p>La exploraci&#xF3;n de los datos es un ciclo iterativo en el cual:</p>
 <ul>
@@ -104,7 +104,7 @@ De manera que:</li>
 <pre><code>&gt; x&lt;-rnorm(4, mean=2, sd=1)
 &gt; x
 [1] 1.928841 3.383108 1.486535 2.872653</code></pre><p><strong>Ejercicio</strong>: Repita esta ejecuci&#xF3;n varias veces en su espacio de trabajo. Qu&#xE9; sucede?</p>
-<p>Adem&#xE1;s de la funci&#xF3;n <code>rnorm()</code>, tambi&#xE9;n se dispone, entre otras, de las funciones <code>runif()</code>, <code>rbinom()</code>, <code>rpois()</code>, <code>rt()</code>, <code>rchisq()</code>, <code>rexp()</code> para generar datos bajo distribuci&#xF3;n uniforme, binomial, Poisson, T-student, $\Chi^2$ y exponencial, respectivamente. Complementando este conjunto de funciones, <code>R</code> provee adem&#xE1;s de un conjunto de funciones &#xFA;tiles para obtener el valor de la funci&#xF3;n de densidad de probabilidad, de la distribuci&#xF3;n acumulada y de un cuantil espec&#xED;fico de una distribuci&#xF3;n. Siguiendo con el  ejemplo de la distribuci&#xF3;n $ N(\mu=2, \sigma=1)$, el valor de probabilidad asociado a cada observaci&#xF3;n, definido mediante la funci&#xF3;n de probabilidad, lo obtenemos con la funci&#xF3;n <code>dnorm()</code>:</p>
+<p>Adem&#xE1;s de la funci&#xF3;n <code>rnorm()</code>, tambi&#xE9;n se dispone, entre otras, de las funciones <code>runif()</code>, <code>rbinom()</code>, <code>rpois()</code>, <code>rt()</code>, <code>rchisq()</code>, <code>rexp()</code> para generar datos bajo distribuci&#xF3;n uniforme, binomial, Poisson, T-student, $\chi^2$ y exponencial, respectivamente. Complementando este conjunto de funciones, <code>R</code> provee adem&#xE1;s de un conjunto de funciones &#xFA;tiles para obtener el valor de la funci&#xF3;n de densidad de probabilidad, de la distribuci&#xF3;n acumulada y de un cuantil espec&#xED;fico de una distribuci&#xF3;n. Siguiendo con el  ejemplo de la distribuci&#xF3;n $N(\mu=2, \sigma=1)$, el valor de probabilidad asociado a cada observaci&#xF3;n, definido mediante la funci&#xF3;n de probabilidad, lo obtenemos con la funci&#xF3;n <code>dnorm()</code>:</p>
 <pre><code>&gt; x
 [1] 1.928841 3.383108 1.486535 2.872653
 
@@ -186,7 +186,7 @@ mortality  latitude longitude
  mortality  latitude longitude
  147.0      39.5      89.5</code></pre><p>Otro estad&#xED;stico de forma, muy utilizado fundamentalmente en las variables discretas, es la <em>moda</em> (<em>Mo</em>), el cual es simplemente el valor m&#xE1;s frecuente. La versi&#xF3;n base de <code>R</code> no cuenta con una funi&#xF3;n implementada para obtener directamente la moda, aunque si provee herramientas para su obtenci&#xF3;n, que estudiaremos m&#xE1;s en detalle cuando analicemos las variables discretas.</p>
 <p>Cuando la distribuci&#xF3;n de la variable en cuesti&#xF3;n es sim&#xE9;trica, la media, la mediana y la moda son coincidentes <a href="#Figura1">Figura 1b</a>, mientras que si la distribuci&#xF3;n es sesgada a la izquierda o sim&#xE9;trica negativa $\overline{X}\leq X_{50} \leq Mo$ mientras que si la distribuci&#xF3;n es sesgada a la derecha, $Mo\leq X_{50} \leq \overline{X}$.</p>
-<p><img src="../Imagenes/meanMedian.png" alt="Figura1">
+<p><img src="https://github.com/gamerino/RCourse/blob/master/Imagenes/meanMedian.png?raw=FALSE" alt="Figura1">
 <strong><em>Figura 1</em></strong>: <em>Relaci&#xF3;n entre la media, la mediana y la moda en de una distribuci&#xF3;n.</em></p>
 <p>Veamos ahora que pasa con nuestros datos. En el caso de la variable <code>mortality</code> la media muestral es 153, mientras que la mediana es 147. Para la variable <code>latitude</code>, ambos estad&#xED;sticos valen 39,5 mientras que para la variable <code>longitude</code> la media es 90.94 y la mediana 89.5. Esto indica, en un primer an&#xE1;lisis, que la variable <code>latitude</code> parece provenir de una distribuci&#xF3;n sim&#xE9;trica, mientras que las otras dos, lo hacen de distribuciones sesgadas a la derecha.    </p>
 <p>Otros dos estad&#xED;sticos importantes para la descripci&#xF3;n de variables son el <em>m&#xED;nimo</em>, $X_{min}$, y el <em>m&#xE1;ximo</em>, $X_{max}$.</p>
@@ -241,10 +241,10 @@ mortality  latitude longitude
 <pre><code>&gt; quantile(USmelanoma$mortality, probs=seq(from=0, to=1, by=0.1))
    0%   10%   20%   30%   40%   50%   60%   70%   80%   90%  100%
  86.0 116.0 123.2 131.0 136.2 147.0 159.0 168.4 183.6 199.2 229.0</code></pre><p>Ahora bien, obtener el diagramas de cajas es bastante sencillo en <code>R</code> mediante la funci&#xF3;n <code>boxplot()</code> incluida en la distribuci&#xF3;n base.</p>
-<pre><code>&gt; boxplot(USmelanoma[,-4])</code></pre><p><img src="../Imagenes/boxplotMelanoma.png" alt="Figura2"></p>
+<pre><code>&gt; boxplot(USmelanoma[,-4])</code></pre><p><img src="https://github.com/gamerino/RCourse/blob/master/Imagenes/boxplotMelanoma.png?raw=true" alt="Figura2"></p>
 <p><strong><em>Figura 2</em></strong>: <em>Diagrama de cajas de las variables cuantitativas de la base de datos USmelanoma.</em>
 Lo &#xFA;nicon que necesitamos pasar como argumento a la funci&#xF3;n es el vector o conjunto de vectores con los datos a graficar. Ahora bien, tambi&#xE9;n es posible modificar varios aspectos de la gr&#xE1;fica utilizando la misma funci&#xF3;n. Por ejemplo, es posible especificar un color para cada variable, cambiar los nombres de &#xE9;stas, etc.</p>
-<pre><code>&gt; boxplot(USmelanoma[,-4], col=c(&quot;green&quot;, &quot;red&quot;, &quot;blue&quot;), border=c(&quot;green4&quot;, &quot;darkred&quot;, &quot;darkblue&quot;), notch = TRUE, names = c(&quot;Mortalidad&quot;, &quot;Latitud&quot;, &quot;Longitud&quot;))</code></pre><p><img src="../Imagenes/boxplotMelanoma2.png" alt="Figura3"></p>
+<pre><code>&gt; boxplot(USmelanoma[,-4], col=c(&quot;green&quot;, &quot;red&quot;, &quot;blue&quot;), border=c(&quot;green4&quot;, &quot;darkred&quot;, &quot;darkblue&quot;), notch = TRUE, names = c(&quot;Mortalidad&quot;, &quot;Latitud&quot;, &quot;Longitud&quot;))</code></pre><p><img src="https://github.com/gamerino/RCourse/blob/master/Imagenes/boxplotMelanoma2.png?raw=true" alt="Figura3"></p>
 <p><strong><em>Figura 3</em></strong>: <em>Diagrama de cajas personalizados de las variables cuantitativas de la base de datos USmelanoma.</em></p>
 <p>En algunos casos, como en el nuestro, las variables tienen escalas diferentes. Como podemos apreciar, la variable <em>Mortalidad</em> tiene valores mayores y m&#xE1;s dispersos (mayor CV) que las restantes. En estos casos, el rango de graficaci&#xF3;n es bastante amplio y sucede que, apra aquellas variables de menor CV, los boxplots no se aprecian bien. Es por ello que se recomienda utilizar intervalos de graficaci&#xF3;n adaptados a cada una de ellas. Es decir, graficarlas independientemente, como lo hace este fragmento de c&#xF3;digo:</p>
 <pre><code>&gt; nombres&lt;-c(&quot;Mortalidad&quot;, &quot;Latitud&quot;, &quot;Longitud&quot;)
@@ -257,7 +257,7 @@ Lo &#xFA;nicon que necesitamos pasar como argumento a la funci&#xF3;n es el vect
     boxplot(x, col=colores[columna], border=bordes[columna], notch = TRUE, names = varID)
     title(varID)
     return(NULL)
-  })</code></pre><p><img src="../Imagenes/boxplotMelanoma3.png" alt="Figura4"></p>
+  })</code></pre><p><img src="https://github.com/gamerino/RCourse/blob/master/Imagenes/boxplotMelanoma3.png?raw=true" alt="Figura4"></p>
 <p><strong><em>Figura 4</em></strong>: <em>Diagrama de cajas personalizados de las variables cuantitativas de la base de datos USmelanoma, graficadas en forma independiente.</em></p>
 <p><strong>Pregunta</strong>: &#xBF;Qu&#xE9; caracter&#xED;stica previamente mencionada respecto de las distribuciones pueden apreciarse en estas gr&#xE1;ficas?</p>
 <p>Otra herramienta gr&#xE1;fica para describir variables cuantitativas es el <em>histograma</em>. En <code>R</code> lo podemos obtener facilmente con la funci&#xF3;n <code>hist()</code>. A diferencia de la funci&#xF3;n <code>boxplot()</code>, esta no admite un <code>data.frame</code> como par&#xE1;metro, por lo que hay que utilizarla tantas veces como variables de inter&#xE9;s se quiera explorar. Los histogramas pueden presentarse con frecuencias relativas o absolutas.</p>
@@ -267,7 +267,7 @@ Lo &#xFA;nicon que necesitamos pasar como argumento a la funci&#xF3;n es el vect
     hist(x, col=colores[columna], border=bordes[columna], main=NULL,freq=FALSE )
     title(varID)
     return(NULL)
-})</code></pre><p><img src="../Imagenes/histMelanoma.png" alt="Figura5"></p>
+})</code></pre><p><img src="https://github.com/gamerino/RCourse/blob/master/Imagenes/histMelanoma.png?raw=true" alt="Figura5"></p>
 <p><strong><em>Figura 5</em></strong>: <em>Histogramas personalizados de las variables cuantitativas de la base de datos USmelanoma.</em></p>
 <p>Los intervalos utilizados para determinar las frecuencias que componenen el histograma no son fijos y pueden ser modificados por el usuario. Seg&#xFA;n el <code>help</code>, la funci&#xF3;n <code>hist()</code> determina los <code>breaks</code> que determinan los intervalos de la siguiente forma. Por un lado, utiliza la regla de <em>Sturges</em> para determinar el n&#xFA;mero de intervalos a considerar, $c$, est&#xE1; definido por $c=1+log_2n$, donde $n$ es el tama&#xF1;o de la muestra. Luego, los datos y el n&#xFA;mero recomendado, es utilizado para llamar a la funci&#xF3;n <code>pretty()</code> que intenta calcular una secuencia de aproximadamente <em>n+1</em> valores equidistantes que cubren el rango de los valores observados. &#xC9;stos se eligen de modo que sean 1, 2 o 5 veces una potencia de 10.</p>
 <p>Por supuesto que hay diferentes alternativas para definir los intervalos de un histograma. Otra podr&#xED;a ser, por ejemplo, considerar los cuantiles <em>0, 0.1, 0.2,..., 1</em>. El n&#xFA;mero de intervalos no es una elecci&#xF3;n menor ya que impacta directamente en los resultados obtenidos y es por eso que siempre se debe complementar este gr&#xE1;fico con otros como, diagramas de caja, y con resultados num&#xE9;ricos de las medidas resumen.</p>
@@ -277,10 +277,10 @@ Lo &#xFA;nicon que necesitamos pasar como argumento a la funci&#xF3;n es el vect
  no yes
  27  22</code></pre><p>Esta funci&#xF3;n nos informa que la variable categ&#xF3;rica <code>ocean</code> tiene dos valores posibles, <code>yes</code> y <code>no</code>, cada uno de los cuales se presenta con una <em>frecuencia absoluta</em> de 22 y 27 observaciones en la muestra, respectivamente. Es decir, de los 49 estados involucrados, 22 est&#xE1;n parcial o totalmente rodeados por un oc&#xE9;ano mientras que los 27 restantes no lo est&#xE1;n.</p>
 <p>Estos resultados pueden ser presentados tambi&#xE9;n en forma de gr&#xE1;fica. Para ello, la distribuci&#xF3;n base de <code>R</code> incluye la funci&#xF3;n <code>barplot()</code>.</p>
-<pre><code>&gt; barplot(xtabs(~ocean, data=USmelanoma), names.arg = c(&quot;No&quot;, &quot;Si&quot;), col = c(&quot;orange4&quot;, &quot;orange&quot;), border = c(&quot;darkorange&quot;, &quot;orange3&quot;), main = &quot;Contacto con Oc&#xE9;ano&quot;)</code></pre><p><img src="../Imagenes/barplotMelanoma.png" alt="Figura6"></p>
+<pre><code>&gt; barplot(xtabs(~ocean, data=USmelanoma), names.arg = c(&quot;No&quot;, &quot;Si&quot;), col = c(&quot;orange4&quot;, &quot;orange&quot;), border = c(&quot;darkorange&quot;, &quot;orange3&quot;), main = &quot;Contacto con Oc&#xE9;ano&quot;)</code></pre><p><img src="https://github.com/gamerino/RCourse/blob/master/Imagenes/barplotMelanoma.png?raw=true" alt="Figura6"></p>
 <p><strong><em>Figura 6</em></strong>: <em>Gr&#xE1;fico de barras para la variable cualitativa <code>ocean</code> de la base de datos USmelanoma.</em></p>
 <p>Una alternativa al gr&#xE1;fico de barras, es el gr&#xE1;fico de tortas:</p>
-<pre><code>&gt; pie(table(USmelanoma$ocean), labels=c(&quot;No&quot;, &quot;Si&quot;), col = c(&quot;orange4&quot;, &quot;orange&quot;), border = c(&quot;darkorange&quot;, &quot;orange3&quot;), main = &quot;Contacto con Oc&#xE9;ano&quot;)</code></pre><p><img src="../Imagenes/pieMelanoma.png" alt="Figura7"></p>
+<pre><code>&gt; pie(table(USmelanoma$ocean), labels=c(&quot;No&quot;, &quot;Si&quot;), col = c(&quot;orange4&quot;, &quot;orange&quot;), border = c(&quot;darkorange&quot;, &quot;orange3&quot;), main = &quot;Contacto con Oc&#xE9;ano&quot;)</code></pre><p><img src="https://github.com/gamerino/RCourse/blob/master/Imagenes/pieMelanoma.png?raw=true" alt="Figura7"></p>
 <p><strong><em>Figura 7</em></strong>: <em>Gr&#xE1;fico de tortas para la variable cualitativa <code>ocean</code> de la base de datos USmelanoma.</em></p>
 <p>La funci&#xF3;n <code>pie()</code> no ofrece entre sus opciones incluir en la gr&#xE1;fica las frecuencias absolutas y/o relativas de cada categor&#xED;a. Sin embrago, esto es posible, por ejemplo, si inclu&#xED;mos &#xE9;stos en los nombres de cada categor&#xED;a. &#xBF;C&#xF3;mo lo har&#xED;an?</p>
 <p>Hasta este punto hemos visto como analizar las variables en forma independiente (aunque no sabemos si esto es cierto!), sin embargo, nos interesa saber que pasa cuando las consideramos a todas o algunas de ellas en forma simult&#xE1;nea.</p>
@@ -291,7 +291,7 @@ Lo &#xFA;nicon que necesitamos pasar como argumento a la funci&#xF3;n es el vect
 Tomemos en cuenta, por ejemplo, la <em>mortalidad</em> y relacion&#xE9;mosla con las variables <em>latitud</em> y <em>longitud</em> utilizando la funci&#xF3;n <code>plot()</code>.</p>
 <pre><code>&gt; par(mfrow=c(1,2))
 &gt; plot(mortality~latitude, data=USmelanoma, xlab=&quot;Latitud&quot;, ylab=&quot;Mortalidad&quot;)
-&gt; plot(mortality~longitude, data=USmelanoma, xlab=&quot;Longitud&quot;, ylab=&quot;Mortalidad&quot;)</code></pre><p><img src="../Imagenes/dispMelanoma.png" alt="Figura8"></p>
+&gt; plot(mortality~longitude, data=USmelanoma, xlab=&quot;Longitud&quot;, ylab=&quot;Mortalidad&quot;)</code></pre><p><img src="https://github.com/gamerino/RCourse/blob/master/Imagenes/dispMelanoma.png?raw=true" alt="Figura8"></p>
 <p><strong><em>Figura 8</em></strong>: <em>Gr&#xE1;fico de dispersi&#xF3;n de la variable Mortalidad contra las variables latitud y longitud.</em></p>
 <p><strong>Ejercicio</strong>: Discuta las gr&#xE1;ficas. Explore la funci&#xF3;n <code>pairs()</code></p>
 <p>Una medida num&#xE9;rica de la relaci&#xF3;n existente entre variables cuantitativas es la <strong>covarianza</strong>. Para cada par de vectores $(\boldsymbol{X},~\boldsymbol{Y})$ se define la covarianza como:</p>
@@ -327,7 +327,7 @@ las variables tienden a cambiar juntas, no necesariamente a una tasa constante (
 <p>####2.4.4.2 Relaciones entre variables cuantitativas y cualitativas</p>
 <p>Cuando las variables a estudiar son cualitativas y cuantitativas, es &#xFA;til estudiar lo que se llama <em>distribuciones marginales</em>, como un indicador del comportamiento de la variable cuantitativa en los distintos grupos de la variable cualitativa. Por ejemplo, vamos a analizar lo que sucede con la <em>mortalidad</em> en los dos grupos de estados, definidos seg&#xFA;n se rodeen o no por un oc&#xE9;ano.</p>
 <pre><code>&gt; par(mfrow=c(1,1))
-&gt; plot(mortality~ocean, data=USmelanoma, col=c(&quot;green1&quot;, &quot;green4&quot;), border=c(&quot;green4&quot;, &quot;darkgreen&quot;), ylab = &quot;Mortalidad&quot;, xlab=&quot;Contacto con Oc&#xE9;ano&quot; )</code></pre><p><img src="../Imagenes/boxplotMelanomaMortOcean.png" alt="Figura9"></p>
+&gt; plot(mortality~ocean, data=USmelanoma, col=c(&quot;green1&quot;, &quot;green4&quot;), border=c(&quot;green4&quot;, &quot;darkgreen&quot;), ylab = &quot;Mortalidad&quot;, xlab=&quot;Contacto con Oc&#xE9;ano&quot; )</code></pre><p><img src="https://github.com/gamerino/RCourse/blob/master/Imagenes/boxplotMelanomaMortOcean.png?raw=true" alt="Figura9"></p>
 <p><strong><em>Figura 9</em></strong>: <em>Diagrama de cajas de la variable Mortalidad en cada una de las categor&#xED;as de la variable Oc&#xE9;ano.</em></p>
 <p><strong>Ejercicio</strong>: &#xBF;Qu&#xE9; informaci&#xF3;n nos dan estos diagramas? Repita las gr&#xE1;ficas para relacionar las otras dos variables cuantitativas con la variable <em>Oc&#xE9;ano</em>. Elabore una lista de al menos tres hip&#xF3;tesis que relacionen las variables entre s&#xED;.</p>
 <p>Tambi&#xE9;n es posible combinar m&#xE1;s de dos variables en un mismo an&#xE1;lisis, por ejemplo, en el <em>diagrama de dispersi&#xF3;n</em>  es posible asignar distintas formas a los puntos graficados seg&#xFA;n si el valor de la variable <em>Oc&#xE9;ano</em> es <code>yes</code> o <code>no</code>.</p>
@@ -337,7 +337,7 @@ las variables tienden a cambiar juntas, no necesariamente a una tasa constante (
 &gt; legend(&quot;topright&quot;, legend=c(&quot;No&quot;, &quot;Si&quot;), pch=1:2)
 &gt; plot(mortality~longitude, data=USmelanoma, xlab=&quot;Longitud&quot;, ylab=&quot;Mortalidad&quot;,
      pch=as.integer(ocean))
-&gt; legend(&quot;topright&quot;, legend=c(&quot;No&quot;, &quot;Si&quot;), pch=1:2)</code></pre><p><img src="../Imagenes/dispMelanoma2.png" alt="Figura10"></p>
+&gt; legend(&quot;topright&quot;, legend=c(&quot;No&quot;, &quot;Si&quot;), pch=1:2)</code></pre><p><img src="https://github.com/gamerino/RCourse/blob/master/Imagenes/dispMelanoma2.png?raw=true" alt="Figura10"></p>
 <p><strong><em>Figura 10</em></strong>: <em>Gr&#xE1;fico de dispersi&#xF3;n de la variable Mortalidad contra las variables latitud y longitud, incluyendo informaci&#xF3;n de la variable Oc&#xE9;ano.</em></p>
 <p><strong>Ejercicio</strong>: Discuta las gr&#xE1;ficas.</p>
 <p>####2.4.4.3 Relaciones entre variables cualitativas
@@ -396,18 +396,18 @@ Cuando estudiamos varias variables tambi&#xE9;n es de inter&#xE9;s obtener sus d
 <p>Por ejemplo, construyamos el diagrama de dispersi&#xF3;n de las variables <em>mortalidad</em> y <em>latitud</em> del dataset <code>USmelanoma</code>.</p>
 <pre><code>&gt; library(ggplot2)
 &gt; g&lt;-ggplot(data=USmelanoma, aes(x=mortality, y=latitude))+geom_point()
-&gt; g</code></pre><p><img src="../Imagenes/dispGGplot.png" alt="Figura11"></p>
+&gt; g</code></pre><p><img src="https://github.com/gamerino/RCourse/blob/master/Imagenes/dispGGplot.png?raw=true" alt="Figura11"></p>
 <p><strong><em>Figura 11</em></strong>: <em>Gr&#xE1;fico de dispersi&#xF3;n de las variables mortalidad y latitud constru&#xED;do con <code>ggplot2</code>.</em></p>
 <h3 id="2-5-3-mapeo-entre-variables-y-propiedades-gr-ficas">2.5.3 Mapeo entre variables y propiedades gr&#xE1;ficas</h3>
 <p>Un <em>aesthetic</em> es una propiedad visual de los objetos en los gr&#xE1;ficos. <em>Aesthetics</em> incluyen cosas como tama&#xF1;o, forma o color de puntos. En el gr&#xE1;fico anterior hemos utilizado dos par&#xE1;metros b&#xE1;sicos de un <em>aesthetic</em>, <code>x</code> e <code>y</code>. Estos dos par&#xE1;metros sirven para especificar cu&#xE1;les dos variables del <code>data.frame</code> <code>USmelanoma</code> ser&#xE1;n graficadas en los ejes <em>x* e *y</em>, respectivamente. Ahora bien, estas no son las &#xFA;nicas propiedades gr&#xE1;ficas que pueden modificarse en un objeto <code>ggplot</code>. Por ejemplo, podr&#xED;amos estar interesados en agregar una tercer vaiable, asociada a una clase particular de cada observaci&#xF3;n, como la variable <code>Ocean</code>. Hay diferentes formas de incluir la informaci&#xF3;n de esta tercer variable, una de ellas podr&#xED;a ser mediante la forma de los puntos:</p>
 <pre><code>&gt; g1&lt;-g+geom_point(aes(shape=ocean, size=2))
-&gt; g1</code></pre><p><img src="../Imagenes/dispGGplotShape.png" alt="Figura12"></p>
+&gt; g1</code></pre><p><img src="https://github.com/gamerino/RCourse/blob/master/Imagenes/dispGGplotShape.png?raw=true" alt="Figura12"></p>
 <p><strong><em>Figura 12</em></strong>: <em>Gr&#xE1;fico de dispersi&#xF3;n de las variables mortalidad y latitud, clasificados seg&#xFA;n la variable oc&#xE9;ano, constru&#xED;do con <code>ggplot2</code>.</em></p>
 <p>El nuevo objeto <code>g1</code> incorpora ahora una capa de diagrama de puntos cuyas formas dependen del valor de la variable <code>ocean</code>. Adem&#xE1;s de modificar la forma de los puntos (<code>shape</code>) tambi&#xE9;n hemos aumentado su tama&#xF1;o a un valor fijo, aunque tambi&#xE9;n es posible hacerlo a valores que dependan de otras variables contenidas en el conjunto de datos.</p>
 <p><strong>Ejercicio</strong>: incorpore la informaci&#xF3;n de la longitud al gr&#xE1;fico de dispersi&#xF3;n anterior como par&#xE1;metro de tama&#xF1;o de los puntos.</p>
 <p>Tambi&#xE9;n es posible incorporar m&#xE1;s variables mediante la modificaci&#xF3;n del color de los puntos:</p>
 <pre><code>&gt; g&lt;-ggplot(data=USmelanomaExpanded, aes(x=latitude, y=longitude, shape=ocean,    color=mortalityCat))+geom_point(size=2)
-&gt; g</code></pre><p><img src="../Imagenes/dispGGplotshapecolor.png" alt="Figura13"></p>
+&gt; g</code></pre><p><img src="https://github.com/gamerino/RCourse/blob/master/Imagenes/dispGGplotshapecolor.png?raw=true" alt="Figura13"></p>
 <p><strong><em>Figura 13</em></strong>: <em>Gr&#xE1;fico de dispersi&#xF3;n de las variables latitud y longitud, clasificados seg&#xFA;n la variable oc&#xE9;ano y coloreados seg&#xFA;n el rango de mortalidad observada.</em></p>
 <p><strong>Ejercicio</strong>: Discuta los gr&#xE1;ficos generados.</p>
 <p>El mapeo de un <em>aesthetic</em> a una variable es asociar el nombre de la variable con el del <em>aesthetic</em> dentro de la funci&#xF3;n <code>aes()</code>. Autom&#xE1;ticamente <code>ggplot2</code> asignar&#xE1; un &#xFA;nico nivel del <em>aesthetic</em> a un &#xFA;nico valor de la variable. En el caso de los colores, las formas, los tama&#xF1;os, tambi&#xE9;n agregar&#xE1; leyendas gr&#xE1;ficas que expliquen la asociaci&#xF3;n entre los niveles del <em>aesthetic</em> y los valores de la variable.</p>
@@ -415,19 +415,19 @@ Cuando estudiamos varias variables tambi&#xE9;n es de inter&#xE9;s obtener sus d
 <h3 id="2-5-4-uso-de-facets">2.5.4 Uso de <em>facets</em></h3>
 <p>Una alternativa para agregar variables adicionales a un gr&#xE1;fico, principalmente del tipo categ&#xF3;ricas, es el uso de <em>facets</em>. Una <em>facet</em> basada en una variable categ&#xF3;rica de <em>k* valores posibles indicar&#xE1; la creaci&#xF3;n de *k</em> gr&#xE1;ficos, uno para cada subconjunto de los datos correspondientes con cada uno de los valores posibles de la variable categ&#xF3;rica. Las facetas basadas en una &#xFA;nica variable pueden construirse con la funci&#xF3;n <code>facet_wrap()</code>. El primer argumento de esta funci&#xF3;n debe ser del tipo <code>formula</code>, el cual se crea con ~ seguido del nombre de la variable categ&#xF3;rica que definir&#xE1; las facetas.</p>
 <pre><code>&gt; g&lt;-ggplot(data=USmelanomaExpanded, aes(x=latitude, y=longitude, color=mortalityCat))+geom_point(size=2)+facet_wrap(~ocean)
-&gt; g</code></pre><p><img src="../Imagenes/dispGGplotfacet.png" alt="Figura14"></p>
+&gt; g</code></pre><p><img src="https://github.com/gamerino/RCourse/blob/master/Imagenes/dispGGplotfacet.png?raw=true" alt="Figura14"></p>
 <p><strong><em>Figura 14</em></strong>: <em>Gr&#xE1;fico de dispersi&#xF3;n de las variables latitud y longitud, coloreados seg&#xFA;n el rango de mortalidad observada y presentados en dos <code>facets</code> seg&#xFA;n los valores de la variable oc&#xE9;ano.</em></p>
 <p>Muchas veces el gr&#xE1;fico en facetas resulta m&#xE1;s adecuado para apreciar ciertos comportamientos en los datos. Por ejemplo, en este caso, es facil notar que los estados que no est&#xE1;n rodeados por oc&#xE9;anos concentran los niveles de mortalidad m&#xE1;s bajos, mientras que los que si est&#xE1;n rodeados por oc&#xE9;anos concentran los valores m&#xE1;s altos de mortalidad debida a melanoma.</p>
 <p>Es posible tambien construir facetas a partir de la combinaci&#xF3;n de dos variables categ&#xF3;ricas, utilizando la funci&#xF3;n <code>facet_grid()</code>. El argumento de esta funci&#xF3;n tambi&#xE9;n debe ser del tipo <code>formula</code> y debe contener el nombre de las dos variables separados por ~.</p>
 <pre><code>&gt; g&lt;-ggplot(data=USmelanomaExpanded, aes(x=latitude, y=longitude))+geom_point(
     size=2, color=&quot;blue&quot;)+facet_grid(mortalityCat~ocean)
-&gt; g</code></pre><p><img src="../Imagenes/dispGGplotFacet2.png" alt="Figura15"></p>
+&gt; g</code></pre><p><img src="https://github.com/gamerino/RCourse/blob/master/Imagenes/dispGGplotFacet2.png?raw=true" alt="Figura15"></p>
 <p><strong><em>Figura 15</em></strong>: <em>Gr&#xE1;fico de dispersi&#xF3;n de las variables latitud y longitud, faceteados seg&#xFA;n los valores de la variable oc&#xE9;ano y los grupos de mortalidad definidos previamente.</em></p>
 <p>###2.5.5 Objetos geom&#xE9;tricos</p>
 <p>Un <em>geom</em> es un objeto geom&#xE9;trico que es utilizado por un gr&#xE1;fico <code>ggplot</code> para representar datos. Es com&#xFA;n describir los gr&#xE1;ficos en base al tipo de <em>geom</em> que se usa para obtenerlos. Por ejemplo, un gr&#xE1;fico de barras <em>bar chart</em> usa <em>bar geoms</em>, un diagrama de l&#xED;neas <em>line chart</em> usa <em>line geoms</em>, los diagramas de cajas <em>boxplots</em> usan <em>boxplot geoms</em>, etc. Aunque no se cumple esto para todos los tipos de gr&#xE1;ficos. En nuestro ejemplo anterior constru&#xED;mos un diagrama de dispersi&#xF3;n <em>scatterplot</em> utilizando <em>point geom</em>.
 Para cambiar un <code>geom</code> en un gr&#xE1;fico es necesario cambiar la <code>GEOM_FUNCTION()</code> agregada a <code>ggplot()</code>. Adicionalmente, muchas veces es posible representar gr&#xE1;ficamente las mismas variables <em>x* e *y</em> en gr&#xE1;ficos diferentes que representan la misma informaci&#xF3;n. Por ejemplo:</p>
 <pre><code>&gt; ggplot(data = USmelanoma) + geom_point(aes(x =latitude, y = mortality))
-&gt; ggplot(data = USmelanoma) + geom_smooth(mapping = aes(x = latitude, y = mortality))</code></pre><p><img src="../Imagenes/geomsGGplot.png" alt="Figura16"></p>
+&gt; ggplot(data = USmelanoma) + geom_smooth(mapping = aes(x = latitude, y = mortality))</code></pre><p><img src="https://github.com/gamerino/RCourse/blob/master/Imagenes/geomsGGplot.png?raw=true" alt="Figura16"></p>
 <p><strong><em>Figura 16</em></strong>: <em>Diferentes gr&#xE1;ficos generados a partir de los mismos datos para x e y. En la izquierda, diagrama de dispersi&#xF3;n de las variables mortalidad y latitud. En la derecha, recta de regresi&#xF3;n y bandas de confianza.</em></p>
 <p>Estas dos gr&#xE1;ficas utilizan las mismas variables para <em>x* e *y</em> pero las presentan en diferentes formas. La gr&#xE1;fica de la izquierda, en un diagrama de dispersi&#xF3;n y la de la derecha, mediante una curva de <em>regresi&#xF3;n lineal</em> y las correspondientes <em>bandas de confianza</em>.</p>
 <p>Cada <em>geom</em> admite un mapeo a un <em>aesthetic</em> diferente. Sin embargo, no cualquier <em>aesthetic</em> funciona con cualquier <em>geom</em>. Por ejemplo, es posible fijar la forma de un punto pero no de una l&#xED;nea, a la cual s&#xED; se le puede especificar manualmente un trazado (<code>linetype</code>) particular. Por ejemplo,</p>
@@ -435,12 +435,12 @@ Para cambiar un <code>geom</code> en un gr&#xE1;fico es necesario cambiar la <co
 <p>ggplot(data = USmelanoma) + geom_smooth(mapping = aes(x = latitude, y = mortality))</p>
 <pre><code>g&lt;-ggplot(data = USmelanoma) + geom_smooth(mapping = aes(x = latitude, y = mortality, linetype=ocean))
 g</code></pre></blockquote>
-<p><img src="../Imagenes/loesGGplot.png" alt="Figura17"></p>
+<p><img src="https://github.com/gamerino/RCourse/blob/master/Imagenes/loesGGplot.png?raw=true" alt="Figura17"></p>
 <p><strong><em>Figura 17</em></strong>: <em>Recta de regresi&#xF3;n y bandas de confianza para la mortalidad en funci&#xF3;n de la latitud en los grupos rodeado y no por oc&#xE9;ano.</em></p>
 <p>Note que el uso del argumento <code>linetype</code> implica la construcci&#xF3;n de dos l&#xED;neas de regresi&#xF3;n, una para cada grupo de observaciones, definidos por el valor de la variable categ&#xF3;rica <code>ocean</code>.</p>
 <p>Una de las ventajas de utilizar <code>ggplot2</code> es que nos permite combinar diferentes <em>geoms</em> en un mismo gr&#xE1;fico.</p>
 <pre><code>&gt; g&lt;-ggplot(data = USmelanoma) + geom_smooth(mapping = aes(x = latitude, y = mortality, linetype=ocean, color=ocean))+geom_point(mapping=aes(x=latitude, y=mortality, color=ocean, shape=ocean), size=2)
-&gt; g</code></pre><p><img src="../Imagenes/smoothGGlpotDisp.png" alt="Figura18"></p>
+&gt; g</code></pre><p><img src="https://github.com/gamerino/RCourse/blob/master/Imagenes/smoothGGlpotDisp.png?raw=true" alt="Figura18"></p>
 <p><strong><em>Figura 18</em></strong>: <em>Recta de regresi&#xF3;n con bandas de confianza y diagrama de dispersi&#xF3;n para la mortalidad en funci&#xF3;n de la latitud en los grupos rodeado y no por oc&#xE9;ano.</em></p>
 <p><code>ggplot2</code> provee cerca de 30 <em>geoms</em> diferentes, algunas de ellas son:</p>
 <ul>
@@ -459,29 +459,29 @@ g</code></pre></blockquote>
 <p>Muchos <em>geoms</em>, como <code>geom_smooth()</code>, usan un &#xFA;nico objeto geom&#xE9;trico para mostrar m&#xFA;ltiples filas de datos. Para &#xE9;stos, es posible definir el <em>aesthetic</em> del grupo mediante una variable categ&#xF3;rica como lo hicimos al especificar el color de las cuvrvas regresoras con la variable <code>ocean</code>.</p>
 <p>Como se mencion&#xF3; anteriormente, si un <em>aesthetic</em> se define dentro de un <em>geom</em>, <code>ggplot2</code> lo tratar&#xE1; como un mapeo local para la capa ylo utilizar&#xE1; estas asignaciones para extender o sobrescribir las asignaciones globales solo para esa capa. Esto es lo que hace posible mostrar diferentes <em>aesthetics</em> en diferentes capas.</p>
 <pre><code>&gt; g&lt;-ggplot(data = USmelanoma,mapping = aes(x = latitude, y = mortality)) + geom_smooth(mapping = aes(linetype=ocean), color=&quot;green&quot;)+geom_point(mapping=aes(color=ocean, shape=ocean), size=2)
-&gt; g</code></pre><p><img src="../Imagenes/smothGG2.png" alt="Figura19"></p>
+&gt; g</code></pre><p><img src="https://github.com/gamerino/RCourse/blob/master/Imagenes/smothGG2.png?raw=true" alt="Figura19"></p>
 <p><strong><em>Figura 19</em></strong>: <em>Recta de regresi&#xF3;n con bandas de confianza y diagrama de dispersi&#xF3;n para la mortalidad en funci&#xF3;n de la latitud en los grupos rodeado y no por oc&#xE9;ano.</em></p>
 <p><strong>Pregunta</strong>: &#xBF;Por qu&#xE9; el color est&#xE1; especificado por fuera del <em>aesthetic</em> del <code>geom_smooth()</code>?</p>
 <p><strong>Ejercicios</strong>:</p>
 <h3 id="2-5-6-transformaciones-estad-sticas">2.5.6 Transformaciones estad&#xED;sticas</h3>
 <p>Muchos gr&#xE1;ficos, como los diagramas de dispersi&#xF3;n, grafican directamente los datos como aparecen en las tablas mientras que otros grafican valores obtenidos a partir de operaciones sobre los datos. Por ejemplo, los gr&#xE1;ficos de barra, histogramas y pol&#xED;gonos de frecuencia agrupan los datos y luego grafican los grupos y el total de observaciones que caen en cada uno de ellos. Otro ejemplo lo constituyen <code>geom_smoth()</code>, que realiza un ajuste de los datos para luego graficar los resultados del modelo ajustado o <code>geom_boxplot()</code> que primero obtiene medidas estad&#xED;sticas de resumen y luego las grafica en forma de caja.</p>
 <p>El algoritmo utilizado para calcular los nuevos valores en un gr&#xE1;fico se llama <code>stat</code>, como abreviaci&#xF3;n de <em>statistical transformation</em>. Veamos como es este proceso ejemplificado en el caso de <code>geom_bar()</code>.</p>
-<p><img src="../Imagenes/visualization-stat-bar.png" alt="Figura20"></p>
+<p><img src="https://github.com/gamerino/RCourse/blob/master/Imagenes/visualization-stat-bar.png?raw=true" alt="Figura20"></p>
 <p><strong><em>Figura 20</em></strong>: <em>Ilustraci&#xF3;n del proceso de transformaci&#xF3;n estad&#xED;stica utilizado por <code>geom_bar()</code>.</em></p>
 <p>Dependiendo del <em>geom</em> los <em>stats</em> disponibles pueden variar. Por ejemplo, en el caso de <code>geom_bar()</code> el <em>stat</em> por defecto es <code>count</code> lo que significa que este <em>geom</em> usa <code>stat_count()</code>. Toda la informaci&#xF3;n referente tanto a <code>geom_bar()</code> como a <code>stat_count()</code> puede obtenerse en el manual correspondiente. Particularmente, hay una secci&#xF3;n llamada <em>Computed variables</em> donde se explica como se obtienen las nuevas variables a partir de los datos. Veamos como funcionan estas dos funciones combinadas</p>
 <pre><code>&gt; g&lt;-ggplot(data=USmelanoma, aes(x=ocean))+geom_bar(stat=&quot;count&quot;)
-&gt; g</code></pre><p><img src="../Imagenes/barplotGG.png" alt="Figura21"></p>
+&gt; g</code></pre><p><img src="https://github.com/gamerino/RCourse/blob/master/Imagenes/barplotGG.png?raw=true" alt="Figura21"></p>
 <p><strong><em>Figura 21</em></strong>: <em>Diagrama de barras para la variable oc&#xE9;ano.</em></p>
 <p><strong>Ejercicio</strong>: Obtenga el diagrama de cajas para la variable <em>mortalidad</em> para cada uno de los grupos de observaciones definidos mediante la variable <em>oc&#xE9;ano</em>.</p>
 <p><code>counts</code> determina que la nueva variable, <code>count</code>, contiene la cantidad de observaciones registradas para cada categor&#xED;a de la variable <code>ocean</code>.  En el caso de tener variables continuas, aunque <code>stat_count</code> puede utilizarse, tambi&#xE9;n se cuenta con <code>stat_bin()</code>. Esta transformaci&#xF3;n agrupa valores observados en <em>bins</em> y luego cuenta la cantidad de elementos en cada uno de ellos.</p>
 <pre><code>&gt; g&lt;-ggplot(data=USmelanoma, aes(x=mortality))+geom_bar(stat=&quot;bin&quot;)
-&gt; g</code></pre><p><img src="../Imagenes/statBinGG.png" alt="Figura22"></p>
+&gt; g</code></pre><p><img src="https://github.com/gamerino/RCourse/blob/master/Imagenes/statBinGG.png?raw=true" alt="Figura22"></p>
 <p><strong><em>Figura 22</em></strong>: <em>Diagrama de barras para la variable mortalidad.</em></p>
 <p><strong>Ejercicio</strong>: Explore <code>stat_bin()</code> y grafique un histograma con 15 bins y otro con bins equidistantes, separados por 10 unidades.</p>
 <p>Cada <em>geom</em> tiene un <em>stat</em> asociado por defecto y cada  <em>stat</em> tiene un <em>geom</em> por defecto. Sin embargo hay ocasiones en las que resulta &#xFA;til cambiar el <em>stat</em>. Por ejemplo, cuando queremos mapear los valores del eje <em>y</em> a una columna espec&#xED;fica del conjunto de datos:</p>
 <pre><code>&gt; df&lt;-as.data.frame(table(USmelanomaExpanded$mortalityCat))
 &gt; names(df)&lt;-c(&quot;MortalityInterval&quot;, &quot;Counts&quot;)
-&gt; ggplot(df, aes(x=MortalityInterval, y=Counts))+geom_bar(stat=&quot;identity&quot;)</code></pre><p><img src="../Imagenes/barplotGG3.png" alt="Figura23"></p>
+&gt; ggplot(df, aes(x=MortalityInterval, y=Counts))+geom_bar(stat=&quot;identity&quot;)</code></pre><p><img src="https://github.com/gamerino/RCourse/blob/master/Imagenes/barplotGG3.png?raw=true" alt="Figura23"></p>
 <p><strong><em>Figura 23</em></strong>: <em>Diagrama de barras para la variable mortalidad categorizada a cuatro intervalos definidos por los cuartiles.</em></p>
 <p><strong>Ejercicio</strong>: &#xBF;Qu&#xE9; piensa de los resultados gr&#xE1;ficos obtenidos?
 smoothers fit a model to your data and then plot predictions from the model.</p>
@@ -490,11 +490,11 @@ smoothers fit a model to your data and then plot predictions from the model.</p>
 <p>Probablemente, son la parte m&#xE1;s complicada de <code>ggplot2</code>. Por defecto, el sistema de coordenadas es el Cartesiano donde las posiciones en los ejes <em>x* e *y</em> definen en forma independiente la ubicaci&#xF3;n de cada punto. Sin embargo, <code>ggplot2</code> incluye otros sistemas de coordenadas que pueden ser &#xFA;tiles.</p>
 <p>Por un lado <code>coord_flip()</code> intercambia los ejes entre s&#xED;, lo cual por ejemplo, puede ser util para graficar diagramas de caja horizontales.</p>
 <pre><code>&gt; g&lt;-ggplot(data=USmelanoma, aes(x=ocean, y=mortality))+geom_boxplot()+coord_flip()
-&gt; g</code></pre><p><img src="../Imagenes/boxplotHoriz.png" alt="Figura24"></p>
+&gt; g</code></pre><p><img src="https://github.com/gamerino/RCourse/blob/master/Imagenes/boxplotHoriz.png?raw=true" alt="Figura24"></p>
 <p><strong><em>Figura 24</em></strong>: <em>Diagrama de cajas para la variable mortalidad para los dos grupos de estados, definidos por la variable oc&#xE9;ano.</em></p>
 <p>Por otro lado, <code>coord_polar()</code> utiliza coordenadas polares.</p>
 <pre><code>&gt; ggplot(USmelanoma, aes(x=ocean, fill=ocean))+geom_bar()+theme(element_blank(),
-  legend.position=&quot;none&quot;)+coord_polar()+labs(x=&quot;&quot;, y=&quot;&quot;)</code></pre><p><img src="../Imagenes/poalrGG.png" alt="Figura25"></p>
+  legend.position=&quot;none&quot;)+coord_polar()+labs(x=&quot;&quot;, y=&quot;&quot;)</code></pre><p><img src="https://github.com/gamerino/RCourse/blob/master/Imagenes/poalrGG.png?raw=true" alt="Figura25"></p>
 <p><strong><em>Figura 25</em></strong>: <em>Diagrama de barras en coordenadas polares para la variable oc&#xE9;ano.</em></p>
 <h3 id="2-5-8-escalas-y-leyendas">2.5.8 Escalas y leyendas</h3>
 <p>Las escalas tanto de los ejes como de otras <em>aesthetic</em> pueden ser manualmente controladas y manipuladas. Para ello, <code>ggplot2</code> ofrece funcionalidades que permiten controlar tanto las escalas como sus leyendas. B&#xE1;sicamente, los m&#xE9;todos de escala se pueden agrupar en funci&#xF3;n del <em>aesthetic</em> que controlan, del tipo de dato mapeado a la escala y del tipo de escala. Algunos ejemplos de m&#xE9;todos de escala son:</p>
@@ -516,11 +516,11 @@ smoothers fit a model to your data and then plot predictions from the model.</p>
 <p>Tanto las escalas continuas como las discretas pueden controlarse en <code>ggplot2</code> usando:</p>
 <p><code>scale_(x/y)_(continous/discrete)</code></p>
 <pre><code>&gt; g&lt;-ggplot(USmelanoma, aes(x=latitude, y=mortality, color=ocean))+geom_point(size=2)
-&gt; g+scale_x_continuous(name=&quot;Latitud&quot;,limits = c(25,50), breaks = seq(25,50,5))+scale_y_continuous(name=&quot;Mortalidad&quot;, limits=c(0,230))</code></pre><p><img src="../Imagenes/scalesDisp.png" alt="Figura26"></p>
+&gt; g+scale_x_continuous(name=&quot;Latitud&quot;,limits = c(25,50), breaks = seq(25,50,5))+scale_y_continuous(name=&quot;Mortalidad&quot;, limits=c(0,230))</code></pre><p><img src="https://github.com/gamerino/RCourse/blob/master/Imagenes/scalesDisp.png?raw=true" alt="Figura26"></p>
 <p><strong><em>Figura 26</em></strong>: <em>Diagrama de dispersi&#xF3;n mortalidad vs latitud con ajuste de escalas.</em></p>
 <p>En el ejemplo anterior hemos controlado la escala continua en ambos ejes definiendo los l&#xED;mites y el nombre para cada uno de ellos. Adicionalmente, en el eje <em>x</em> hemos establecido que las marcas aparezcan de 5 en 5, comenzando en el m&#xED;nimo establecido (25) y finalizando en el m&#xE1;ximo (50).</p>
 <pre><code>&gt; g&lt;-ggplot(data=USmelanoma, aes(x=ocean, y=mortality, fill=ocean))+geom_boxplot()+coord_flip()
-&gt; g+scale_x_discrete(name=&quot;Frontera con oc&#xE9;ano&quot;, breaks=c(&quot;no&quot;, &quot;yes&quot;), labels=c(&quot;No&quot;, &quot;Si&quot;))+scale_y_continuous(name=&quot;Mortalidad&quot;)+theme(legend.position=&quot;none&quot;)</code></pre><p><img src="../Imagenes/boxplotScales.png" alt="Figura27">
+&gt; g+scale_x_discrete(name=&quot;Frontera con oc&#xE9;ano&quot;, breaks=c(&quot;no&quot;, &quot;yes&quot;), labels=c(&quot;No&quot;, &quot;Si&quot;))+scale_y_continuous(name=&quot;Mortalidad&quot;)+theme(legend.position=&quot;none&quot;)</code></pre><p><img src="https://github.com/gamerino/RCourse/blob/master/Imagenes/boxplotScales.png?raw=true" alt="Figura27">
 1
 <strong><em>Figura 27</em></strong>: <em>Diagrama de cajas para la variable mortalidad, agrupando los estados seg&#xFA;n la variable oc&#xE9;ano y con ajuste de escalas.</em></p>
 <h4 id="2-5-8-2-control-de-escala-de-colores-formas-tama-os">2.5.8.2 Control de escala de colores/formas/tama&#xF1;os</h4>
@@ -532,7 +532,7 @@ smoothers fit a model to your data and then plot predictions from the model.</p>
 &gt; g+scale_color_gradient(&quot;Latitud&quot;,low=&quot;orchid&quot;, high=&quot;orange&quot;)+scale_fill_manual(
   &quot;Proximidad Oc&#xE9;ano&quot;, values = c(&quot;cyan&quot;, &quot;green&quot;), breaks=c(&quot;no&quot;, &quot;yes&quot;), labels=
   c(&quot;No&quot;, &quot;Si&quot;))+scale_shape_discrete(&quot;Proximidad Oc&#xE9;ano&quot;, breaks=c(&quot;no&quot;, &quot;yes&quot;), labels=
-  c(&quot;No&quot;, &quot;Si&quot;))+labs(x=&quot;Mortalidad&quot;)+scale_x_discrete(&quot;&quot;, breaks=c(&quot;no&quot;, &quot;yes&quot;), labels=c(&quot;&quot;,&quot;&quot;))</code></pre><p><img src="../Imagenes/boxplotScales2.png" alt="Figura28"></p>
+  c(&quot;No&quot;, &quot;Si&quot;))+labs(x=&quot;Mortalidad&quot;)+scale_x_discrete(&quot;&quot;, breaks=c(&quot;no&quot;, &quot;yes&quot;), labels=c(&quot;&quot;,&quot;&quot;))</code></pre><p><img src="https://github.com/gamerino/RCourse/blob/master/Imagenes/boxplotScales2.png?raw=true" alt="Figura28"></p>
 <p><strong><em>Figura 28</em></strong>: <em>Diagrama de cajas para la variable mortalidad, agrupando los estados seg&#xFA;n la variable oc&#xE9;ano y con ajuste de escalas gr&#xE1;ficas.</em></p>
 <p>Un detalle importante es que aquellas escalas que se corresponden con la misma variable y cuyas leyendas comparten t&#xED;tulos y etiquetas se homologan, como se muestra para la forma de los puntos y el color de los diagramas de cajas.</p>
 <h3 id="2-5-9-temas">2.5.9 Temas</h3>
@@ -544,7 +544,7 @@ smoothers fit a model to your data and then plot predictions from the model.</p>
   geom_jitter(aes(color=latitude,shape=ocean),size=2)+geom_violin(alpha=0.5)
 &gt; g&lt;-g+scale_color_gradient(&quot;Latitud&quot;,low=&quot;orchid&quot;, high=&quot;orange&quot;)+
   scale_fill_manual(&quot;Proximidad Oc&#xE9;ano&quot;, values = c(&quot;cyan&quot;, &quot;green&quot;), breaks=c(&quot;no&quot;, &quot;yes&quot;), labels=c(&quot;No&quot;, &quot;Si&quot;))+scale_shape_discrete(&quot;Proximidad Oc&#xE9;ano&quot;, breaks=c(&quot;no&quot;, &quot;yes&quot;), labels=c(&quot;No&quot;, &quot;Si&quot;))+labs(y=&quot;Mortalidad&quot;)+scale_x_discrete(&quot;Proximidad Oc&#xE9;ano&quot;, breaks=c(&quot;no&quot;, &quot;yes&quot;), labels=c(&quot;No&quot;,&quot;Si&quot;))
-&gt; g+theme_linedraw()</code></pre><p><img src="../Imagenes/themeGG.png" alt="Figura29"></p>
+&gt; g+theme_linedraw()</code></pre><p><img src="https://github.com/gamerino/RCourse/blob/master/Imagenes/themeGG.png?raw=true" alt="Figura29"></p>
 <p><strong><em>Figura 29</em></strong>: <em>Diagrama de viol&#xED;n para la variable mortalidad, agrupando los estados seg&#xFA;n la variable oc&#xE9;ano y con ajuste de escalas gr&#xE1;ficas y de tema.</em></p>
 <p>En este ejemplo, se ha utilizado el tema <em>linedraw</em> que especifica el trazado de l&#xED;neas paralelas a los ejes <em>x* e *y</em> as&#xED; como los bordes del gr&#xE1;fico.</p>
 <p><strong>Nota</strong>: El <em>violin plot</em> es un gr&#xE1;fico muy &#xFA;til ya que permite graficar dos aspectos distribucionales en una misma gr&#xE1;fica: la densidad y el diagrama de cajas de una variable. Estudie el <em>geom</em> correspondiente con el uso del <em>help</em> de <code>R</code>.</p>
@@ -558,7 +558,7 @@ smoothers fit a model to your data and then plot predictions from the model.</p>
 <li><code>theme_linedraw()</code></li>
 <li><code>theme_minimal()</code></li>
 </ul>
-<p><img src="../Imagenes/visualization-themes.png" alt="Figura30"></p>
+<p><img src="https://github.com/gamerino/RCourse/blob/master/Imagenes/visualization-themes.png?raw=true" alt="Figura30"></p>
 <p><strong><em>Figura 30</em></strong>: <em>Temas definidos en <code>ggplot2</code>.</em></p>
 <p>Tambi&#xE9;n es posible utilizar otros temas definidos dentro de paquetes complementarios como <a href="https://CRAN.R-project.org/package=ggthemes"><code>ggthemes</code></a>.</p>
 <h4 id="2-5-9-2-creando-temas-propios">2.5.9.2 Creando temas propios</h4>
@@ -589,10 +589,10 @@ y cinco grupos de elementos asociados:</p>
 <pre><code>&gt; g+theme(text = element_text(colour=&quot;blue&quot;, size = 12), axis.text.y = element_text(colour=&quot;brown&quot;),
   axis.title.y = element_text(vjust = 0.5, angle = 45, colour=&quot;brown&quot;),
   axis.line.x = element_line(linetype = 0),axis.line.y=element_line(colour=&quot;brown&quot;),
-  axis.ticks.x = element_blank(), axis.text.x = element_blank(), axis.title.x = element_blank())</code></pre><p><img src="../Imagenes/themeGG2.png" alt="Figura31"></p>
+  axis.ticks.x = element_blank(), axis.text.x = element_blank(), axis.title.x = element_blank())</code></pre><p><img src="https://github.com/gamerino/RCourse/blob/master/Imagenes/themeGG2.png?raw=true" alt="Figura31"></p>
 <p><strong><em>Figura 31</em></strong>: <em>Diagrama de viol&#xED;n para la variable mortalidad, agrupando los estados seg&#xFA;n la variable oc&#xE9;ano y con ajuste de escalas gr&#xE1;ficas y de tema personalizado.</em></p>
 <p>Tambi&#xE9;n es posible controlar las leyendas con la funci&#xF3;n <code>theme()</code>.</p>
-<pre><code>&gt; g+theme(legend.position=&quot;none&quot;)</code></pre><p><img src="../Imagenes/themeGG3.png" alt="Figura32"></p>
+<pre><code>&gt; g+theme(legend.position=&quot;none&quot;)</code></pre><p><img src="https://github.com/gamerino/RCourse/blob/master/Imagenes/themeGG3.png?raw=true" alt="Figura32"></p>
 <p><strong><em>Figura 32</em></strong>: <em>Diagrama de viol&#xED;n para la variable mortalidad, agrupando los estados seg&#xFA;n la variable oc&#xE9;ano y con ajuste de escalas gr&#xE1;ficas y sin leyendas.</em></p>
 <p>Lo que debemos tener en cuenta que el control es sobre todas las leyendas en el gr&#xE1;fico. Por lo que para controlarlas individualmente debemos combinarla con las funciones <code>scale_*</code> o utilizar la funci&#xF3;n <code>guides()</code>.</p>
 <pre><code>&gt; g&lt;-ggplot(data=USmelanoma, aes(x=ocean, y=mortality, fill=ocean))+
@@ -600,7 +600,7 @@ y cinco grupos de elementos asociados:</p>
 &gt; g&lt;-g+scale_color_gradient(&quot;Latitud&quot;,low=&quot;orchid&quot;, high=&quot;orange&quot;)+scale_fill_manual(
   &quot;Proximidad Oc&#xE9;ano&quot;, values = c(&quot;cyan&quot;, &quot;green&quot;), breaks=c(&quot;no&quot;, &quot;yes&quot;), labels=c(&quot;No&quot;, &quot;Si&quot;))+scale_shape_discrete(&quot;Proximidad Oc&#xE9;ano&quot;, breaks=c(&quot;no&quot;, &quot;yes&quot;), labels=c(&quot;No&quot;, &quot;Si&quot;))+labs(y=&quot;Mortalidad&quot;)+scale_x_discrete(&quot;Proximidad Oc&#xE9;ano&quot;, breaks=c(&quot;no&quot;, &quot;yes&quot;),
    labels=c(&quot;No&quot;,&quot;Si&quot;))
-&gt; g+guides(fill=FALSE, shape=FALSE)+theme(legend.position = &quot;bottom&quot;)</code></pre><p><img src="../Imagenes/themeGG4.png" alt="Figura33"></p>
+&gt; g+guides(fill=FALSE, shape=FALSE)+theme(legend.position = &quot;bottom&quot;)</code></pre><p><img src="https://github.com/gamerino/RCourse/blob/master/Imagenes/themeGG4.png?raw=true" alt="Figura33"></p>
 <p><strong><em>Figura 33</em></strong>: <em>Diagrama de viol&#xED;n para la variable mortalidad, agrupando los estados seg&#xFA;n la variable oc&#xE9;ano y con ajuste de escalas gr&#xE1;ficas y conservando s&#xF3;lo la leyenda para la latitud.</em></p>
 <h3 id="2-5-10-agregado-de-t-tulos-y-etiquetas">2.5.10 Agregado de t&#xED;tulos y etiquetas</h3>
 <p>Los t&#xED;tulos de los gr&#xE1;ficos y las etiquetas de los ejes pueden ser a&#xF1;adidos utilizando la funci&#xF3;n <code>labs()</code>.</p>
@@ -609,7 +609,7 @@ y cinco grupos de elementos asociados:</p>
   scale_fill_hue(&quot;Proximidad Oc&#xE9;ano&quot;, breaks=c(&quot;no&quot;, &quot;yes&quot;), labels=c(&quot;No&quot;, &quot;Si&quot;))+
   theme(legend.position=&quot;bottom&quot;, plot.title=element_text(hjust = 0.5))+
   labs(x=&quot;Mortalidad&quot;, y=&quot;Densidad&quot;, title=&quot;Funci&#xF3;n de densidad estimada&quot;)
-&gt; g</code></pre><p><img src="../Imagenes/themeGG5.png" alt="Figura34"></p>
+&gt; g</code></pre><p><img src="https://github.com/gamerino/RCourse/blob/master/Imagenes/themeGG5.png?raw=true" alt="Figura34"></p>
 <p><strong><em>Figura 34</em></strong>: <em>Funci&#xF3;n de densidad estimada de la variable mortalidad, agrupando los estados seg&#xFA;n la variable oc&#xE9;ano.</em></p>
 <h3 id="2-5-11-guardar-gr-ficos">2.5.11 Guardar gr&#xE1;ficos</h3>
 <p>Los gr&#xE1;ficos de <code>ggplot2</code> pueden guardarse en <code>RStudio</code> interactivamente o utilizando la funci&#xF3;n <code>ggsave()</code>. &#xC9;sta proporciona m&#xE1;s flexibilidad a la hora de guardar gr&#xE1;ficos ya que permite especificar el formato (<code>.jpg</code>, <code>.pdf</code>, <code>.tiff</code>, <code>.bmp</code>, entre otros), la resoluci&#xF3;n y el tama&#xF1;o del gr&#xE1;fico.</p>
@@ -668,12 +668,12 @@ Progabide:124   1st Qu.: 12.00   1st Qu.:23.00   1st Qu.:  2.750   2:59   2     
 <p>En este caso, el objetivo es determinar si el tratamiento con Progabide es efectivo para reducir el n&#xFA;mero de ataques epil&#xE9;pticos. Para ello se seleccionaron 59 personas y se las dividi&#xF3; en dos grupos, uno que recibi&#xF3; el tratamiento con Progabide y el otro con placebo. Un aspecto que debe verificarse en las primeras etapas del an&#xE1;lisis es que la principal caracter&#xED;stica que diferencie a los sujetos de cada grupo sea justamente el tratamiento recibido. Es decir, que no haya otra variable que me permita agrupar a los sujetos en los mismos grupos.</p>
 <p>Analicemos por ejemplo lo que sucede con la edad de los sujetos. Seg&#xFA;n la tabla resumen previamante obtenida, la edad de los sujetos var&#xED;a entre 18 y 42 a&#xF1;os. Un buen dise&#xF1;o del experimento asegurar&#xED;a que este rango et&#xE1;reo este representado en los dos grupos experimentales (placebo y Progabide). Por el contrario, un mal dise&#xF1;o considerar&#xED;a por ejemplo, administrar placebo a los pacientes de 18 a 35 a&#xF1;os y Progabide a los que tienen entre 36 y 42. Este mal dise&#xF1;o implicar&#xED;a que se <em>confundan</em> las variables <em>tratemiento</em> y <em>edad</em>.</p>
 <p>Utilicemos los gr&#xE1;ficos descriptivos para confirmar que se ha realizado un buen dise&#xF1;o del experimento. Para ello, obtengamos el diagrama de viol&#xED;n de la variable edad, para cada uno de los grupos experimentales.</p>
-<pre><code>&gt; ggplot(data=unique(epilepsy[,c(&quot;treatment&quot;, &quot;age&quot;, &quot;subject&quot;)]), aes(x=treatment, y=age))+geom_violin(aes( fill=treatment), alpha=0.5, draw_quantiles = c(0.25, 0.5, 0.75))+labs(x=&quot;Tratamiento&quot;, y=&quot;Edad&quot;, fill=&quot;Tratamiento&quot;)+theme_bw()</code></pre><p><img src="../Imagenes/epilepsy4.png" alt="Figura35"></p>
+<pre><code>&gt; ggplot(data=unique(epilepsy[,c(&quot;treatment&quot;, &quot;age&quot;, &quot;subject&quot;)]), aes(x=treatment, y=age))+geom_violin(aes( fill=treatment), alpha=0.5, draw_quantiles = c(0.25, 0.5, 0.75))+labs(x=&quot;Tratamiento&quot;, y=&quot;Edad&quot;, fill=&quot;Tratamiento&quot;)+theme_bw()</code></pre><p><img src="https://github.com/gamerino/RCourse/blob/master/Imagenes/epilepsy4.png?raw=true" alt="Figura35"></p>
 <p><strong><em>Figura 35</em></strong>: <em>Diagrama de violin de la edad de los pacientes para los dos grupos experimentales.</em></p>
 <p>Este gr&#xE1;fico nos permite confirmar que los pacientes, seg&#xFA;n su edad, han sido aleatoriamente distribu&#xED;dos en los dos grupos de estudios, ya que ambos diagramas presentan caracter&#xED;sticas muy similares entre s&#xED;.</p>
 <p><strong>Ejercicio</strong>: Indague las distribuciones del n&#xFA;mero de ataques previos al experimento entre los dos grupos de estudios.</p>
 <p>Ahora s&#xED;, analicemos que sucede con la variable objetivo del estudio, el n&#xFA;mero de ataques en los diferentes per&#xED;odos. Grafiquemos los diagramas de cajas de esta variable en los cuatro instantes de tiempo, distinguiendo en cada uno de ellos el grupo experimental.</p>
-<pre><code>&gt; ggplot(data=epilepsy)+geom_boxplot(aes(x=period, y=seizure.rate, color=treatment))+labs(x=&quot;Per&#xED;odo&quot;, y=&quot;Ataques registrados&quot;, color=&quot;Tratamiento&quot;)+theme_bw()</code></pre><p><img src="../Imagenes/epilepsy1.png" alt="Figura36"></p>
+<pre><code>&gt; ggplot(data=epilepsy)+geom_boxplot(aes(x=period, y=seizure.rate, color=treatment))+labs(x=&quot;Per&#xED;odo&quot;, y=&quot;Ataques registrados&quot;, color=&quot;Tratamiento&quot;)+theme_bw()</code></pre><p><img src="https://github.com/gamerino/RCourse/blob/master/Imagenes/epilepsy1.png?raw=true" alt="Figura36"></p>
 <p><strong><em>Figura 36</em></strong>: <em>Diagrama de cajas del n&#xFA;mero de ataques registrados durante el tratamiento, en los cuatro per&#xED;odos comprendidos y para los dos grupos experimentales.</em></p>
 <p>En esta gr&#xE1;fica se pueden destacar varios aspectos. Por un lado, las distribuciones del <em>n&#xFA;mero de convulsiones</em> registrados durante el experimento aparentan ser similares tanto entre grupos experimentales como entre los distintos per&#xED;odos que abarc&#xF3; el estudio. Particularmente, se aprecian diagramas de caja m&#xE1;s anchos para los pacientes tratados con placebo, fundamentalmente en los primeros dos per&#xED;odos. Las medianas por grupo de tratamiento y por per&#xED;odo tambi&#xE9;n resultan similares.</p>
 <pre><code>&gt; by(epilepsy$seizure.rate, epilepsy[, c(&quot;treatment&quot;, &quot;period&quot;)], median)
@@ -712,22 +712,22 @@ period: 4
 <p>En los diagramas de caja es posible apreciar ciertos valores que escapan de ellos, comunmente llamados <em>valores at&#xED;picos</em> o <em>outliers</em>. Qu&#xE9; hacer con los <em>outliers</em> es una gran decisi&#xF3;n cuya respuesta no es &#xFA;nica. Muchos investigadores los identifican, pero de igual manera los trabajan como el resto de los datos, mientras que otros los eliminan o sustituyen por valores caracter&#xED;sticos de la variable como la media, mediana, moda, etc. La importancia de un <em>outlier</em> depende de varias cuestiones. Por ejemplo, en este estudio, donde se analizan varias observaciones de un mismo paciente, es importante identificar dos tipos de <em>outliers</em>. Por un lado las observaciones por s&#xED; mismas pueden interpretarse como <em>at&#xED;picas</em>, pero por otro, puede que los sujetos tambi&#xE9;n muestren un comportamiento at&#xED;pico. Es decir, no es lo mismo que una observaci&#xF3;n de un sujeto sea at&#xED;pica a que todas las observaciones de un mismo sujeto lo sean.</p>
 <p>Veamos que pasa si asociamos el n&#xFA;mero de ataques registrado a los sujetos.</p>
 <pre><code>&gt; ggplot(data=epilepsy, aes(x=period, y=seizure.rate, color=subject,
-  group=subject))+geom_point()+geom_line()+labs(x=&quot;Per&#xED;odo&quot;, y=&quot;Ataques registrados&quot;, color=&quot;Tratamiento&quot;)+theme_bw()+theme(legend.position=&quot;none&quot;)+facet_wrap(~treatment)</code></pre><p><img src="../Imagenes/epilepsy2.png" alt="Figura37"></p>
+  group=subject))+geom_point()+geom_line()+labs(x=&quot;Per&#xED;odo&quot;, y=&quot;Ataques registrados&quot;, color=&quot;Tratamiento&quot;)+theme_bw()+theme(legend.position=&quot;none&quot;)+facet_wrap(~treatment)</code></pre><p><img src="https://github.com/gamerino/RCourse/blob/master/Imagenes/epilepsy2.png?raw=true" alt="Figura37"></p>
 <p><strong><em>Figura 37</em></strong>: <em>Diagrama de l&#xED;neas y puntos para el n&#xFA;mero de ataques registrados durante el tratamiento, en los cuatro per&#xED;odos comprendidos.</em></p>
 <p><strong>Ejercicio</strong>: Discuta la gr&#xE1;fica anterior e identifique datos at&#xED;picos.</p>
 <p>Decidir que hacer con los datos at&#xED;picos depende tambi&#xE9;n del an&#xE1;lisis a posteriori que se realizar&#xE1; sobre los datos. Hay metodolog&#xED;as que son m&#xE1;s robustas que otras respecto de los <em>outliers</em>, por eso depender&#xE1; de cu&#xE1;l utilicemos y cu&#xE1;l es nuestro objetivo. En la etapa de an&#xE1;lisis descriptivo lo importante es identificar estos posibles valores at&#xED;picos.</p>
 <p><code>ggplot2</code> nos permite estudiar relaciones entre m&#xE1;s de dos variables en un mismo gr&#xE1;fico. Por ejemplo, analicemos que sucede si consideramos el diagrama de dispersi&#xF3;n del n&#xFA;mero de ataques registrados antes del estudio y en cada uno de los peri&#xF3;dos que &#xE9;ste involucro en forma separada identificando adem&#xE1;s los pacientes tratados con placebo y los tratados con Progabide.</p>
 <pre><code>&gt; ggplot(data=epilepsy, aes(x=base, y=seizure.rate, color=treatment))+
-  geom_point(alpha=0.5, size=2)+labs(x=&quot;Ataques previos al estudio&quot;, y=&quot;Ataques registrados&quot;, color=&quot;Tratamiento&quot;, title=&quot;Diagrama de dispersi&#xF3;n del n&#xFA;mero de ataques previos \n y por per&#xED;odo de estudio&quot;)+theme_bw()+theme(legend.position=&quot;bottom&quot;)+facet_wrap(~period)+theme(plot.title = element_text(hjust=0.5))</code></pre><p><img src="../Imagenes/epilepsy3.png" alt="Figura38"></p>
+  geom_point(alpha=0.5, size=2)+labs(x=&quot;Ataques previos al estudio&quot;, y=&quot;Ataques registrados&quot;, color=&quot;Tratamiento&quot;, title=&quot;Diagrama de dispersi&#xF3;n del n&#xFA;mero de ataques previos \n y por per&#xED;odo de estudio&quot;)+theme_bw()+theme(legend.position=&quot;bottom&quot;)+facet_wrap(~period)+theme(plot.title = element_text(hjust=0.5))</code></pre><p><img src="https://github.com/gamerino/RCourse/blob/master/Imagenes/epilepsy3.png?raw=true" alt="Figura38"></p>
 <p><strong><em>Figura 38</em></strong>: <em>Diagrama de dispersi&#xF3;n del n&#xFA;mero de ataques registrados  previos y durante el tratamiento, en los cuatro per&#xED;odos comprendidos.</em></p>
 <p>El gr&#xE1;fico obtenido permite formular varias afirmaciones sobre los datos, que deber&#xE1;n ser confirmadas o refutadas durante el procesamiento de los mismos. La primera de ellas es que no hay un efecto del tratamiento sobre n&#xFA;mero de ataques registrados, ya que en todos los per&#xED;odos los puntos rosas y los celestes est&#xE1;n mezclados. Por otro lado, parecer&#xED;a que el n&#xFA;mero de ataques registrados durante el experimento est&#xE1; directamente relacionado con el n&#xFA;mero de ataques previos que se registr&#xF3; para cada paciente.</p>
 <p>Veamos que sucede con el n&#xFA;mero de ataques y la edad de los pacientes. Primero relacionemos la edad con el n&#xFA;mero de ataques registrados antes del estudio y luego con los registrados en los cuatro per&#xED;odos analizados.</p>
 <pre><code>&gt; ggplot(data=epilepsy, aes(x=age, y=base))+geom_point(aes(color=treatment),
   alpha=0.5)+labs(x=&quot;Edad&quot;, y=&quot;Ataques previos al estudio&quot;, color=&quot;Tratamiento&quot;)+theme_bw()
 &gt; ggplot(data=epilepsy, aes(x=age, y=seizure.rate))+
-  geom_point(aes(color=treatment), alpha=0.5)+labs(x=&quot;Edad&quot;, y=&quot;Ataques registrados&quot;, color=&quot;Tratamiento&quot;)+theme_bw()+facet_wrap(~period)</code></pre><p><img src="../Imagenes/epilepsy5.png" alt="Figura39"></p>
+  geom_point(aes(color=treatment), alpha=0.5)+labs(x=&quot;Edad&quot;, y=&quot;Ataques registrados&quot;, color=&quot;Tratamiento&quot;)+theme_bw()+facet_wrap(~period)</code></pre><p><img src="https://github.com/gamerino/RCourse/blob/master/Imagenes/epilepsy5.png?raw=true" alt="Figura39"></p>
 <p><strong><em>Figura 39</em></strong>: <em>Diagrama de dispersi&#xF3;n del n&#xFA;mero de ataques registrados  previos al experimento y la edad de los pacientes.</em></p>
-<p><img src="../Imagenes/epilepsy6.png" alt="Figura40"></p>
+<p><img src="https://github.com/gamerino/RCourse/blob/master/Imagenes/epilepsy6.png?raw=true" alt="Figura40"></p>
 <p><strong><em>Figura 40</em></strong>: <em>Diagrama de dispersi&#xF3;n del n&#xFA;mero de ataques registrados   durante el tratamiento y la edad de los pacientes, en los cuatro per&#xED;odos comprendidos.</em></p>
 <p>Las gr&#xE1;ficas indican que, a priori, no existe un claro efecto de la edad sobre el n&#xFA;mero de ataques sufridos por los pacientes ni antes ni durante el tratamiento.</p>
 </article></div><div style="background-color: #b4b2b2;width: 50px;height:50px;line-height: 50px;text-align: center;position: fixed;bottom: 10px;right: 10px;padding-top:5px;" onclick="document.documentElement.scrollTop = document.body.scrollTop =0;">

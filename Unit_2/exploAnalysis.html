@@ -636,6 +636,9 @@ pre.editor-colors .indent-guide {
 pre.editor-colors .cursor {
   border-color: #002b36;
 }
+pre.editor-colors .cursor-line {
+  background-color: rgba(243, 200, 84, 0.15);
+}
 pre.editor-colors .selection .region {
   background-color: #eee8d5;
 }
@@ -666,7 +669,8 @@ pre.editor-colors .bracket-matcher .region {
   color: #b58900;
 }
 .syntax--constant.syntax--character,
-.syntax--constant.syntax--other {
+.syntax--constant.syntax--other,
+.syntax--constant.syntax--support {
   color: #cb4b16;
 }
 .syntax--variable {
@@ -678,9 +682,13 @@ pre.editor-colors .bracket-matcher .region {
 .syntax--storage {
   color: #859900;
 }
+.syntax--meta.syntax--class {
+  color: #268bd2;
+}
 .syntax--entity.syntax--name.syntax--class,
-.syntax--entity.syntax--name.syntax--type,
-.syntax--entity.syntax--name.syntax--function {
+.syntax--entity.syntax--name.syntax--function,
+.syntax--entity.syntax--name.syntax--section,
+.syntax--entity.syntax--name.syntax--type {
   color: #268bd2;
 }
 .syntax--entity.syntax--other.syntax--attribute-name {
@@ -902,9 +910,6 @@ pre.editor-colors .bracket-matcher .region {
 .syntax--source.syntax--java .syntax--punctuation.syntax--definition.syntax--method-parameters {
   color: #586e75;
 }
-.syntax--source.syntax--js .syntax--constant {
-  color: #859900;
-}
 .syntax--source.syntax--js .syntax--comma {
   color: #657b83;
 }
@@ -917,6 +922,15 @@ pre.editor-colors .bracket-matcher .region {
 .syntax--source.syntax--js .syntax--entity.syntax--name {
   color: #657b83;
 }
+.syntax--source.syntax--js .syntax--entity.syntax--name.syntax--function {
+  color: #268bd2;
+}
+.syntax--source.syntax--js .syntax--entity.syntax--name.syntax--tag {
+  color: #268bd2;
+}
+.syntax--source.syntax--js .syntax--entity.syntax--other.syntax--attribute-name {
+  color: #b58900;
+}
 .syntax--source.syntax--js .syntax--meta.syntax--brace {
   color: #657b83;
 }
@@ -927,7 +941,7 @@ pre.editor-colors .bracket-matcher .region {
   color: #859900;
 }
 .syntax--source.syntax--js .syntax--keyword.syntax--control {
-  color: #859900;
+  color: #cb4b16;
 }
 .syntax--source.syntax--js .syntax--keyword.syntax--control.syntax--regexp {
   color: #2aa198;
@@ -959,11 +973,8 @@ pre.editor-colors .bracket-matcher .region {
 .syntax--source.syntax--js .syntax--support.syntax--constant {
   color: #657b83;
 }
-.syntax--source.syntax--js .syntax--storage {
-  color: #268bd2;
-}
-.syntax--source.syntax--js .syntax--constant.syntax--numeric {
-  color: #657b83;
+.syntax--source.syntax--js .syntax--storage.syntax--modifier {
+  color: #b58900;
 }
 .syntax--source.syntax--js .syntax--punctuation.syntax--terminator.syntax--statement {
   color: #657b83;
@@ -977,10 +988,6 @@ pre.editor-colors .bracket-matcher .region {
 .syntax--source.syntax--js .syntax--meta.syntax--brace.syntax--curly {
   color: #268bd2;
 }
-.syntax--source.syntax--js .syntax--definition.syntax--begin.syntax--curly,
-.syntax--source.syntax--js .syntax--definition.syntax--end.syntax--curly {
-  color: #268bd2;
-}
 .syntax--source.syntax--js .syntax--string.syntax--quoted.syntax--template .syntax--embedded.syntax--source {
   color: #657b83;
 }
@@ -990,24 +997,36 @@ pre.editor-colors .bracket-matcher .region {
 .syntax--source.syntax--js.syntax--embedded .syntax--entity.syntax--name.syntax--tag {
   color: #268bd2;
 }
-.syntax--source.syntax--js.syntax--jsx .syntax--entity.syntax--name.syntax--tag {
+.syntax--source.syntax--js .syntax--import .syntax--control {
+  color: #cb4b16;
+}
+.syntax--source.syntax--js.syntax--rails .syntax--instance {
   color: #268bd2;
 }
+.syntax--source.syntax--js.syntax--rails .syntax--class {
+  color: #b58900;
+}
+.syntax--md .syntax--link .syntax--entity,
 .syntax--gfm .syntax--link .syntax--entity {
   color: #6c71c4;
 }
+.syntax--md .syntax--list.syntax--ordered,
 .syntax--gfm .syntax--list.syntax--ordered {
   color: #859900;
 }
+.syntax--md .syntax--list.syntax--unordered,
 .syntax--gfm .syntax--list.syntax--unordered {
   color: #b58900;
 }
+.syntax--md .syntax--raw,
 .syntax--gfm .syntax--raw {
   font-style: italic;
 }
+.syntax--md.syntax--support,
 .syntax--gfm.syntax--support {
   color: #93a1a1;
 }
+.syntax--md.syntax--support.syntax--quote,
 .syntax--gfm.syntax--support.syntax--quote {
   color: #6c71c4;
 }
@@ -1340,6 +1359,22 @@ pre.editor-colors .bracket-matcher .region {
 .syntax--source.syntax--scala .syntax--embedded .syntax--delimiters {
   font-style: normal;
 }
+.syntax--source.syntax--ts .syntax--import .syntax--control,
+.syntax--source.syntax--tsx .syntax--import .syntax--control {
+  color: #cb4b16;
+}
+.syntax--source.syntax--ts .syntax--entity.syntax--name.syntax--type,
+.syntax--source.syntax--tsx .syntax--entity.syntax--name.syntax--type {
+  color: #b58900;
+}
+.syntax--source.syntax--ts .syntax--entity.syntax--inherited-class,
+.syntax--source.syntax--tsx .syntax--entity.syntax--inherited-class {
+  color: #b58900;
+}
+.syntax--source.syntax--ts .syntax--support.syntax--type,
+.syntax--source.syntax--tsx .syntax--support.syntax--type {
+  color: #b58900;
+}
 </style>
 
   </head>
@@ -1352,7 +1387,7 @@ pre.editor-colors .bracket-matcher .region {
 <li><em>Estadística descriptiva</em>: está relacionada con los métodos que incluyen la recolección, organización y análisis de los datos paar lograr una descripción de sus características;</li>
 <li><em>Estadística inferencial</em>: está relacionada con el proceso de utilizar datos de una muestra para la toma de decisiones o estimación de características respecto de la población de la cual estos provienen mediante una generalización de los resultados.</li>
 </ul>
-<h2>Conceptos básicos</h2>
+<h2>2.1 Conceptos básicos</h2>
 <p>Uno de los instrumentos fundamentales de la estadística es la <em><strong>probabilidad</strong></em>, la cual es una medida de incertidumbre en el resultado de un <em>experimento</em> que no puede ser predicho con exactitud. Pensemos en el experimento de tirar dos dados en simultáneo. Su resultado no puede conocerse antes de que los dados sean lanzados.</p>
 <p>Un <strong>experimento</strong> es cualquier acción o proceso que genera <em>observaciones</em>. El <strong>espacio muestral</strong> de un experimento, <em>S</em>, es el conjunto de todos los resultados posibles de un experimento. Aunque el resultado de un experimento estadístico no puede ser conocido antes de hacer el experimento sí es posible definir <em>S</em>. Pensemos en una cadena de producción que genera a diario un número finito de productos, <em>N</em>. El número de productos con fallas en un día, <em>n</em>, no se puede conocer hasta que el día transcurre, pero <em>a priori</em> se sabe que <span class="math"><script type="math/tex">n \in S=\{n~/~ 0 \leq n \leq N\}</script></span>. Esto no quiere decir que <em>S</em> tenga que ser finito. Si ahora pensamos en <em>n</em> como el número de hora que puede durar una lámpara, entonces el espacio muestral tendrá como cota superior al infinito.</p>
 <p>Por otro lado, cuando hablamos de una <strong>población</strong>, referimos a la totalidad de elementos o individuos vinculados al estudio. Mientras, una <strong>muestra</strong> es una parte de una población que se selecciona para su análisis, la cual debe ser <em>aletoria</em> y <em>representativa</em>.</p>
@@ -1406,8 +1441,9 @@ De manera que:</li>
 <li><span class="math"><script type="math/tex">F_X(x)</script></span> pertenece a la familia <span class="math"><script type="math/tex">\varepsilon(\lambda)</script></span></li>
 </ul>
 <p>En el contexto de estos modelos es que se llevan a cabo los <em>procesos inferenciales</em>, que permiten obtener información acerca de los parámetros de una distribución a partir de estadísticos obtenidos de una muestra de la población bajo estudio.</p>
-<p>Como los parámetros poblacionales generalmente se desconocen, se utilizan datos muestrales para estimarlos junto con <strong>estadísticos</strong>. Los <em>estadísticos</em> son VA, es decir son funciones. Particularmente, dada una <em>muestra aleatoria</em> <span class="math"><script type="math/tex">X_1,~X_2,~...,~X_n</script></span>, (muestra de VAs iid), un estadístico es una función medible <em>T</em> que asigna un número <span class="math"><script type="math/tex">T(X_{1},X_{2},...,X_{n})}</script></span>, útil para estimar un determinado parámetro de la distribución de la que procede la muestra. Un valor particular de un estadístico se conoce como <strong>estimador</strong>.</p>
-<h2>Estadística Descriptiva</h2>
+<p>Como los parámetros poblacionales generalmente se desconocen, se utilizan datos muestrales para estimarlos junto con <strong>estadísticos</strong>. Los <em>estadísticos</em> son VA, es decir son funciones. Particularmente, dada una <em>muestra aleatoria</em> <span class="math"><script type="math/tex">X_1,~X_2,~...,~X_n</script></span>, (muestra de VAs iid), un estadístico es una función medible <em>T</em> que asigna un número <span class="math"><script type="math/tex">T(X_{1},X_{2},...,X_{n})</script></span>, útil para estimar un determinado parámetro de la distribución de la que procede la muestra. Un valor particular de un estadístico se conoce como <strong>estimador</strong>.</p>
+<p>Un aspecto importante que se debe tener en cuenta en el análisis descriptivo, es la presencia de <em>datos faltantes</em> (<em>missing data</em>) y la estrategia a utilizar para removerlos. Por un lado, si el número de datos faltantes no es elevado, se puede simplemente eliminar las observaciones y/o las variables que los contengan. Mientras que, si se desea mantener el total de las observaciones, la estrategia será asignarles un valor determinado, proceso conocido como <em>imputación</em>. Existen distintos métodos de imputación, los cuales, al igual que la decisión de qué hacer con los datos faltantes, deberán ser analizado en cada estudio en particular en función de características como número de observaciones, cantidad de variables con datos faltantes, importancia de las variables con datos faltantes, etc.</p>
+<h2>2.2 Estadística Descriptiva</h2>
 <p>La exploración de los datos es un ciclo iterativo en el cual:</p>
 <ul>
 <li>Se generan preguntas sobre los datos.</li>
@@ -1416,7 +1452,29 @@ De manera que:</li>
 </ul>
 <p>El análisis exploratorio no es un proceso formal con un conjunto estricto de reglas sino más bien un estado mental. Durante las fases iniciales se debe sentirse libre de investigar cada idea que se le ocurra. Algunas de estas ideas funcionarán, y algunas serán callejones sin salida. A medida que continúe la exploración, se dirigirá a algunas áreas particularmente productivas que eventualmente serán informadas o comunicadas a pares.</p>
 <p>La estadística descriptiva es una parte importante de cualquier análisis de datos, ya que siempre se debe investigar la calidad de los datos.</p>
-<h3>Análisis de mortalidad debida a melanomas</h3>
+<h2>2.3 Simulación de datos aleatorios y funciones estadísticas útiles en <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">R</code></h2>
+<p>Muchas veces puede ser necesario contar con conjuntos de datos simulados aleatoriamente a partir de una distribución conocida que se desea estudiar. <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">R</code> provee herramientas útiles para la generación aleatoria de datos. Por ejemplo, la función <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">rnorm(n, mean=1, sd=0)</code> es útil para generar <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">n</code> observaciones con distribución normal de media y desvío definidos por el usuario mediante los parámetros <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">mean</code> y <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">sd</code>, respectivamente. Suponga que queremos obtener cuatro observaciones de una distribución $ N(\mu=2, \sigma=1)$, entonces debemos escribir:</p>
+<pre class="editor-colors lang-text"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; x&lt;-rnorm(4, mean=2, sd=1)</span></span></span>
+<span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; x</span></span></span>
+<span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>[1] 1.928841 3.383108 1.486535 2.872653</span></span></span>
+</pre>
+<p><strong>Ejercicio</strong>: Repita esta ejecución varias veces en su espacio de trabajo. Qué sucede?</p>
+<p>Además de la función <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">rnorm()</code>, también se dispone, entre otras, de las funciones <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">runif()</code>, <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">rbinom()</code>, <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">rpois()</code>, <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">rt()</code>, <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">rchisq()</code>, <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">rexp()</code> para generar datos bajo distribución uniforme, binomial, Poisson, T-student, <span class="math"><script type="math/tex">\chi^2</script></span> y exponencial, respectivamente. Complementando este conjunto de funciones, <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">R</code> provee además de un conjunto de funciones útiles para obtener el valor de la función de densidad de probabilidad, de la distribución acumulada y de un cuantil específico de una distribución. Siguiendo con el  ejemplo de la distribución <span class="math"><script type="math/tex">N(\mu=2, \sigma=1)</script></span>, el valor de probabilidad asociado a cada observación, definido mediante la función de probabilidad, lo obtenemos con la función <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">dnorm()</code>:</p>
+<pre class="editor-colors lang-text"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; x</span></span></span>
+<span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>[1] 1.928841 3.383108 1.486535 2.872653</span></span></span>
+<span class="syntax--text syntax--plain"><span></span></span>
+<span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; dnorm(x, mean=2, sd=1)</span></span></span>
+<span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>[1] 0.3979335 0.1532886 0.3496713 0.2726134</span></span></span>
+</pre>
+<p>Entonces, por ejemplo, <span class="math"><script type="math/tex">f(1,928841)= 0,3979335</script></span>. El valor correspondiente a la función de distribución acumulada, para cada valor del vector observado podemos obtenerlo mediante la función <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">pnorm()</code>:</p>
+<pre class="editor-colors lang-text"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; pnorm(x, mean=2, sd=1)</span></span></span>
+<span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>[1] 0.4716357 0.9166842 0.3038131 0.8085740</span></span></span>
+</pre>
+<p>El resultado nos dice que <span class="math"><script type="math/tex">P(X \leq 1,928841)= 0,4716357</script></span> mientras que <span class="math"><script type="math/tex">P(X \leq 3,383108)= 0,9166842</script></span>. Si lo que nos interesa es saber el valor correspondiente a un cuantil particular, podemos averiguarlo mediante la función <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">qnorm()</code>. Por ejemplo, los valores correspondientes a los cuantiles 0,05 y 0,95 de nuestra distribución son:</p>
+<pre class="editor-colors lang-text"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; qnorm(c(0.05, 0.95), mean=2, sd=1)</span></span></span>
+<span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>[1] 0.3551464 3.6448536</span></span></span>
+</pre>
+<h2>2.4 Análisis exploratorio en <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">R</code>: Análisis de mortalidad debida a melanomas</h2>
 <p>Vamos a estudiar diversas estrategias y herramientas del análsis exploratorio en <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">R</code> mediante su aplicación a un conjunto de datos reales. Para esto, vamos a usar las bases de datos trabajadas en el libro <a href="http://www.ecostat.unical.it/tarsitano/Didattica/LabStat2/Everitt.pdf"><em>A handbook of statistical analysis using R</em></a>, los cuales están disponibles en el paquete <a href="https://cran.r-project.org/web/packages/HSAUR2/index.html"><code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">HSAUR2</code></a>. Lo primero que debemos hacer es instalar el paquete, y luego cargarlo en <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">R</code>.</p>
 <pre class="editor-colors lang-text"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; install.packages("HSAUR2") # el 2 indica 2ª edición</span></span></span>
 <span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; library("HSAUR2")</span></span></span>
@@ -1444,7 +1502,7 @@ De manera que:</li>
 <li><code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">ocean</code>: <em>Oceano</em>, variable binaria indicando si el estado está (<code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">yes</code>) o no (<code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">no</code>) rodeado total o parcialmente por algún oceano.</li>
 </ul>
 <p>Algunas de las preguntas de interés que motivaron este estudio son: ¿Qué sucede con la tasa de mortalidad entre estados que están y no en contacto con el océano? ¿Cómo afectan la latitud  la longitud a la mortalidad?</p>
-<h4>Descripción de los datos</h4>
+<h3>2.4.1 Descripción de los datos</h3>
 <p>La primer tarea que vamos a ejecutar es el análisis global de los datos. Como se mencionó anteriormente, el dataset cuenta de cuatro variables. De la descripción de las mismas podemos deducir que una de ellas es <em>categórica</em>, <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">ocean</code> mientras que las otras tres son <em>cualitativas</em>. Particularmente, <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">mortality</code> es del tipo <em>discreta</em>, con dos categorías posibles, <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">yes</code> y <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">no</code>, mientras que <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">latitude</code> y <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">longitude</code> son <em>continuas</em>. Veamos si esto se corresponde con los datos en <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">R</code>.</p>
 <pre class="editor-colors lang-text"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; sapply(USmelanoma, class)</span></span></span>
 <span class="syntax--text syntax--plain"><span> </span><span class="syntax--meta syntax--paragraph syntax--text"><span>mortality  latitude longitude     ocean</span></span></span>
@@ -1454,7 +1512,7 @@ De manera que:</li>
 </pre>
 <p><strong>Pregunta</strong>: Por qué no usamos la función <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">apply()</code>?
 Como podemos observar, los tipos de datos en la base de datos se corresponden con los esperados según el tipo de variable anteriormente descrito.</p>
-<h5>Exploración de variables cualitativas</h5>
+<h3>2.4.2 Exploración de variables cualitativas</h3>
 <p>Cuando analizamos datos cuanttativos, hay valores específicos que son de interés ya que permiten caracterizar el fenómeno bajo estudio. Uno de ellos es la <em>media</em> o el <em>promedio</em> (<span class="math"><script type="math/tex">\overline{X}</script></span>). En nuestro caso, que estamos trabajando con muestras, es decir parte de la población, la media se llama <em>media muestral</em> y se define como:</p>
 <center>
 <p><span class="math"><script type="math/tex">\overline{X}=\frac{\sum\limits_{i=1}^nX_i}{n}</script></span></p>
@@ -1499,7 +1557,8 @@ Como podemos observar, los tipos de datos en la base de datos se corresponden co
 </pre>
 <p>Otro estadístico de forma, muy utilizado fundamentalmente en las variables discretas, es la <em>moda</em> (<em>Mo</em>), el cual es simplemente el valor más frecuente. La versión base de <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">R</code> no cuenta con una funión implementada para obtener directamente la moda, aunque si provee herramientas para su obtención, que estudiaremos más en detalle cuando analicemos las variables discretas.</p>
 <p>Cuando la distribución de la variable en cuestión es simétrica, la media, la mediana y la moda son coincidentes <a href="#Figura1">Figura 1b</a>, mientras que si la distribución es sesgada a la izquierda o simétrica negativa <span class="math"><script type="math/tex">\overline{X}\leq X_{50} \leq Mo</script></span> mientras que si la distribución es sesgada a la derecha, <span class="math"><script type="math/tex">Mo\leq X_{50} \leq \overline{X}</script></span>.</p>
-<p><img src="../Imagenes/meanMedian.png" alt="Figura1"> <em><strong>Figura 1</strong></em>: <em>Relación entre la media, la mediana y la moda en de una distribución.</em></p>
+<p><img src="https://github.com/gamerino/RCourse/blob/master/Imagenes/meanMedian.png?raw=FALSE" alt="Figura1">
+<em><strong>Figura 1</strong></em>: <em>Relación entre la media, la mediana y la moda en de una distribución.</em></p>
 <p>Veamos ahora que pasa con nuestros datos. En el caso de la variable <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">mortality</code> la media muestral es 153, mientras que la mediana es 147. Para la variable <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">latitude</code>, ambos estadísticos valen 39,5 mientras que para la variable <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">longitude</code> la media es 90.94 y la mediana 89.5. Esto indica, en un primer análisis, que la variable <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">latitude</code> parece provenir de una distribución simétrica, mientras que las otras dos, lo hacen de distribuciones sesgadas a la derecha.</p>
 <p>Otros dos estadísticos importantes para la descripción de variables son el <em>mínimo</em>, <span class="math"><script type="math/tex">X_{min}</script></span>, y el <em>máximo</em>, <span class="math"><script type="math/tex">X_{max}</script></span>.</p>
 <pre class="editor-colors lang-text"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; apply(USmelanoma[,-4],2,min)</span></span></span>
@@ -1564,13 +1623,13 @@ Como podemos observar, los tipos de datos en la base de datos se corresponden co
 <p>Ahora bien, obtener el diagramas de cajas es bastante sencillo en <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">R</code> mediante la función <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">boxplot()</code> incluida en la distribución base.</p>
 <pre class="editor-colors lang-text"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; boxplot(USmelanoma[,-4])</span></span></span>
 </pre>
-<p><img src="../Imagenes/boxplotMelanoma.png" alt="Figura2">
-<em><strong>Figura 2</strong></em>: <em>Diagrama de cajas de las variables cuantitativas de la base de datos USmelanoma.</em>
+<p><img src="../Imagenes/boxplotMelanoma.png" alt="Figura2"></p>
+<p><em><strong>Figura 2</strong></em>: <em>Diagrama de cajas de las variables cuantitativas de la base de datos USmelanoma.</em>
 Lo únicon que necesitamos pasar como argumento a la función es el vector o conjunto de vectores con los datos a graficar. Ahora bien, también es posible modificar varios aspectos de la gráfica utilizando la misma función. Por ejemplo, es posible especificar un color para cada variable, cambiar los nombres de éstas, etc.</p>
 <pre class="editor-colors lang-text"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; boxplot(USmelanoma[,-4], col=c("green", "red", "blue"), border=c("green4", "darkred", "darkblue"), notch = TRUE, names = c("Mortalidad", "Latitud", "Longitud"))</span></span></span>
 </pre>
-<p><img src="../Imagenes/boxplotMelanoma2.png" alt="Figura3">
-<em><strong>Figura 3</strong></em>: <em>Diagrama de cajas personalizados de las variables cuantitativas de la base de datos USmelanoma.</em></p>
+<p><img src="../Imagenes/boxplotMelanoma2.png" alt="Figura3"></p>
+<p><em><strong>Figura 3</strong></em>: <em>Diagrama de cajas personalizados de las variables cuantitativas de la base de datos USmelanoma.</em></p>
 <p>En algunos casos, como en el nuestro, las variables tienen escalas diferentes. Como podemos apreciar, la variable <em>Mortalidad</em> tiene valores mayores y más dispersos (mayor CV) que las restantes. En estos casos, el rango de graficación es bastante amplio y sucede que, apra aquellas variables de menor CV, los boxplots no se aprecian bien. Es por ello que se recomienda utilizar intervalos de graficación adaptados a cada una de ellas. Es decir, graficarlas independientemente, como lo hace este fragmento de código:</p>
 <pre class="editor-colors lang-text"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; nombres&lt;-c("Mortalidad", "Latitud", "Longitud")</span></span></span>
 <span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; colores&lt;-c("green", "red", "blue")</span></span></span>
@@ -1584,8 +1643,8 @@ Lo únicon que necesitamos pasar como argumento a la función es el vector o con
 <span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>    return(NULL)</span></span></span>
 <span class="syntax--text syntax--plain"><span>  </span><span class="syntax--meta syntax--paragraph syntax--text"><span>})</span></span></span>
 </pre>
-<p><img src="../Imagenes/boxplotMelanoma3.png" alt="Figura4">
-<em><strong>Figura 4</strong></em>: <em>Diagrama de cajas personalizados de las variables cuantitativas de la base de datos USmelanoma, graficadas en forma independiente.</em></p>
+<p><img src="../Imagenes/boxplotMelanoma3.png" alt="Figura4"></p>
+<p><em><strong>Figura 4</strong></em>: <em>Diagrama de cajas personalizados de las variables cuantitativas de la base de datos USmelanoma, graficadas en forma independiente.</em></p>
 <p><strong>Pregunta</strong>: ¿Qué característica previamente mencionada respecto de las distribuciones pueden apreciarse en estas gráficas?</p>
 <p>Otra herramienta gráfica para describir variables cuantitativas es el <em>histograma</em>. En <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">R</code> lo podemos obtener facilmente con la función <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">hist()</code>. A diferencia de la función <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">boxplot()</code>, esta no admite un <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">data.frame</code> como parámetro, por lo que hay que utilizarla tantas veces como variables de interés se quiera explorar. Los histogramas pueden presentarse con frecuencias relativas o absolutas.</p>
 <pre class="editor-colors lang-text"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; sapply(1:3,function(columna){</span></span></span>
@@ -1596,11 +1655,11 @@ Lo únicon que necesitamos pasar como argumento a la función es el vector o con
 <span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>    return(NULL)</span></span></span>
 <span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>})</span></span></span>
 </pre>
-<p><img src="../Imagenes/histMelanoma.png" alt="Figura5">
-<em><strong>Figura 5</strong></em>: <em>Histogramas personalizados de las variables cuantitativas de la base de datos USmelanoma.</em></p>
+<p><img src="../Imagenes/histMelanoma.png" alt="Figura5"></p>
+<p><em><strong>Figura 5</strong></em>: <em>Histogramas personalizados de las variables cuantitativas de la base de datos USmelanoma.</em></p>
 <p>Los intervalos utilizados para determinar las frecuencias que componenen el histograma no son fijos y pueden ser modificados por el usuario. Según el <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">help</code>, la función <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">hist()</code> determina los <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">breaks</code> que determinan los intervalos de la siguiente forma. Por un lado, utiliza la regla de <em>Sturges</em> para determinar el número de intervalos a considerar, <span class="math"><script type="math/tex">c</script></span>, está definido por <span class="math"><script type="math/tex">c=1+log_2n</script></span>, donde <span class="math"><script type="math/tex">n</script></span> es el tamaño de la muestra. Luego, los datos y el número recomendado, es utilizado para llamar a la función <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">pretty()</code> que intenta calcular una secuencia de aproximadamente <em>n+1</em> valores equidistantes que cubren el rango de los valores observados. Éstos se eligen de modo que sean 1, 2 o 5 veces una potencia de 10.</p>
 <p>Por supuesto que hay diferentes alternativas para definir los intervalos de un histograma. Otra podría ser, por ejemplo, considerar los cuantiles <em>0, 0.1, 0.2,…, 1</em>. El número de intervalos no es una elección menor ya que impacta directamente en los resultados obtenidos y es por eso que siempre se debe complementar este gráfico con otros como, diagramas de caja, y con resultados numéricos de las medidas resumen.</p>
-<h5>Exploración de variables cualitativas</h5>
+<h3>2.4.3 Exploración de variables cualitativas</h3>
 <p>La exploración descriptiva de las variables cualitativas está dirigida a explorar las diferentes categorías o clases asociadas a cada una de ellas y su distribución a lo largo de la muestra. En este sentido, una función que ya utilizamos anteriormente, <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">table()</code>, resulta muy útil.</p>
 <pre class="editor-colors lang-text"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; table(USmelanoma$ocean)</span></span></span>
 <span class="syntax--text syntax--plain"><span> </span><span class="syntax--meta syntax--paragraph syntax--text"><span>no yes</span></span></span>
@@ -1610,27 +1669,27 @@ Lo únicon que necesitamos pasar como argumento a la función es el vector o con
 <p>Estos resultados pueden ser presentados también en forma de gráfica. Para ello, la distribución base de <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">R</code> incluye la función <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">barplot()</code>.</p>
 <pre class="editor-colors lang-text"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; barplot(xtabs(~ocean, data=USmelanoma), names.arg = c("No", "Si"), col = c("orange4", "orange"), border = c("darkorange", "orange3"), main = "Contacto con Océano")</span></span></span>
 </pre>
-<p><img src="../Imagenes/barplotMelanoma.png" alt="Figura6">
-<em><strong>Figura 6</strong></em>: <em>Gráfico de barras para la variable cualitativa <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">ocean</code> de la base de datos USmelanoma.</em></p>
+<p><img src="../Imagenes/barplotMelanoma.png" alt="Figura6"></p>
+<p><em><strong>Figura 6</strong></em>: <em>Gráfico de barras para la variable cualitativa <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">ocean</code> de la base de datos USmelanoma.</em></p>
 <p>Una alternativa al gráfico de barras, es el gráfico de tortas:</p>
 <pre class="editor-colors lang-text"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; pie(table(USmelanoma$ocean), labels=c("No", "Si"), col = c("orange4", "orange"), border = c("darkorange", "orange3"), main = "Contacto con Océano")</span></span></span>
 </pre>
-<p><img src="../Imagenes/pieMelanoma.png" alt="Figura7">
-<em><strong>Figura 7</strong></em>: <em>Gráfico de tortas para la variable cualitativa <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">ocean</code> de la base de datos USmelanoma.</em></p>
+<p><img src="../Imagenes/pieMelanoma.png" alt="Figura7"></p>
+<p><em><strong>Figura 7</strong></em>: <em>Gráfico de tortas para la variable cualitativa <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">ocean</code> de la base de datos USmelanoma.</em></p>
 <p>La función <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">pie()</code> no ofrece entre sus opciones incluir en la gráfica las frecuencias absolutas y/o relativas de cada categoría. Sin embrago, esto es posible, por ejemplo, si incluímos éstos en los nombres de cada categoría. ¿Cómo lo harían?</p>
 <p>Hasta este punto hemos visto como analizar las variables en forma independiente (aunque no sabemos si esto es cierto!), sin embargo, nos interesa saber que pasa cuando las consideramos a todas o algunas de ellas en forma simultánea.</p>
-<h4>Descripción multivariada</h4>
+<h3>2.4.4 Descripción multivariada</h3>
 <p>Cuando queremos estudiar las posibles asociaciones y/o relaciones que existen entre las distintas variables que conforman nuestra base de datos es importante considerar el tipo de variables que vamos a contrastar.</p>
-<h5>Relaciones entre variables cuantitativas</h5>
+<h4>2.4.4.1 Relaciones entre variables cuantitativas</h4>
 <p>Si nuestras variables a estudiar son cuantitativas, los <em>diagramas de dispersión</em> (también conocido como <em>scatterplot</em>) son una de las herramientas más utilizadas ya que rápidamente permiten explorar la posible existencia de una relación entre dos variables numéricas. Un diagrama de dispersión es un gráfico de puntos bidimensionales cuyas coordenadas en los ejes x e y quedan definidas por los valores de las variables contrastadas. Cuando existe una relación <em>positiva</em> entre estas variables, la mayoría de los puntos se distribuyen como si pertenecieran a una recta con pendiente positiva. Cuando la relación es <em>negativa</em>, los puntos se ubican en torno a una recta imaginaria con pendiente negativa. Mientras más fuerte sea la relación más clara va a ser la distribución de los puntos en una recta. Si no hay relación entre las variables, entonces los puntos estan dispersos en una región plana.
 Tomemos en cuenta, por ejemplo, la <em>mortalidad</em> y relacionémosla con las variables <em>latitud</em> y <em>longitud</em> utilizando la función <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">plot()</code>.</p>
 <pre class="editor-colors lang-text"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; par(mfrow=c(1,2))</span></span></span>
 <span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; plot(mortality~latitude, data=USmelanoma, xlab="Latitud", ylab="Mortalidad")</span></span></span>
 <span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; plot(mortality~longitude, data=USmelanoma, xlab="Longitud", ylab="Mortalidad")</span></span></span>
 </pre>
-<p><img src="../Imagenes/dispMelanoma.png" alt="Figura8">
-<em><strong>Figura 8</strong></em>: <em>Gráfico de dispersión de la variable Mortalidad contra las variables latitud y longitud.</em></p>
-<p><strong>Ejercicio</strong>: Discuta las gráficas.</p>
+<p><img src="../Imagenes/dispMelanoma.png" alt="Figura8"></p>
+<p><em><strong>Figura 8</strong></em>: <em>Gráfico de dispersión de la variable Mortalidad contra las variables latitud y longitud.</em></p>
+<p><strong>Ejercicio</strong>: Discuta las gráficas. Explore la función <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">pairs()</code></p>
 <p>Una medida numérica de la relación existente entre variables cuantitativas es la <strong>covarianza</strong>. Para cada par de vectores <span class="math"><script type="math/tex">(\boldsymbol{X},~\boldsymbol{Y})</script></span> se define la covarianza como:</p>
 <center>
 <p><span class="math"><script type="math/tex">COV(\boldsymbol{X},~\boldsymbol{Y})=\frac{\sum\limits_{i=1}^n(X_i-\overline{X})(Y_i-\overline{Y})}{(n-1)}</script></span></p>
@@ -1663,13 +1722,13 @@ Tomemos en cuenta, por ejemplo, la <em>mortalidad</em> y relacionémosla con las
 </pre>
 <p>Al tener en cuenta los rankings, la correlación de Spearman evalúa la relación monotónica entre dos variables continuas. En una relación monotónica,
 las variables tienden a cambiar juntas, no necesariamente a una tasa constante (lineal). El coeficiente <span class="math"><script type="math/tex">\rho</script></span> es utilizado a menudo para evaluar relaciones con variables ordinales.</p>
-<h5>Relaciones entre variables cuantitativas y cualitativas</h5>
+<h4>2.4.4.2 Relaciones entre variables cuantitativas y cualitativas</h4>
 <p>Cuando las variables a estudiar son cualitativas y cuantitativas, es útil estudiar lo que se llama <em>distribuciones marginales</em>, como un indicador del comportamiento de la variable cuantitativa en los distintos grupos de la variable cualitativa. Por ejemplo, vamos a analizar lo que sucede con la <em>mortalidad</em> en los dos grupos de estados, definidos según se rodeen o no por un océano.</p>
 <pre class="editor-colors lang-text"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; par(mfrow=c(1,1))</span></span></span>
 <span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; plot(mortality~ocean, data=USmelanoma, col=c("green1", "green4"), border=c("green4", "darkgreen"), ylab = "Mortalidad", xlab="Contacto con Océano" )</span></span></span>
 </pre>
-<p><img src="../Imagenes/boxplotMelanomaMortOcean.png" alt="Figura9">
-<em><strong>Figura 9</strong></em>: <em>Diagrama de cajas de la variable Mortalidad en cada una de las categorías de la variable Océano.</em></p>
+<p><img src="../Imagenes/boxplotMelanomaMortOcean.png" alt="Figura9"></p>
+<p><em><strong>Figura 9</strong></em>: <em>Diagrama de cajas de la variable Mortalidad en cada una de las categorías de la variable Océano.</em></p>
 <p><strong>Ejercicio</strong>: ¿Qué información nos dan estos diagramas? Repita las gráficas para relacionar las otras dos variables cuantitativas con la variable <em>Océano</em>. Elabore una lista de al menos tres hipótesis que relacionen las variables entre sí.</p>
 <p>También es posible combinar más de dos variables en un mismo análisis, por ejemplo, en el <em>diagrama de dispersión</em>  es posible asignar distintas formas a los puntos graficados según si el valor de la variable <em>Océano</em> es <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">yes</code> o <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">no</code>.</p>
 <pre class="editor-colors lang-text"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; par(mfrow=c(1,2))</span></span></span>
@@ -1680,10 +1739,10 @@ las variables tienden a cambiar juntas, no necesariamente a una tasa constante (
 <span class="syntax--text syntax--plain"><span>     </span><span class="syntax--meta syntax--paragraph syntax--text"><span>pch=as.integer(ocean))</span></span></span>
 <span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; legend("topright", legend=c("No", "Si"), pch=1:2)</span></span></span>
 </pre>
-<p><img src="../Imagenes/dispMelanoma2.png" alt="Figura10">
-<em><strong>Figura 10</strong></em>: <em>Gráfico de dispersión de la variable Mortalidad contra las variables latitud y longitud, incluyendo información de la variable Océano.</em></p>
+<p><img src="../Imagenes/dispMelanoma2.png" alt="Figura10"></p>
+<p><em><strong>Figura 10</strong></em>: <em>Gráfico de dispersión de la variable Mortalidad contra las variables latitud y longitud, incluyendo información de la variable Océano.</em></p>
 <p><strong>Ejercicio</strong>: Discuta las gráficas.</p>
-<h5>Relaciones entre variables cualitativas</h5>
+<h4>2.4.4.3 Relaciones entre variables cualitativas</h4>
 <p>En nuestra base de datos no contamos con dos variables categóricas a contrastar. Para demostrar el uso de los métodos descriptivos de variables categóricas vamos a considerar una nueva variable, que será una versión categorizada de la <em>Mortalidad</em>. Esto no es sólo a modo de ejemplo, ya que en muchos casos puede ser muy útil transformar una variable en otra. Para definir nuestra nueva variable vamos a tener en cuenta los quartiles que obtuvimos anteriormente. Nuestras categorías de interés las llamaremos <em>Baja</em>, <em>Media</em>, <em>Alta</em> y <em>Muy alta</em> en referencia al rango de valores de mortalidad que representan. La primera de ellas abarcará los valores entre el mínimo y el <span class="math"><script type="math/tex">Q_1</script></span>, la segunda entre el <span class="math"><script type="math/tex">Q_1</script></span> y el <span class="math"><script type="math/tex">Q_2</script></span>, la tercera entre <span class="math"><script type="math/tex">Q_2</script></span> y <span class="math"><script type="math/tex">Q_3</script></span> y la cuarta entre el <span class="math"><script type="math/tex">Q_3</script></span> y el máximo. Esto lo haremos con la función <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">cut()</code> de <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">R</code>.</p>
 <pre class="editor-colors lang-text"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; mortalityCat&lt;-cut(x=USmelanoma$mortality, breaks = quantile(USmelanoma$mortality), include.lowest = TRUE)</span></span></span>
 <span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; table(mortalityCat)</span></span></span>
@@ -1717,9 +1776,9 @@ Cuando estudiamos varias variables también es de interés obtener sus distribuc
 <span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>  (178,229] 0.061 0.184  0.245</span></span></span>
 <span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>  margOcean 0.551 0.449  1.000</span></span></span>
 </pre>
-<h2>La librería <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">ggplot2</code></h2>
+<h2>2.5 La librería <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">ggplot2</code></h2>
 <p>En esta sección estudiaremos brevemente la librería de graficación <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">ggplot2</code>. Para mayor profundidad se recomienda el libro online <a href="http://r4ds.had.co.nz/"><em>R for data science</em></a>.</p>
-<h3>Por qué usar <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">ggplot2</code></h3>
+<h3>2.5.1 Por qué usar <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">ggplot2</code></h3>
 <p>El lenguaje <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">R</code> tiene muchas capacidades gráficas. Existen diferentes formas y paquetes para crear gráficos, aunque la librería más versátil y utilizada es <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">ggplot2</code>. Este paquete provee un sistema de grafiación intuitivo que permite generar rapidamente gráficos de nivel científico.</p>
 <p><code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">ggplot2</code> se basa en un conjunto de reglas que describen una sintaxis consitente para la construcción de un amplio rangos de gráficos complejos mediante una descripción consisa de sus componentes. La sintaxis estructurada y el alto nivel de abstracción del paquete permiten al usuario concentrarse en los resultados gráficos más que en el código que se usó para obtenerlos.<br>
 Además de esta filosofía central <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">ggplot2</code> tiene:</p>
@@ -1730,7 +1789,7 @@ Además de esta filosofía central <code style="font-family: Menlo, Consolas, &q
 <li>Gran base de usuarios: gran <a href="https://ggplot2.tidyverse.org/">documentación</a> y <a href="https://groups.google.com/forum/?fromgroups#!forum/ggplot2">lista de correo activa</a>.</li>
 </ul>
 <p>Algo que será muy útil para cuando querramos utilizar el paquete es la <a href="https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf">hoja de datos</a></p>
-<h3>Creando gráficos en <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">ggplot2</code></h3>
+<h3>2.5.2 Creando gráficos en <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">ggplot2</code></h3>
 <p>Para crear un objeto gráfico con <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">ggplot2</code> necesitamos al menos tres cosas:</p>
 <ul>
 <li>El conjunto de datos (<code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">DATA</code>) sobre los que se graficará.</li>
@@ -1746,49 +1805,49 @@ Además de esta filosofía central <code style="font-family: Menlo, Consolas, &q
 <span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; g&lt;-ggplot(data=USmelanoma, aes(x=mortality, y=latitude))+geom_point()</span></span></span>
 <span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; g</span></span></span>
 </pre>
-<p><img src="../Imagenes/dispGGplot.png" alt="Figura11">
-<em><strong>Figura 11</strong></em>: <em>Gráfico de dispersión de las variables mortalidad y latitud construído con <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">ggplot2</code>.</em></p>
-<h3>Mapeo entre variables y propiedades gráficas</h3>
+<p><img src="../Imagenes/dispGGplot.png" alt="Figura11"></p>
+<p><em><strong>Figura 11</strong></em>: <em>Gráfico de dispersión de las variables mortalidad y latitud construído con <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">ggplot2</code>.</em></p>
+<h3>2.5.3 Mapeo entre variables y propiedades gráficas</h3>
 <p>Un <em>aesthetic</em> es una propiedad visual de los objetos en los gráficos. <em>Aesthetics</em> incluyen cosas como tamaño, forma o color de puntos. En el gráfico anterior hemos utilizado dos parámetros básicos de un <em>aesthetic</em>, <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">x</code> e <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">y</code>. Estos dos parámetros sirven para especificar cuáles dos variables del <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">data.frame</code> <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">USmelanoma</code> serán graficadas en los ejes <em>x</em> e <em>y</em>, respectivamente. Ahora bien, estas no son las únicas propiedades gráficas que pueden modificarse en un objeto <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">ggplot</code>. Por ejemplo, podríamos estar interesados en agregar una tercer vaiable, asociada a una clase particular de cada observación, como la variable <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">Ocean</code>. Hay diferentes formas de incluir la información de esta tercer variable, una de ellas podría ser mediante la forma de los puntos:</p>
 <pre class="editor-colors lang-text"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; g1&lt;-g+geom_point(aes(shape=ocean, size=2))</span></span></span>
 <span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; g1</span></span></span>
 </pre>
-<p><img src="../Imagenes/dispGGplotShape.png" alt="Figura12">
-<em><strong>Figura 12</strong></em>: <em>Gráfico de dispersión de las variables mortalidad y latitud, clasificados según la variable océano, construído con <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">ggplot2</code>.</em></p>
+<p><img src="../Imagenes/dispGGplotShape.png" alt="Figura12"></p>
+<p><em><strong>Figura 12</strong></em>: <em>Gráfico de dispersión de las variables mortalidad y latitud, clasificados según la variable océano, construído con <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">ggplot2</code>.</em></p>
 <p>El nuevo objeto <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">g1</code> incorpora ahora una capa de diagrama de puntos cuyas formas dependen del valor de la variable <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">ocean</code>. Además de modificar la forma de los puntos (<code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">shape</code>) también hemos aumentado su tamaño a un valor fijo, aunque también es posible hacerlo a valores que dependan de otras variables contenidas en el conjunto de datos.</p>
 <p><strong>Ejercicio</strong>: incorpore la información de la longitud al gráfico de dispersión anterior como parámetro de tamaño de los puntos.</p>
 <p>También es posible incorporar más variables mediante la modificación del color de los puntos:</p>
 <pre class="editor-colors lang-text"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; g&lt;-ggplot(data=USmelanomaExpanded, aes(x=latitude, y=longitude, shape=ocean,    color=mortalityCat))+geom_point(size=2)</span></span></span>
 <span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; g</span></span></span>
 </pre>
-<p><img src="../Imagenes/dispGGplotshapecolor.png" alt="Figura13">
-<em><strong>Figura 13</strong></em>: <em>Gráfico de dispersión de las variables latitud y longitud, clasificados según la variable océano y coloreados según el rango de mortalidad observada.</em></p>
+<p><img src="../Imagenes/dispGGplotshapecolor.png" alt="Figura13"></p>
+<p><em><strong>Figura 13</strong></em>: <em>Gráfico de dispersión de las variables latitud y longitud, clasificados según la variable océano y coloreados según el rango de mortalidad observada.</em></p>
 <p><strong>Ejercicio</strong>: Discuta los gráficos generados.</p>
 <p>El mapeo de un <em>aesthetic</em> a una variable es asociar el nombre de la variable con el del <em>aesthetic</em> dentro de la función <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">aes()</code>. Automáticamente <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">ggplot2</code> asignará un único nivel del <em>aesthetic</em> a un único valor de la variable. En el caso de los colores, las formas, los tamaños, también agregará leyendas gráficas que expliquen la asociación entre los niveles del <em>aesthetic</em> y los valores de la variable.</p>
 <p>La función <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">aes()</code> reúne cada una de las asignaciones estéticas utilizadas por una capa y las pasa al argumento de mapeo de la capa. Una vez que un <em>aesthetic</em> ha sido mapeada, <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">ggplot2</code> se encarga del resto. Esto implica elegir escalas adecuadas, construir legendas explicativas, establecer los ejes con sus nombres, etc. Estas propiedades también pueden ser modificadas manualmente. Por ejemplo, haciendo <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">geom_point(size=2)</code>.</p>
-<h3>Uso de <em>facets</em></h3>
+<h3>2.5.4 Uso de <em>facets</em></h3>
 <p>Una alternativa para agregar variables adicionales a un gráfico, principalmente del tipo categóricas, es el uso de <em>facets</em>. Una <em>facet</em> basada en una variable categórica de <em>k</em> valores posibles indicará la creación de <em>k</em> gráficos, uno para cada subconjunto de los datos correspondientes con cada uno de los valores posibles de la variable categórica. Las facetas basadas en una única variable pueden construirse con la función <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">facet_wrap()</code>. El primer argumento de esta función debe ser del tipo <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">formula</code>, el cual se crea con ~ seguido del nombre de la variable categórica que definirá las facetas.</p>
 <pre class="editor-colors lang-text"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; g&lt;-ggplot(data=USmelanomaExpanded, aes(x=latitude, y=longitude, color=mortalityCat))+geom_point(size=2)+facet_wrap(~ocean)</span></span></span>
 <span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; g</span></span></span>
 </pre>
-<p><img src="../Imagenes/dispGGplotfacet.png" alt="Figura13">
-<em><strong>Figura 13</strong></em>: <em>Gráfico de dispersión de las variables latitud y longitud, coloreados según el rango de mortalidad observada y presentados en dos <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">facets</code> según los valores de la variable océano.</em></p>
+<p><img src="../Imagenes/dispGGplotfacet.png" alt="Figura14"></p>
+<p><em><strong>Figura 14</strong></em>: <em>Gráfico de dispersión de las variables latitud y longitud, coloreados según el rango de mortalidad observada y presentados en dos <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">facets</code> según los valores de la variable océano.</em></p>
 <p>Muchas veces el gráfico en facetas resulta más adecuado para apreciar ciertos comportamientos en los datos. Por ejemplo, en este caso, es facil notar que los estados que no están rodeados por océanos concentran los niveles de mortalidad más bajos, mientras que los que si están rodeados por océanos concentran los valores más altos de mortalidad debida a melanoma.</p>
 <p>Es posible tambien construir facetas a partir de la combinación de dos variables categóricas, utilizando la función <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">facet_grid()</code>. El argumento de esta función también debe ser del tipo <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">formula</code> y debe contener el nombre de las dos variables separados por ~.</p>
 <pre class="editor-colors lang-text"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; g&lt;-ggplot(data=USmelanomaExpanded, aes(x=latitude, y=longitude))+geom_point(</span></span></span>
 <span class="syntax--text syntax--plain"><span>    </span><span class="syntax--meta syntax--paragraph syntax--text"><span>size=2, color="blue")+facet_grid(mortalityCat~ocean)</span></span></span>
 <span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; g</span></span></span>
 </pre>
-<p><img src="../Imagenes/dispGGplotFacet2.png" alt="Figura14">
-<em><strong>Figura 14</strong></em>: <em>Gráfico de dispersión de las variables latitud y longitud, faceteados según los valores de la variable océano y los grupos de mortalidad definidos previamente.</em></p>
-<h3>Objetos geométricos</h3>
+<p><img src="../Imagenes/dispGGplotFacet2.png" alt="Figura15"></p>
+<p><em><strong>Figura 15</strong></em>: <em>Gráfico de dispersión de las variables latitud y longitud, faceteados según los valores de la variable océano y los grupos de mortalidad definidos previamente.</em></p>
+<h3>2.5.5 Objetos geométricos</h3>
 <p>Un <em>geom</em> es un objeto geométrico que es utilizado por un gráfico <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">ggplot</code> para representar datos. Es común describir los gráficos en base al tipo de <em>geom</em> que se usa para obtenerlos. Por ejemplo, un gráfico de barras <em>bar chart</em> usa <em>bar geoms</em>, un diagrama de líneas <em>line chart</em> usa <em>line geoms</em>, los diagramas de cajas <em>boxplots</em> usan <em>boxplot geoms</em>, etc. Aunque no se cumple esto para todos los tipos de gráficos. En nuestro ejemplo anterior construímos un diagrama de dispersión <em>scatterplot</em> utilizando <em>point geom</em>.
 Para cambiar un <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">geom</code> en un gráfico es necesario cambiar la <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">GEOM_FUNCTION()</code> agregada a <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">ggplot()</code>. Adicionalmente, muchas veces es posible representar gráficamente las mismas variables <em>x</em> e <em>y</em> en gráficos diferentes que representan la misma información. Por ejemplo:</p>
 <pre class="editor-colors lang-text"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; ggplot(data = USmelanoma) + geom_point(aes(x =latitude, y = mortality))</span></span></span>
 <span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; ggplot(data = USmelanoma) + geom_smooth(mapping = aes(x = latitude, y = mortality))</span></span></span>
 </pre>
-<p><img src="../Imagenes/geomsGGplot.png" alt="Figura15">
-<em><strong>Figura 15</strong></em>: <em>Diferentes gráficos generados a partir de los mismos datos para x e y. En la izquierda, diagrama de dispersión de las variables mortalidad y latitud. En la derecha, recta de regresión y bandas de confianza.</em></p>
+<p><img src="../Imagenes/geomsGGplot.png" alt="Figura16"></p>
+<p><em><strong>Figura 16</strong></em>: <em>Diferentes gráficos generados a partir de los mismos datos para x e y. En la izquierda, diagrama de dispersión de las variables mortalidad y latitud. En la derecha, recta de regresión y bandas de confianza.</em></p>
 <p>Estas dos gráficas utilizan las mismas variables para <em>x</em> e <em>y</em> pero las presentan en diferentes formas. La gráfica de la izquierda, en un diagrama de dispersión y la de la derecha, mediante una curva de <em>regresión lineal</em> y las correspondientes <em>bandas de confianza</em>.</p>
 <p>Cada <em>geom</em> admite un mapeo a un <em>aesthetic</em> diferente. Sin embargo, no cualquier <em>aesthetic</em> funciona con cualquier <em>geom</em>. Por ejemplo, es posible fijar la forma de un punto pero no de una línea, a la cual sí se le puede especificar manualmente un trazado (<code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">linetype</code>) particular. Por ejemplo,</p>
 <blockquote>
@@ -1797,15 +1856,15 @@ Para cambiar un <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mon
 <pre class="editor-colors lang-text"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; g&lt;-ggplot(data = USmelanoma) + geom_smooth(mapping = aes(x = latitude, y = mortality, linetype=ocean))</span></span></span>
 <span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; g</span></span></span>
 </pre>
-<p><img src="../Imagenes/loesGGplot.png" alt="Figura16">
-<em><strong>Figura 16</strong></em>: <em>Recta de regresión y bandas de confianza para la mortalidad en función de la latitud en los grupos rodeado y no por océano.</em></p>
+<p><img src="../Imagenes/loesGGplot.png" alt="Figura17"></p>
+<p><em><strong>Figura 17</strong></em>: <em>Recta de regresión y bandas de confianza para la mortalidad en función de la latitud en los grupos rodeado y no por océano.</em></p>
 <p>Note que el uso del argumento <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">linetype</code> implica la construcción de dos líneas de regresión, una para cada grupo de observaciones, definidos por el valor de la variable categórica <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">ocean</code>.</p>
 <p>Una de las ventajas de utilizar <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">ggplot2</code> es que nos permite combinar diferentes <em>geoms</em> en un mismo gráfico.</p>
 <pre class="editor-colors lang-text"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; g&lt;-ggplot(data = USmelanoma) + geom_smooth(mapping = aes(x = latitude, y = mortality, linetype=ocean, color=ocean))+geom_point(mapping=aes(x=latitude, y=mortality, color=ocean, shape=ocean), size=2)</span></span></span>
 <span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; g</span></span></span>
 </pre>
-<p><img src="../Imagenes/smoothGGlpotDisp.png" alt="Figura17">
-<em><strong>Figura 17</strong></em>: <em>Recta de regresión con bandas de confianza y diagrama de dispersión para la mortalidad en función de la latitud en los grupos rodeado y no por océano.</em></p>
+<p><img src="../Imagenes/smoothGGlpotDisp.png" alt="Figura18"></p>
+<p><em><strong>Figura 18</strong></em>: <em>Recta de regresión con bandas de confianza y diagrama de dispersión para la mortalidad en función de la latitud en los grupos rodeado y no por océano.</em></p>
 <p><code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">ggplot2</code> provee cerca de 30 <em>geoms</em> diferentes, algunas de ellas son:</p>
 <ul>
 <li><code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">geom_point()</code></li>
@@ -1825,54 +1884,54 @@ Para cambiar un <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mon
 <pre class="editor-colors lang-text"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; g&lt;-ggplot(data = USmelanoma,mapping = aes(x = latitude, y = mortality)) + geom_smooth(mapping = aes(linetype=ocean), color="green")+geom_point(mapping=aes(color=ocean, shape=ocean), size=2)</span></span></span>
 <span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; g</span></span></span>
 </pre>
-<p><img src="../Imagenes/smothGG2.png" alt="Figura18">
-<em><strong>Figura 18</strong></em>: <em>Recta de regresión con bandas de confianza y diagrama de dispersión para la mortalidad en función de la latitud en los grupos rodeado y no por océano.</em></p>
+<p><img src="../Imagenes/smothGG2.png" alt="Figura19"></p>
+<p><em><strong>Figura 19</strong></em>: <em>Recta de regresión con bandas de confianza y diagrama de dispersión para la mortalidad en función de la latitud en los grupos rodeado y no por océano.</em></p>
 <p><strong>Pregunta</strong>: ¿Por qué el color está especificado por fuera del <em>aesthetic</em> del <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">geom_smooth()</code>?</p>
 <p><strong>Ejercicios</strong>:</p>
-<h3>Transformaciones estadísticas</h3>
+<h3>2.5.6 Transformaciones estadísticas</h3>
 <p>Muchos gráficos, como los diagramas de dispersión, grafican directamente los datos como aparecen en las tablas mientras que otros grafican valores obtenidos a partir de operaciones sobre los datos. Por ejemplo, los gráficos de barra, histogramas y polígonos de frecuencia agrupan los datos y luego grafican los grupos y el total de observaciones que caen en cada uno de ellos. Otro ejemplo lo constituyen <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">geom_smoth()</code>, que realiza un ajuste de los datos para luego graficar los resultados del modelo ajustado o <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">geom_boxplot()</code> que primero obtiene medidas estadísticas de resumen y luego las grafica en forma de caja.</p>
 <p>El algoritmo utilizado para calcular los nuevos valores en un gráfico se llama <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">stat</code>, como abreviación de <em>statistical transformation</em>. Veamos como es este proceso ejemplificado en el caso de <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">geom_bar()</code>.</p>
-<p><img src="../Imagenes/visualization-stat-bar.png" alt="Figura19">
-<em><strong>Figura 19</strong></em>: <em>Ilustración del proceso de transformación estadística utilizado por <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">geom_bar()</code>.</em></p>
+<p><img src="../Imagenes/visualization-stat-bar.png" alt="Figura20"></p>
+<p><em><strong>Figura 20</strong></em>: <em>Ilustración del proceso de transformación estadística utilizado por <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">geom_bar()</code>.</em></p>
 <p>Dependiendo del <em>geom</em> los <em>stats</em> disponibles pueden variar. Por ejemplo, en el caso de <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">geom_bar()</code> el <em>stat</em> por defecto es <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">count</code> lo que significa que este <em>geom</em> usa <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">stat_count()</code>. Toda la información referente tanto a <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">geom_bar()</code> como a <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">stat_count()</code> puede obtenerse en el manual correspondiente. Particularmente, hay una sección llamada <em>Computed variables</em> donde se explica como se obtienen las nuevas variables a partir de los datos. Veamos como funcionan estas dos funciones combinadas</p>
 <pre class="editor-colors lang-text"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; g&lt;-ggplot(data=USmelanoma, aes(x=ocean))+geom_bar(stat="count")</span></span></span>
 <span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; g</span></span></span>
 </pre>
-<p><img src="../Imagenes/barplotGG.png" alt="Figura20">
-<em><strong>Figura 20</strong></em>: <em>Diagrama de barras para la variable océano.</em></p>
+<p><img src="../Imagenes/barplotGG.png" alt="Figura21"></p>
+<p><em><strong>Figura 21</strong></em>: <em>Diagrama de barras para la variable océano.</em></p>
 <p><strong>Ejercicio</strong>: Obtenga el diagrama de cajas para la variable <em>mortalidad</em> para cada uno de los grupos de observaciones definidos mediante la variable <em>océano</em>.</p>
 <p><code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">counts</code> determina que la nueva variable, <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">count</code>, contiene la cantidad de observaciones registradas para cada categoría de la variable <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">ocean</code>.  En el caso de tener variables continuas, aunque <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">stat_count</code> puede utilizarse, también se cuenta con <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">stat_bin()</code>. Esta transformación agrupa valores observados en <em>bins</em> y luego cuenta la cantidad de elementos en cada uno de ellos.</p>
 <pre class="editor-colors lang-text"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; g&lt;-ggplot(data=USmelanoma, aes(x=mortality))+geom_bar(stat="bin")</span></span></span>
 <span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; g</span></span></span>
 </pre>
-<p><img src="../Imagenes/statBinGG.png" alt="Figura21">
-<em><strong>Figura 21</strong></em>: <em>Diagrama de barras para la variable mortalidad.</em></p>
+<p><img src="../Imagenes/statBinGG.png" alt="Figura22"></p>
+<p><em><strong>Figura 22</strong></em>: <em>Diagrama de barras para la variable mortalidad.</em></p>
 <p><strong>Ejercicio</strong>: Explore <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">stat_bin()</code> y grafique un histograma con 15 bins y otro con bins equidistantes, separados por 10 unidades.</p>
 <p>Cada <em>geom</em> tiene un <em>stat</em> asociado por defecto y cada  <em>stat</em> tiene un <em>geom</em> por defecto. Sin embargo hay ocasiones en las que resulta útil cambiar el <em>stat</em>. Por ejemplo, cuando queremos mapear los valores del eje <em>y</em> a una columna específica del conjunto de datos:</p>
 <pre class="editor-colors lang-text"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; df&lt;-as.data.frame(table(USmelanomaExpanded$mortalityCat))</span></span></span>
 <span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; names(df)&lt;-c("MortalityInterval", "Counts")</span></span></span>
 <span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; ggplot(df, aes(x=MortalityInterval, y=Counts))+geom_bar(stat="identity")</span></span></span>
 </pre>
-<p><img src="../Imagenes/barplotGG3.png" alt="Figura22">
-<em><strong>Figura 22</strong></em>: <em>Diagrama de barras para la variable mortalidad categorizada a cuatro intervalos definidos por los cuartiles.</em></p>
+<p><img src="../Imagenes/barplotGG3.png" alt="Figura23"></p>
+<p><em><strong>Figura 23</strong></em>: <em>Diagrama de barras para la variable mortalidad categorizada a cuatro intervalos definidos por los cuartiles.</em></p>
 <p><strong>Ejercicio</strong>: ¿Qué piensa de los resultados gráficos obtenidos?
 smoothers fit a model to your data and then plot predictions from the model.</p>
 <p>boxplots compute a robust summary of the distribution and then display a specially formatted box.</p>
-<h3>Sistemas de coordenadas</h3>
+<h3>2.5.7 Sistemas de coordenadas</h3>
 <p>Probablemente, son la parte más complicada de <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">ggplot2</code>. Por defecto, el sistema de coordenadas es el Cartesiano donde las posiciones en los ejes <em>x</em> e <em>y</em> definen en forma independiente la ubicación de cada punto. Sin embargo, <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">ggplot2</code> incluye otros sistemas de coordenadas que pueden ser útiles.</p>
 <p>Por un lado <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">coord_flip()</code> intercambia los ejes entre sí, lo cual por ejemplo, puede ser util para graficar diagramas de caja horizontales.</p>
 <pre class="editor-colors lang-text"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; g&lt;-ggplot(data=USmelanoma, aes(x=ocean, y=mortality))+geom_boxplot()+coord_flip()</span></span></span>
 <span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; g</span></span></span>
 </pre>
-<p><img src="../Imagenes/boxplotHoriz.png" alt="Figura23">
-<em><strong>Figura 23</strong></em>: <em>Diagrama de cajas para la variable mortalidad para los dos grupos de estados, definidos por la variable océano.</em></p>
+<p><img src="../Imagenes/boxplotHoriz.png" alt="Figura24"></p>
+<p><em><strong>Figura 24</strong></em>: <em>Diagrama de cajas para la variable mortalidad para los dos grupos de estados, definidos por la variable océano.</em></p>
 <p>Por otro lado, <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">coord_polar()</code> utiliza coordenadas polares.</p>
 <pre class="editor-colors lang-text"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; ggplot(USmelanoma, aes(x=ocean, fill=ocean))+geom_bar()+theme(element_blank(),</span></span></span>
 <span class="syntax--text syntax--plain"><span>  </span><span class="syntax--meta syntax--paragraph syntax--text"><span>legend.position="none")+coord_polar()+labs(x="", y="")</span></span></span>
 </pre>
-<p><img src="../Imagenes/poalrGG.png" alt="Figura24">
-<em><strong>Figura 24</strong></em>: <em>Diagrama de barras en coordenadas polares para la variable océano.</em></p>
-<h3>Escalas y leyendas</h3>
+<p><img src="../Imagenes/poalrGG.png" alt="Figura25"></p>
+<p><em><strong>Figura 25</strong></em>: <em>Diagrama de barras en coordenadas polares para la variable océano.</em></p>
+<h3>2.5.8 Escalas y leyendas</h3>
 <p>Las escalas tanto de los ejes como de otras <em>aesthetic</em> pueden ser manualmente controladas y manipuladas. Para ello, <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">ggplot2</code> ofrece funcionalidades que permiten controlar tanto las escalas como sus leyendas. Básicamente, los métodos de escala se pueden agrupar en función del <em>aesthetic</em> que controlan, del tipo de dato mapeado a la escala y del tipo de escala. Algunos ejemplos de métodos de escala son:</p>
 <ul>
 <li><code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">scale_x_continuous()</code></li>
@@ -1888,22 +1947,22 @@ smoothers fit a model to your data and then plot predictions from the model.</p>
 <li><code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">breaks</code> - Posición de las marcas en el eje o etiqueta</li>
 <li><code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">labels</code> - Nombres o etiquetas para cada <em>break</em></li>
 </ul>
-<h4>Control de escala en los ejes x/y</h4>
+<h4>2.5.8.1 Control de escala en los ejes x/y</h4>
 <p>Tanto las escalas continuas como las discretas pueden controlarse en <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">ggplot2</code> usando:</p>
 <p><code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">scale_(x/y)_(continous/discrete)</code></p>
 <pre class="editor-colors lang-text"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; g&lt;-ggplot(USmelanoma, aes(x=latitude, y=mortality, color=ocean))+geom_point(size=2)</span></span></span>
 <span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; g+scale_x_continuous(name="Latitud",limits = c(25,50), breaks = seq(25,50,5))+scale_y_continuous(name="Mortalidad", limits=c(0,230))</span></span></span>
 </pre>
-<p><img src="../Imagenes/scalesDisp.png" alt="Figura25">
-<em><strong>Figura 25</strong></em>: <em>Diagrama de dispersión mortalidad vs latitud con ajuste de escalas.</em></p>
+<p><img src="../Imagenes/scalesDisp.png" alt="Figura26"></p>
+<p><em><strong>Figura 26</strong></em>: <em>Diagrama de dispersión mortalidad vs latitud con ajuste de escalas.</em></p>
 <p>En el ejemplo anterior hemos controlado la escala continua en ambos ejes definiendo los límites y el nombre para cada uno de ellos. Adicionalmente, en el eje <em>x</em> hemos establecido que las marcas aparezcan de 5 en 5, comenzando en el mínimo establecido (25) y finalizando en el máximo (50).</p>
 <pre class="editor-colors lang-text"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; g&lt;-ggplot(data=USmelanoma, aes(x=ocean, y=mortality, fill=ocean))+geom_boxplot()+coord_flip()</span></span></span>
 <span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; g+scale_x_discrete(name="Frontera con océano", breaks=c("no", "yes"), labels=c("No", "Si"))+scale_y_continuous(name="Mortalidad")+theme(legend.position="none")</span></span></span>
 </pre>
-<p><img src="../Imagenes/boxplotScales.png" alt="Figura26">
+<p><img src="../Imagenes/boxplotScales.png" alt="Figura27">
 1
-<em><strong>Figura 26</strong></em>: <em>Diagrama de cajas para la variable mortalidad, agrupando los estados según la variable océano y con ajuste de escalas.</em></p>
-<h4>Control de escala de colores/formas/tamaños</h4>
+<em><strong>Figura 27</strong></em>: <em>Diagrama de cajas para la variable mortalidad, agrupando los estados según la variable océano y con ajuste de escalas.</em></p>
+<h4>2.5.8.2 Control de escala de colores/formas/tamaños</h4>
 <p>El control de la escala y las leyendas de los colores, colores de relleno, formas, tamaños, también es posible con <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">ggplot2</code>. Dependiendo de la escala del <em>aesthetic</em> y las distintas facilidades, la sintaxis variará pero en forma general podemos decir que las funciones son del tipo
 <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">scale_aestheticName_facilityToScale()</code></p>
 <p>Por ejemplo, veamos este gráfico.</p>
@@ -1914,13 +1973,13 @@ smoothers fit a model to your data and then plot predictions from the model.</p>
 <span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>  c("No", "Si"))+scale_shape_discrete("Proximidad Océano", breaks=c("no", "yes"), labels=</span></span></span>
 <span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>  c("No", "Si"))+labs(x="Mortalidad")+scale_x_discrete("", breaks=c("no", "yes"), labels=c("",""))</span></span></span>
 </pre>
-<p><img src="../Imagenes/boxplotScales2.png" alt="Figura27">
-<em><strong>Figura 27</strong></em>: <em>Diagrama de cajas para la variable mortalidad, agrupando los estados según la variable océano y con ajuste de escalas gráficas.</em></p>
+<p><img src="../Imagenes/boxplotScales2.png" alt="Figura28"></p>
+<p><em><strong>Figura 28</strong></em>: <em>Diagrama de cajas para la variable mortalidad, agrupando los estados según la variable océano y con ajuste de escalas gráficas.</em></p>
 <p>Un detalle importante es que aquellas escalas que se corresponden con la misma variable y cuyas leyendas comparten títulos y etiquetas se homologan, como se muestra para la forma de los puntos y el color de los diagramas de cajas.</p>
-<h3>Temas</h3>
+<h3>2.5.9 Temas</h3>
 <p>La función <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">theme()</code> se utiliza para especificar los detalles gráficos que son independientes a los datos. Entre ellos, el título, el color de fondo, formato de los ejes, fuentes y tamaño de los textos, etc.</p>
 <p>Por defecto, los gráficos se crean con un tema, <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">theme_grey()</code>, pero los usuarios podemos elegir otros temas predefinidos o crear nuestros propios temas.</p>
-<h4>Temas predefinidos</h4>
+<h4>2.5.9.1 Temas predefinidos</h4>
 <p>Estos temas pueden utilizarse mediante una familia de funciones del tipo <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">theme_style()</code>. Por ejemplo,</p>
 <pre class="editor-colors lang-text"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; g&lt;-ggplot(data=USmelanoma, aes(x=ocean, y=mortality, fill=ocean))+</span></span></span>
 <span class="syntax--text syntax--plain"><span>  </span><span class="syntax--meta syntax--paragraph syntax--text"><span>geom_jitter(aes(color=latitude,shape=ocean),size=2)+geom_violin(alpha=0.5)</span></span></span>
@@ -1928,8 +1987,8 @@ smoothers fit a model to your data and then plot predictions from the model.</p>
 <span class="syntax--text syntax--plain"><span>  </span><span class="syntax--meta syntax--paragraph syntax--text"><span>scale_fill_manual("Proximidad Océano", values = c("cyan", "green"), breaks=c("no", "yes"), labels=c("No", "Si"))+scale_shape_discrete("Proximidad Océano", breaks=c("no", "yes"), labels=c("No", "Si"))+labs(y="Mortalidad")+scale_x_discrete("Proximidad Océano", breaks=c("no", "yes"), labels=c("No","Si"))</span></span></span>
 <span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; g+theme_linedraw()</span></span></span>
 </pre>
-<p><img src="../Imagenes/themeGG.png" alt="Figura28"></p>
-<p><em><strong>Figura 28</strong></em>: <em>Diagrama de violín para la variable mortalidad, agrupando los estados según la variable océano y con ajuste de escalas gráficas y de tema.</em></p>
+<p><img src="../Imagenes/themeGG.png" alt="Figura29"></p>
+<p><em><strong>Figura 29</strong></em>: <em>Diagrama de violín para la variable mortalidad, agrupando los estados según la variable océano y con ajuste de escalas gráficas y de tema.</em></p>
 <p>En este ejemplo, se ha utilizado el tema <em>linedraw</em> que especifica el trazado de líneas paralelas a los ejes <em>x</em> e <em>y</em> así como los bordes del gráfico.</p>
 <p><strong>Nota</strong>: El <em>violin plot</em> es un gráfico muy útil ya que permite graficar dos aspectos distribucionales en una misma gráfica: la densidad y el diagrama de cajas de una variable. Estudie el <em>geom</em> correspondiente con el uso del <em>help</em> de <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">R</code>.</p>
 <p>Hay varios temas predefinidos dentro de <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">ggplot2</code>, entre ellos:</p>
@@ -1942,10 +2001,10 @@ smoothers fit a model to your data and then plot predictions from the model.</p>
 <li><code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">theme_linedraw()</code></li>
 <li><code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">theme_minimal()</code></li>
 </ul>
-<p><img src="../Imagenes/visualization-themes.png" alt="Figura29"></p>
-<p><em><strong>Figura 29</strong></em>: <em>Temas definidos en <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">ggplot2</code>.</em></p>
+<p><img src="../Imagenes/visualization-themes.png" alt="Figura30"></p>
+<p><em><strong>Figura 30</strong></em>: <em>Temas definidos en <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">ggplot2</code>.</em></p>
 <p>También es posible utilizar otros temas definidos dentro de paquetes complementarios como <a href="https://CRAN.R-project.org/package=ggthemes"><code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">ggthemes</code></a>.</p>
-<h4>Creando temas propios</h4>
+<h4>2.5.9.2 Creando temas propios</h4>
 <p><code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">ggplot2</code> permite controlar todos los atributos y elementos dentro de un gráfico mediante un conjunto de funciones específicas.</p>
 <p><code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">theme()</code> es la función global que se usa para establecer valores a los atributos de los elementos o componentes de un gráfico. Dentro de ella, se destacan cuatro tipos de elementos gráficos que pueden ser controlados:</p>
 <ul>
@@ -1991,13 +2050,13 @@ y cinco grupos de elementos asociados:</p>
 <span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>  axis.line.x = element_line(linetype = 0),axis.line.y=element_line(colour="brown"),</span></span></span>
 <span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>  axis.ticks.x = element_blank(), axis.text.x = element_blank(), axis.title.x = element_blank())</span></span></span>
 </pre>
-<p><img src="../Imagenes/themeGG2.png" alt="Figura30"></p>
-<p><em><strong>Figura 30</strong></em>: <em>Diagrama de violín para la variable mortalidad, agrupando los estados según la variable océano y con ajuste de escalas gráficas y de tema personalizado.</em></p>
+<p><img src="../Imagenes/themeGG2.png" alt="Figura31"></p>
+<p><em><strong>Figura 31</strong></em>: <em>Diagrama de violín para la variable mortalidad, agrupando los estados según la variable océano y con ajuste de escalas gráficas y de tema personalizado.</em></p>
 <p>También es posible controlar las leyendas con la función <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">theme()</code>.</p>
 <pre class="editor-colors lang-text"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; g+theme(legend.position="none")</span></span></span>
 </pre>
-<p><img src="../Imagenes/themeGG3.png" alt="Figura31"></p>
-<p><em><strong>Figura 31</strong></em>: <em>Diagrama de violín para la variable mortalidad, agrupando los estados según la variable océano y con ajuste de escalas gráficas y sin leyendas.</em></p>
+<p><img src="../Imagenes/themeGG3.png" alt="Figura32"></p>
+<p><em><strong>Figura 32</strong></em>: <em>Diagrama de violín para la variable mortalidad, agrupando los estados según la variable océano y con ajuste de escalas gráficas y sin leyendas.</em></p>
 <p>Lo que debemos tener en cuenta que el control es sobre todas las leyendas en el gráfico. Por lo que para controlarlas individualmente debemos combinarla con las funciones <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">scale_*</code> o utilizar la función <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">guides()</code>.</p>
 <pre class="editor-colors lang-text"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; g&lt;-ggplot(data=USmelanoma, aes(x=ocean, y=mortality, fill=ocean))+</span></span></span>
 <span class="syntax--text syntax--plain"><span>  </span><span class="syntax--meta syntax--paragraph syntax--text"><span>geom_jitter(aes(color=latitude,shape=ocean),size=2)+geom_violin(alpha=0.5)</span></span></span>
@@ -2006,9 +2065,9 @@ y cinco grupos de elementos asociados:</p>
 <span class="syntax--text syntax--plain"><span>   </span><span class="syntax--meta syntax--paragraph syntax--text"><span>labels=c("No","Si"))</span></span></span>
 <span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; g+guides(fill=FALSE, shape=FALSE)+theme(legend.position = "bottom")</span></span></span>
 </pre>
-<p><img src="../Imagenes/themeGG4.png" alt="Figura32"></p>
-<p><em><strong>Figura 32</strong></em>: <em>Diagrama de violín para la variable mortalidad, agrupando los estados según la variable océano y con ajuste de escalas gráficas y conservando sólo la leyenda para la latitud.</em></p>
-<h3>Agregado de títulos y etiquetas</h3>
+<p><img src="../Imagenes/themeGG4.png" alt="Figura33"></p>
+<p><em><strong>Figura 33</strong></em>: <em>Diagrama de violín para la variable mortalidad, agrupando los estados según la variable océano y con ajuste de escalas gráficas y conservando sólo la leyenda para la latitud.</em></p>
+<h3>2.5.10 Agregado de títulos y etiquetas</h3>
 <p>Los títulos de los gráficos y las etiquetas de los ejes pueden ser añadidos utilizando la función <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">labs()</code>.</p>
 <pre class="editor-colors lang-text"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; g&lt;-ggplot(USmelanoma, aes(x=mortality, color=ocean, fill=ocean))+geom_density(alpha=0.5)+</span></span></span>
 <span class="syntax--text syntax--plain"><span>  </span><span class="syntax--meta syntax--paragraph syntax--text"><span>scale_color_hue("Proximidad Océano", breaks=c("no", "yes"), labels=c("No", "Si"))+</span></span></span>
@@ -2017,12 +2076,12 @@ y cinco grupos de elementos asociados:</p>
 <span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>  labs(x="Mortalidad", y="Densidad", title="Función de densidad estimada")</span></span></span>
 <span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; g</span></span></span>
 </pre>
-<p><img src="../Imagenes/themeGG5.png" alt="Figura33"></p>
-<p><em><strong>Figura 33</strong></em>: <em>Función de densidad estimada de la variable mortalidad, agrupando los estados según la variable océano.</em></p>
-<h3>Guardar gráficos</h3>
+<p><img src="../Imagenes/themeGG5.png" alt="Figura34"></p>
+<p><em><strong>Figura 34</strong></em>: <em>Función de densidad estimada de la variable mortalidad, agrupando los estados según la variable océano.</em></p>
+<h3>2.5.11 Guardar gráficos</h3>
 <p>Los gráficos de <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">ggplot2</code> pueden guardarse en <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">RStudio</code> interactivamente o utilizando la función <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">ggsave()</code>. Ésta proporciona más flexibilidad a la hora de guardar gráficos ya que permite especificar el formato (<code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">.jpg</code>, <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">.pdf</code>, <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">.tiff</code>, <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">.bmp</code>, entre otros), la resolución y el tamaño del gráfico.</p>
 <p>También es posible guardar los gráficos con la función <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">save()</code> de <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">R</code> si es que los queremos conservar para reutilizarlos o transferirlos a otro usuario.</p>
-<h2>Análisis Exploratorio con ggplot2</h2>
+<h2>2.6 Análisis Exploratorio con ggplot2</h2>
 <p>En esta sección utilizaremos las herramientas del análisis exploratorio y la librería <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">ggplot2</code> para estudiar el conjunto de datos <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">epilepsy</code> del paquete <a href="https://cran.r-project.org/web/packages/HSAUR2/index.html"><code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">HSAUR2</code></a>. En un ensayo clínico reportado por Thall y Vail (1990), 59 pacientes con epilepsia fueron asignados al azar a grupos que recibieron el medicamento antiepiléptico Progabide o un placebo. El número de convulsiones sufridas en cada uno de los cuatro períodos de dos semanas se registró para cada paciente, junto con un recuento inicial de crisis convulsivas durante las 8 semanas previas a la asignación aleatoria al tratamiento, y la edad. El objetivo del estudio es determinar si la administración de Progabide reduce el número de ataques epilépticos en comparación con el placebo.</p>
 <pre class="editor-colors lang-text"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; data("epilepsy")</span></span></span>
 <span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; head(epilepsy)</span></span></span>
@@ -2071,24 +2130,24 @@ y cinco grupos de elementos asociados:</p>
 <li><code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">period</code>: es una variable categórica que contiene el número de período del estudio en el que se registró la observación, puede ser 1, 2, 3 o 4.</li>
 <li><code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">subject</code>: es una variable categórica que identifica a qué sujeto corresponde cada observación.</li>
 </ul>
-<h3>Exploración de las variables en forma independiente</h3>
+<h3>2.6.1 Exploración de las variables en forma independiente</h3>
 <p><strong>Ejercicio</strong>: Construya los diagramas de caja, gráficos de barra, histogramas, o gráficos de frecuencia para describir el comportamiento de las distintas variables en forma univariada. Encuentre además medidas resumen que complementen la descripción de las variables.</p>
-<h3>Exploración multivariada</h3>
+<h3>2.6.2 Exploración multivariada</h3>
 <p>¿Cómo elegimos qué gráficos analizar? Siempre debemos tener en cuenta el objetivo del estudio!</p>
 <p>En este caso, el objetivo es determinar si el tratamiento con Progabide es efectivo para reducir el número de ataques epilépticos. Para ello se seleccionaron 59 personas y se las dividió en dos grupos, uno que recibió el tratamiento con Progabide y el otro con placebo. Un aspecto que debe verificarse en las primeras etapas del análisis es que la principal característica que diferencie a los sujetos de cada grupo sea justamente el tratamiento recibido. Es decir, que no haya otra variable que me permita agrupar a los sujetos en los mismos grupos.</p>
 <p>Analicemos por ejemplo lo que sucede con la edad de los sujetos. Según la tabla resumen previamante obtenida, la edad de los sujetos varía entre 18 y 42 años. Un buen diseño del experimento aseguraría que este rango etáreo este representado en los dos grupos experimentales (placebo y Progabide). Por el contrario, un mal diseño consideraría por ejemplo, administrar placebo a los pacientes de 18 a 35 años y Progabide a los que tienen entre 36 y 42. Este mal diseño implicaría que se <em>confundan</em> las variables <em>tratemiento</em> y <em>edad</em>.</p>
 <p>Utilicemos los gráficos descriptivos para confirmar que se ha realizado un buen diseño del experimento. Para ello, obtengamos el diagrama de violín de la variable edad, para cada uno de los grupos experimentales.</p>
 <pre class="editor-colors lang-text"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; ggplot(data=unique(epilepsy[,c("treatment", "age", "subject")]), aes(x=treatment, y=age))+geom_violin(aes( fill=treatment), alpha=0.5, draw_quantiles = c(0.25, 0.5, 0.75))+labs(x="Tratamiento", y="Edad", fill="Tratamiento")+theme_bw()</span></span></span>
 </pre>
-<p><img src="../Imagenes/epilepsy4.png" alt="Figura34"></p>
-<p><em><strong>Figura 34</strong></em>: <em>Diagrama de violin de la edad de los pacientes para los dos grupos experimentales.</em></p>
+<p><img src="../Imagenes/epilepsy4.png" alt="Figura35"></p>
+<p><em><strong>Figura 35</strong></em>: <em>Diagrama de violin de la edad de los pacientes para los dos grupos experimentales.</em></p>
 <p>Este gráfico nos permite confirmar que los pacientes, según su edad, han sido aleatoriamente distribuídos en los dos grupos de estudios, ya que ambos diagramas presentan características muy similares entre sí.</p>
 <p><strong>Ejercicio</strong>: Indague las distribuciones del número de ataques previos al experimento entre los dos grupos de estudios.</p>
 <p>Ahora sí, analicemos que sucede con la variable objetivo del estudio, el número de ataques en los diferentes períodos. Grafiquemos los diagramas de cajas de esta variable en los cuatro instantes de tiempo, distinguiendo en cada uno de ellos el grupo experimental.</p>
 <pre class="editor-colors lang-text"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; ggplot(data=epilepsy)+geom_boxplot(aes(x=period, y=seizure.rate, color=treatment))+labs(x="Período", y="Ataques registrados", color="Tratamiento")+theme_bw()</span></span></span>
 </pre>
-<p><img src="../Imagenes/epilepsy1.png" alt="Figura35"></p>
-<p><em><strong>Figura 35</strong></em>: <em>Diagrama de cajas del número de ataques registrados durante el tratamiento, en los cuatro períodos comprendidos y para los dos grupos experimentales.</em></p>
+<p><img src="../Imagenes/epilepsy1.png" alt="Figura36"></p>
+<p><em><strong>Figura 36</strong></em>: <em>Diagrama de cajas del número de ataques registrados durante el tratamiento, en los cuatro períodos comprendidos y para los dos grupos experimentales.</em></p>
 <p>En esta gráfica se pueden destacar varios aspectos. Por un lado, las distribuciones del <em>número de convulsiones</em> registrados durante el experimento aparentan ser similares tanto entre grupos experimentales como entre los distintos períodos que abarcó el estudio. Particularmente, se aprecian diagramas de caja más anchos para los pacientes tratados con placebo, fundamentalmente en los primeros dos períodos. Las medianas por grupo de tratamiento y por período también resultan similares.</p>
 <pre class="editor-colors lang-text"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; by(epilepsy$seizure.rate, epilepsy[, c("treatment", "period")], median)</span></span></span>
 <span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>treatment: placebo</span></span></span>
@@ -2130,16 +2189,16 @@ y cinco grupos de elementos asociados:</p>
 <pre class="editor-colors lang-text"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; ggplot(data=epilepsy, aes(x=period, y=seizure.rate, color=subject,</span></span></span>
 <span class="syntax--text syntax--plain"><span>  </span><span class="syntax--meta syntax--paragraph syntax--text"><span>group=subject))+geom_point()+geom_line()+labs(x="Período", y="Ataques registrados", color="Tratamiento")+theme_bw()+theme(legend.position="none")+facet_wrap(~treatment)</span></span></span>
 </pre>
-<p><img src="../Imagenes/epilepsy2.png" alt="Figura36"></p>
-<p><em><strong>Figura 36</strong></em>: <em>Diagrama de líneas y puntos para el número de ataques registrados durante el tratamiento, en los cuatro períodos comprendidos.</em></p>
+<p><img src="../Imagenes/epilepsy2.png" alt="Figura37"></p>
+<p><em><strong>Figura 37</strong></em>: <em>Diagrama de líneas y puntos para el número de ataques registrados durante el tratamiento, en los cuatro períodos comprendidos.</em></p>
 <p><strong>Ejercicio</strong>: Discuta la gráfica anterior e identifique datos atípicos.</p>
 <p>Decidir que hacer con los datos atípicos depende también del análisis a posteriori que se realizará sobre los datos. Hay metodologías que son más robustas que otras respecto de los <em>outliers</em>, por eso dependerá de cuál utilicemos y cuál es nuestro objetivo. En la etapa de análisis descriptivo lo importante es identificar estos posibles valores atípicos.</p>
 <p><code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">ggplot2</code> nos permite estudiar relaciones entre más de dos variables en un mismo gráfico. Por ejemplo, analicemos que sucede si consideramos el diagrama de dispersión del número de ataques registrados antes del estudio y en cada uno de los periódos que éste involucro en forma separada identificando además los pacientes tratados con placebo y los tratados con Progabide.</p>
 <pre class="editor-colors lang-text"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; ggplot(data=epilepsy, aes(x=base, y=seizure.rate, color=treatment))+</span></span></span>
 <span class="syntax--text syntax--plain"><span>  </span><span class="syntax--meta syntax--paragraph syntax--text"><span>geom_point(alpha=0.5, size=2)+labs(x="Ataques previos al estudio", y="Ataques registrados", color="Tratamiento", title="Diagrama de dispersión del número de ataques previos \n y por período de estudio")+theme_bw()+theme(legend.position="bottom")+facet_wrap(~period)+theme(plot.title = element_text(hjust=0.5))</span></span></span>
 </pre>
-<p><img src="../Imagenes/epilepsy3.png" alt="Figura37"></p>
-<p><em><strong>Figura 37</strong></em>: <em>Diagrama de dispersión del número de ataques registrados  previos y durante el tratamiento, en los cuatro períodos comprendidos.</em></p>
+<p><img src="../Imagenes/epilepsy3.png" alt="Figura38"></p>
+<p><em><strong>Figura 38</strong></em>: <em>Diagrama de dispersión del número de ataques registrados  previos y durante el tratamiento, en los cuatro períodos comprendidos.</em></p>
 <p>El gráfico obtenido permite formular varias afirmaciones sobre los datos, que deberán ser confirmadas o refutadas durante el procesamiento de los mismos. La primera de ellas es que no hay un efecto del tratamiento sobre número de ataques registrados, ya que en todos los períodos los puntos rosas y los celestes están mezclados. Por otro lado, parecería que el número de ataques registrados durante el experimento está directamente relacionado con el número de ataques previos que se registró para cada paciente.</p>
 <p>Veamos que sucede con el número de ataques y la edad de los pacientes. Primero relacionemos la edad con el número de ataques registrados antes del estudio y luego con los registrados en los cuatro períodos analizados.</p>
 <pre class="editor-colors lang-text"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; ggplot(data=epilepsy, aes(x=age, y=base))+geom_point(aes(color=treatment),</span></span></span>
@@ -2147,10 +2206,10 @@ y cinco grupos de elementos asociados:</p>
 <span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"><span>&gt; ggplot(data=epilepsy, aes(x=age, y=seizure.rate))+</span></span></span>
 <span class="syntax--text syntax--plain"><span>  </span><span class="syntax--meta syntax--paragraph syntax--text"><span>geom_point(aes(color=treatment), alpha=0.5)+labs(x="Edad", y="Ataques registrados", color="Tratamiento")+theme_bw()+facet_wrap(~period)</span></span></span>
 </pre>
-<p><img src="../Imagenes/epilepsy5.png" alt="Figura38"></p>
-<p><em><strong>Figura 38</strong></em>: <em>Diagrama de dispersión del número de ataques registrados  previos al experimento y la edad de los pacientes.</em></p>
-<p><img src="../Imagenes/epilepsy6.png" alt="Figura39"></p>
-<p><em><strong>Figura 39</strong></em>: <em>Diagrama de dispersión del número de ataques registrados   durante el tratamiento y la edad de los pacientes, en los cuatro períodos comprendidos.</em></p>
+<p><img src="../Imagenes/epilepsy5.png" alt="Figura39"></p>
+<p><em><strong>Figura 39</strong></em>: <em>Diagrama de dispersión del número de ataques registrados  previos al experimento y la edad de los pacientes.</em></p>
+<p><img src="../Imagenes/epilepsy6.png" alt="Figura40"></p>
+<p><em><strong>Figura 40</strong></em>: <em>Diagrama de dispersión del número de ataques registrados   durante el tratamiento y la edad de los pacientes, en los cuatro períodos comprendidos.</em></p>
 <p>Las gráficas indican que, a priori, no existe un claro efecto de la edad sobre el número de ataques sufridos por los pacientes ni antes ni durante el tratamiento.</p>
 
   </body>
