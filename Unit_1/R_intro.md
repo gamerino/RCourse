@@ -5,8 +5,8 @@ vamos a aprender a usar `R` y todas sus facilidades, que utilizaremos luego en l
 
 ## Introducción
 ### Conociendo R
-`R` es tanto un lenguaje de programación como un software útil para la manipulación y el análisis de datos. Es gratis y *open-source*, tanto la distribución base de `R` así como también un gran número de paquetes desarrollados por los usuarios están libremente disponibles bajo los términos de la licencia GNU. Esta licencia tiene dos implicaciones principales para el analista de datos que trabaja con R. Por un lado, el código fuente completo está disponible y, por lo tanto, es posible investigar los detalles de la implementación de un método especial. También se pueden realizar cambios de métodos existentes y distribuir las modificaciones hechas a sus colegas. Consecuentemente, el sistema `R` para la informática estadística está disponible para todos. Todos los científicos, tienen acceso a herramientas de vanguardia para el análisis de datos estadísticos sin costos adicionales. Con la ayuda del sistema `R`, la investigación realmente se vuelve reproducible cuando los datos y los resultados de todos los pasos de análisis de datos informados en un documento están disponibles para los lectores en un *script*.
-El sistema `R` para análisis estadístico consiste de la distribución base y una colección de paquetes (*packages*). `R` está implementado en la distribución base, la cual es mantenida por un pequeño grupo de estadísticos, el *Equipo Principal de Desarrollo R* (*R core team*). Las implementaciones de los distintos métodos de análisis y funcionalidades están organizadas en los paquetes. Un paquete contiene clases, métodos, funciones, ejemplos y documentación útiles para cumplir un fin. Los paquetes son creados y mantenidos por los propios usuarios y muchas veces son gestionados en repositorios. La principal fuente de información sobre el sistema `R` está en la  [página web oficial](http://www.R-project.org) de la red mundial del proyecto.
+`R` es tanto un lenguaje de programación como un software útil para la manipulación y el análisis de datos. Es gratis y *open source*: tanto la distribución base de `R` como un gran número de paquetes desarrollados por los usuarios están disponibles libremente bajo la licencia GNU. Esta licencia tiene dos implicaciones principales para el analista de datos que trabaja con R. Por un lado, el código fuente completo está disponible y, por lo tanto, es posible investigar los detalles de la implementación de un método especial. También se pueden realizar cambios de métodos existentes y distribuir las modificaciones hechas a sus colegas. Consecuentemente, el sistema `R` para la informática estadística está disponible para todos. Todos los científicos tienen acceso a herramientas de vanguardia para el análisis de datos estadísticos sin costos adicionales. Con la ayuda del sistema `R`, la investigación realmente se vuelve reproducible cuando los datos y los resultados de todos los pasos de análisis de datos informados en un documento están disponibles para los lectores en un *script*.
+El sistema `R` para análisis estadístico consiste en la distribución base y una colección de paquetes (*packages*). `R` está implementado en la distribución base, la cual es mantenida por un pequeño grupo de estadísticos, el *Equipo Principal de Desarrollo R* (*R core team*). Las implementaciones de los distintos métodos de análisis y funcionalidades están organizadas en los paquetes. Un paquete contiene clases, métodos, funciones, ejemplos y documentación útiles para cumplir un fin. Los paquetes son creados y mantenidos por los propios usuarios y muchas veces son gestionados en repositorios. La principal fuente de información sobre el sistema `R` está en la  [página web oficial](http://www.R-project.org) de la red mundial del proyecto.
 #### Por qué usar R?
 * Es libre.
 * Es multiplataforma.
@@ -26,7 +26,7 @@ Tanto `R` como `RStudio` están disponibles para Windows, Mac, y Linux. Se recom
 #### RStudio
 `RStudio` el principal entorno de desarrollo integrado para. Está disponible en ediciones *open source* y comercial, en una versión de escritorio y una versión web  a un servidor Linux que ejecuta RStudio Server o RStudio Server Pro. La interfaz de `Rstudio` incluye una consola, un editor de texto, un gestor del espacio de trabajo y un área de soporte al ususario (Ver [Figura 1](#Figura1)). El editor de texto provee herramientas útiles para la escritura de *scripts* como el resaltado de sintaxis que admite la ejecución directa de código. En el espacio de trabajo es posible explorar tanto los objetos que están actualmente cargados o definidos así como también el historial de funciones y codigo ejecutado en la consola. En la sección de gráficos y ayuda es posible consultar los archivos, gráficos, paquetes y toda la documentación para las diferentes funciones y métodos disponibles.
 
-![Figura1](../Imagenes/Rstudio.png) ***Figura 1***: *Interfaz gráfica de `RStudio`.*
+![Figura1](../Imagenes/rstudio.png) ***Figura 1***: *Interfaz gráfica de `RStudio`.*
 
 ### Comencemos
 Al abrir `RStudio` o `R` desde consola, se desplegará un breve mensaje donde se informa la versión instalada, seguido de un *prompt* `>`:
@@ -51,7 +51,7 @@ Type 'demo()' for some demos, 'help()' for on-line help, or
 Type 'q()' to quit R.
 >
 ```
-En forma resumida, el programa evalúa los comándos escritos a continuación del *prompt* y devuelve los resultados de su ejecución:
+En forma resumida, el programa evalúa los comandos escritos a continuación del *prompt* y devuelve los resultados de su ejecución:
 
 ```
 > 2+4
@@ -82,34 +82,35 @@ Algunas de las operaciones matemáticas básicas que seguramente utilizaremos en
 
 | Expresión   | Código R          | Resultado |
 |-------------|-------------------|-----------|
-| $$3+2$$         | $$3+2$$               | 5         |
-| $$3-2$$         | $$3-2$$               | 1         |
-| $$3\cdot2$$         | $$3*2$$               | 6         |
-| $$\frac{3}{2}$$         | $$3/2$$               | 1.5       |
-| $$3^2$$         | $$3$$^$$2$$               | 9         |
-| $$2^{-3}$$      | $$2$$^($$-3$$)           | 0.125     |
-| $$27^{1/3}$$    | $$27$$^($$1/3$$)          | 3         |
-| $$100^{1/2}$$   | $$sqrt(100)$$         | 10        |
-| $$ln(e)$$       | $$log(exp(1))$$       | 1         |
-| $$log_{10}(1000)$$ | $$log10(1000)$$      | 3         |
-| $$log_2$$(8)     | $$log2(8)$$           | 3         |
-| $$log_4$$(16)    | $$log(16, base = 4)$$ | 2         |
-| $$sen(0)$$      | $$sin(0)$$            | 0         |
-| $$\cos(2\pi)$$  | $$cos(2*pi)$$          | 1         |
+| $$3+2$$  | `3+2`  | 5  |
+| $$3-2$$  | `3-2`  | 1  |
+| $$3\cdot2$$  | `3*2`  | 6  |
+| $$\frac{3}{2}$$  | `3/2`  | 1.5  |
+| $$3^2$$  | `3^2`  | 9 |
+| $$2^{-3}$$  | `2^(-3)`  | 0.125 |
+| $$27^{1/3}$$  | `27^(1/3)` | 3 |
+| $$100^{1/2}$$ | `sqrt(100)`  | 10  |
+| $$ln(e)$$  | `log(exp(1))`  | 1  |
+| $$log_{10}(1000)$$ | `log10(1000)`  | 3  |
+| $$log_2$$(8)     | `log2(8)` | 3  |
+| $$log_4$$(16)    | `log(16, base = 4)` | 2  |
+| $$sen(0)$$      | `sin(0)` | 0  |
+| $$\cos(2\pi)$$  | `cos(2*pi)` | 1  |
 
 Es posible también utilizar operadores lógicos en `R`,
 | Expresión   | Código R          | Resultado |
 |-------------|-------------------|-----------|
-| $$2\neq4$$       | $$2~~!=~4$$               | TRUE       |
-| $$3 = 2$$         | $$3==2$$               | FALSE        |
-| $$5\geq8$$         | $$5>=8$$               | FALSE        |
-| $$5\leq8$$         | $$5<=8$$               | TRUE        |
-| $$3 < 9$$         | $$3<9$$               | TRUE         |
-| $$3 > 9$$         | $$3>9$$               | TRUE         |
-| $$(5 \geq 8) \land (3 <9)$$         | $$(5 >= 8) \&(3<9)$$               | FALSE         |
-| $$(2 \neq  4) \lor (3=2)$$         | $$(2 !=4) | (3==2)$$               | TRUE         |
+| $$2\neq4$$       | `2~~!=~4`  | TRUE  |
+| $$3 = 2$$         | `3==2`  | FALSE  |
+| $$5\geq8$$         | `5>=8`  | FALSE  |
+| $$5\leq8$$         | `5<=8`  | TRUE  |
+| $$3 < 9$$         | `3<9`  | TRUE  |
+| $$3 > 9$$         | `3>9`  | FALSE  |
+| $$(5 \geq 8) \land (3 <9)$$         | `(5 >= 8) \amp (3<9)`  | FALSE  |
+| $$(2 \neq  4) \lor (3=2)$$         | `(2 !=4) \| (3==2)`  | TRUE  |
 
-#### Instalación de paquetes
+
+#### Instalación de paquetes
 La versión base de `R` viene con un conjunto de paquetes básicos como: `mgcv`,`KernSmooth`, `MASS`, `base`, `boot`,`datasets`, `graphics`, `lattice`, `methods`, `nlme`, `nnet`, `stats`, `tools`, `utils`, entre otros. Algunos de estos paquetes implementan funcionalidades estadísticas estándar, como los modelos lineales o las pruebas de hipotesis clásicas. Otros proveen infraestructura básica como por ejemplo para los sistemas gráficos, herramientas de análisis e interfaz, mientras que otras contienen bases de datos de prueba. Aquellos paquetes que no están incluídos en la distribución base pueden ser instalados mediante el *prompt*. Los paquetes pueden estar en repositorios, propios o comunitarios.
 
 **Consejo**: siempre que estés tratando de hacer algo en `R` que no esté en los paquetes base, busca en los repositorios, seguramente existe un paquete que haga parte o todo lo que necesitás!.
