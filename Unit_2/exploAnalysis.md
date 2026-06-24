@@ -2,25 +2,25 @@
 
 Esta unidad está diseñada para cumplir varios objetivos. Por un lado, se estudiará el uso de los métodos y conceptos estadísticos previamente estudiados, en el entorno `R`. Por otro, se presentarán herramientas de análisis disponibles que facilitarán en gran medida el análisis tanto gráfico como analítico de bases de datos.
 
-Vamos a comenzar repasando algunos conceptos claves. Una de las definiciones de _**estadística**_ dice que es la aplicación del método científico en el análisis de datos, para facilitar la toma de decisiones ante situaciones de *incertidumbre*. La estadística abarca la recolección, presentación y caracterización de la información de manera de colaborar en el análisis de datos y el proceso de toma de decisiones. Además, también comprende otros procesos como el diseño del experimento o las estrategias de muestreo.
+Vamos a comenzar repasando algunos conceptos clave. Una de las definiciones de _**estadística**_ dice que es la aplicación del método científico en el análisis de datos, para facilitar la toma de decisiones ante situaciones de *incertidumbre*. La estadística abarca la recolección, presentación y caracterización de la información de manera colaborativa en el análisis de datos y el proceso de toma de decisiones. Además, también comprende otros procesos como el diseño del experimento o las estrategias de muestreo.
 
 La estadística puede dividirse en dos ramas:
-  - *Estadística descriptiva*: está relacionada con los métodos que incluyen la recolección, organización y análisis de los datos paar lograr una descripción de sus características;
+  - *Estadística descriptiva*: está relacionada con los métodos que incluyen la recolección, organización y análisis de los datos para lograr una descripción de sus características;
   - *Estadística inferencial*: está relacionada con el proceso de utilizar datos de una muestra para la toma de decisiones o estimación de características respecto de la población de la cual estos provienen mediante una generalización de los resultados.
 
 ## 2.1 Conceptos básicos
 
 Uno de los instrumentos fundamentales de la estadística es la _**probabilidad**_, la cual es una medida de incertidumbre en el resultado de un *experimento* que no puede ser predicho con exactitud. Pensemos en el experimento de tirar dos dados en simultáneo. Su resultado no puede conocerse antes de que los dados sean lanzados.
 
-Un **experimento** es cualquier acción o proceso que genera *observaciones*. El **espacio muestral** de un experimento, *S*, es el conjunto de todos los resultados posibles de un experimento. Aunque el resultado de un experimento estadístico no puede ser conocido antes de hacer el experimento sí es posible definir *S*. Pensemos en una cadena de producción que genera a diario un número finito de productos, *N*. El número de productos con fallas en un día, *n*, no se puede conocer hasta que el día transcurre, pero *a priori* se sabe que $n \in S=\{n~/~ 0 \leq n \leq N\}$. Esto no quiere decir que *S* tenga que ser finito. Si ahora pensamos en *n* como el número de hora que puede durar una lámpara, entonces el espacio muestral tendrá como cota superior al infinito.
+Un **experimento** es cualquier acción o proceso que genera *observaciones*. El **espacio muestral** de un experimento, *S*, es el conjunto de todos los resultados posibles de un experimento. Aunque el resultado de un experimento estadístico no puede ser conocido antes de hacer el experimento, sí es posible definir *S*. Pensemos en una cadena de producción que genera a diario un número finito de productos, *N*. El número de productos con fallas en un día, *n*, no se puede conocer hasta que el día transcurre, pero *a priori* se sabe que $n \in S=\{n~/~ 0 \leq n \leq N\}$. Esto no quiere decir que *S* tenga que ser finito. Si ahora pensamos en *n* como el número de hora que puede durar una lámpara, entonces el espacio muestral tendrá como cota superior al infinito.
 
-Por otro lado, cuando hablamos de una **población**, referimos a la totalidad de elementos o individuos vinculados al estudio. Mientras, una **muestra** es una parte de una población que se selecciona para su análisis, la cual debe ser *aletoria* y *representativa*.
+Por otro lado, cuando hablamos de una **población**, nos referimos a la totalidad de elementos o individuos vinculados al estudio. Mientras, una **muestra** es una parte de una población que se selecciona para su análisis, la cual debe ser *aletoria* y *representativa*.
 
 En estadística se llama **variables de interés** a aquellas características del tema sobre el cual se está investigando que deben relevarse para responder a los objetivos del estudio. Las variables pueden ser:
-  - *Variables cualitativas*: cuando se representan a través de categorías o atributos. Por ejemplo, la variable color de ojos, cuyos valores pueden ser $\{azul, verde, marrón, negro\}$
-  - *Variables cuantitativas*: cuando se representan a través de números. Éstas, a su vez pueden ser:
-    - *Discretas*: son del tipo entero, como por ejemplo el número de latidos por minuto en un deportista de alto rendimiento.
-    - *Continuas*: son mediciones, representada mediante números reales, como por ejemplo la cantidad de azúcar en sangre de una persona.
+  - *Variables cualitativas*: Cuando se representan a través de categorías o atributos. Por ejemplo, la variable color de ojos, cuyos valores pueden ser $\{azul, verde, marrón, negro\}$
+  - *Variables cuantitativas*: Cuando se representan a través de números. Éstas, a su vez, pueden ser:
+    - *Discretas*: Son del tipo entero, como por ejemplo el número de latidos por minuto en un deportista de alto rendimiento.
+    - *Continuas*: Son mediciones, representadas mediante números reales, como por ejemplo la cantidad de azúcar en sangre de una persona.
 
 A menudo resulta útil asociar los resultados de un experimento aleatorio, el espacio muestral, a un conjunto de números reales, lo cual se logra mediante las **variables aleatorias**. Una *variable aleatoria* (VA) es una función que asocia a cada elemento del conjunto *S* un número real. Las VA pueden ser *continuas* o *discretas* dependiendo del experimento. Por ejemplo, retomemos el experimento aleatorio de arrojar dos dados en simultáneo. El espacio muestral tendrá dimensión dada por la combinatoria de las 6 posibles caras de los dados, tomadas de a 2, con posibilidad de repetición. Es decir,
 <center>
@@ -33,7 +33,7 @@ Cada uno de los 21 resultados posibles del experimento estará conformado por lo
 
 Es común que cuando trabajemos en un experimento no nos preocupemos tanto ni por el espacio muestral *S* ni por la función *X*, sino que estemos interesados en conocer la probabilidad de que el valor de la VA pertenezca a un conjunto *A*, lo que escribimos como $P(X~\in~A)$. Cómo obtenemos estas probabilidades depende del conocimiento acerca de la VA *X* que tengamos y del tipo de VA que sea *X*.
 
-En el caso de **variables aleatorias discretas**, es decir VAs que sólo toman un conjunto finito o infinito numerable de valores reales, $x_1,~x_2,~...,~x_n$, cada uno con probabilidades $f_X(x_1),~f_X(x_2),~...,~f_X(x_n)$, entonces si $A \subseteq\{x_1,~x_2,~...,~x_n\}$, luego:
+En el caso de **variables aleatorias discretas**, es decir, VAs que sólo toman un conjunto finito o infinito numerable de valores reales, $x_1,\~x_2,\~...,\~x_n$, cada uno con probabilidades $f_X(x_1),\~f_X(x_2),\~...,\~f_X(x_n)$, entonces si $A \subseteq\{x_1,\~x_2,\~...,\~x_n\}$, luego:
 
 <center>
 
@@ -42,12 +42,14 @@ En el caso de **variables aleatorias discretas**, es decir VAs que sólo toman u
 </center>
 
 $f_X(x)$ se llama **función de densidad** y se caracteriza por ser:
-- $f_X(x_1)~\geq~0~~ \forall~i=1,~2,~...,~n$
+- $f_X(x_1)\~\geq\~0$ $\forall\~i=1,\~2,\~...,\~n$
 - $\sum\limits_{i=1}^n f_X(x_i)=1$
 
 Las **variables aleatorias continuas** pueden tomar cualquier valor dentro del conjunto de los números reales. Como el número de valores posibles de estas VAs es infinito, la *función de densidad* se vuelve una función continua. Particularmente, $X$ será una VA continua si existe $f_X(x)$ tal que:
-- $f_X(x)~\geq~0~~\forall~x\in~\Re$
-- $\int\limits_{-\infty}^\infty~f_X(x)dx=1$
+- $f_X(x)\~\geq\~0\~$ $\forall\~x\in\~\Re$
+- $\int\limits_{-\infty}^\infty\~f_X(x)dx=1$
+
+  
 De manera que:
 
 <center>
@@ -60,11 +62,11 @@ Para ambas VA también se define la **función de distribución acumulada** o si
 - $F_X(x)=P(X\leq x)=\sum\limits_{i \leq x} f_X(i)$ si *X* es VA discreta.
 - $F_X(x)=P(X\leq x)=\int\limits_{-\infty}^x f_X(i)di$ si *X* es VA continua.
 
-En cualquier caso, la dsitribución $F_X$ puede resultar muy complicada e irregular, por lo que es común utilizar aproximaciones mediante funciones relativamente sencillas mediante la *modelación*. Específicamente, se llama *modelo de la distribución de una VA en una población* al conjunto de hipótesis que se suponen válidas para la distribución de la VA en cuestión. Formalmente, si suponemos que $F_X$ pertence a una familia $\mathcal{F}$, al fijar un modelo se establecen hipótesis sobre esa familia que se cumplirán en forma aproximada. Los modelos pueden ser de dos tipos, *paramétricos* y *no paramétricos*.
+En cualquier caso, la distribución $F_X$ puede resultar muy complicada e irregular, por lo que es común utilizar aproximaciones mediante funciones relativamente sencillas mediante la *modelación*. Específicamente, se llama *modelo de la distribución de una VA en una población* al conjunto de hipótesis que se suponen válidas para la distribución de la VA en cuestión. Formalmente, si suponemos que $F_X$ pertenece a una familia $\mathcal{F}$, al fijar un modelo se establecen hipótesis sobre esa familia que se cumplirán en forma aproximada. Los modelos pueden ser de dos tipos, *paramétricos* y *no paramétricos*.
 
 Los **modelos no paramétricos** suponen que $F_X(x)$ pertenece a una familia de funciones de distribución $\mathcal{F}$, pero esta familia no puede ser descrita mediante un número finito de parámetros reales.
 
-Los **modelos paramétricos** suponen que $F_X$ pertenece a una familia de distribuciones que dependen de un número finito de parámetros reales, es decir $F_X(x)~\in~ \mathcal{F}=\{F_X(x, \theta_1, \theta_2,..., \theta_k)~con~\boldsymbol{\theta}~\in~\Theta \}$ donde $\boldsymbol{\theta}$ es el vector de parámetros que caracteriza a la familia tomando valores en un conjunto $\Theta~\subset \Re^k$. Es decir, que lo que se busca es un valor $\boldsymbol{\theta_0}$ tal que $F_X(x,$\boldsymbol{\theta_0}$)$ coincide con la $F_X(x)$ buscada.
+Los **modelos paramétricos** suponen que $F_X$ pertenece a una familia de distribuciones que dependen de un número finito de parámetros reales, es decir, $F_X(x) \in \mathcal{F}= \{ F_X (x, \theta_1, \theta_2,..., \theta_k), \boldsymbol{\theta} \in \Theta \}$ donde $\boldsymbol{\theta}$ es el vector de parámetros que caracteriza a la familia tomando valores en un conjunto $\Theta$ $\subset \Re^k$. Es decir, que lo que se busca es un valor $\boldsymbol{\theta_0}$ tal que $F_X(x, \boldsymbol{\theta_0}$)$ coincide con la $F_X(x)$ buscada.
 
 Algunos de los modelos paramétricos más conocidos son:
 
@@ -75,7 +77,7 @@ Algunos de los modelos paramétricos más conocidos son:
 
 En el contexto de estos modelos es que se llevan a cabo los *procesos inferenciales*, que permiten obtener información acerca de los parámetros de una distribución a partir de estadísticos obtenidos de una muestra de la población bajo estudio.
 
-Como los parámetros poblacionales generalmente se desconocen, se utilizan datos muestrales para estimarlos junto con **estadísticos**. Los *estadísticos* son VA, es decir son funciones. Particularmente, dada una *muestra aleatoria* $X_1,~X_2,~...,~X_n$, (muestra de VAs iid), un estadístico es una función medible *T* que asigna un número $T(X_{1},X_{2},...,X_{n})$, útil para estimar un determinado parámetro de la distribución de la que procede la muestra. Un valor particular de un estadístico se conoce como **estimador**.
+Como los parámetros poblacionales generalmente se desconocen, se utilizan datos muestrales para estimarlos junto con **estadísticos**. Los *estadísticos* son VA, es decir son funciones. Particularmente, dada una *muestra aleatoria* $X_1$, $X_2$ , $...$, $X_n$, (muestra de VAs iid), un estadístico es una función medible *T* que asigna un número $T(X_{1},X_{2},...,X_{n})$, útil para estimar un determinado parámetro de la distribución de la que procede la muestra. Un valor particular de un estadístico se conoce como **estimador**.
 
 Un aspecto importante que se debe tener en cuenta en el análisis descriptivo, es la presencia de *datos faltantes* (*missing data*) y la estrategia a utilizar para removerlos. Por un lado, si el número de datos faltantes no es elevado, se puede simplemente eliminar las observaciones y/o las variables que los contengan. Mientras que, si se desea mantener el total de las observaciones, la estrategia será asignarles un valor determinado, proceso conocido como *imputación*. Existen distintos métodos de imputación, los cuales, al igual que la decisión de qué hacer con los datos faltantes, deberán ser analizado en cada estudio en particular en función de características como número de observaciones, cantidad de variables con datos faltantes, importancia de las variables con datos faltantes, etc.
 
@@ -227,6 +229,7 @@ Otro estadístico de forma, muy utilizado fundamentalmente en las variables disc
 Cuando la distribución de la variable en cuestión es simétrica, la media, la mediana y la moda son coincidentes [Figura 1b](#Figura1), mientras que si la distribución es sesgada a la izquierda o simétrica negativa $\overline{X}\leq X_{50} \leq Mo$ mientras que si la distribución es sesgada a la derecha, $Mo\leq X_{50} \leq \overline{X}$.
 
 ![Figura1](https://github.com/gamerino/RCourse/blob/master/Imagenes/meanMedian.png?raw=FALSE)
+
 ***Figura 1***: *Relación entre la media, la mediana y la moda en de una distribución.*
 
 Veamos ahora que pasa con nuestros datos. En el caso de la variable `mortality` la media muestral es 153, mientras que la mediana es 147. Para la variable `latitude`, ambos estadísticos valen 39,5 mientras que para la variable `longitude` la media es 90.94 y la mediana 89.5. Esto indica, en un primer análisis, que la variable `latitude` parece provenir de una distribución simétrica, mientras que las otras dos, lo hacen de distribuciones sesgadas a la derecha.    
@@ -288,9 +291,9 @@ La forma adecuada de presentar los resultados numéricos obtenidos anteriormente
  Max.   :229.0   Max.   :47.50   Max.   :121.00  
 
 ```
-Complementariamente, se utilizan gráficos descritpivos específicos, entre los cuales se destacan el *diagrama de cajas* (*boxplot*) y el *histograma*.
+Complementariamente, se utilizan gráficos descriptivos específicos, entre los que se destacan el *diagrama de cajas* (*boxplot*) y el *histograma*.
 
-Como ya saben, para construir un diagrama de cajas es necesario obtener ciertos valores a partir de los datos. Por un lado, los *quartiles* y por otro, el *mínimo* y el *máximo*. Los primeros podemos obtenerlos numéricamente utilizando la función `summary()`, como se muestra en el bloque de código anterior o también utilizando la función `quantile()`.
+Como ya saben, para construir un diagrama de cajas es necesario obtener ciertos valores a partir de los datos. Por un lado, los *quartiles* y por otro, el *mínimo* y el *máximo*. Los primeros podemos obtenerlos numéricamente utilizando la función `summary()`, como se muestra en el bloque de código anterior, o también utilizando la función `quantile()`.
 ```
 > apply(USmelanoma[,-4],2,quantile)
      mortality latitude longitude
@@ -390,7 +393,10 @@ Hasta este punto hemos visto como analizar las variables en forma independiente 
 
 ### 2.4.4 Descripción multivariada
 Cuando queremos estudiar las posibles asociaciones y/o relaciones que existen entre las distintas variables que conforman nuestra base de datos es importante considerar el tipo de variables que vamos a contrastar.
+
+
 #### 2.4.4.1 Relaciones entre variables cuantitativas
+
 Si nuestras variables a estudiar son cuantitativas, los *diagramas de dispersión* (también conocido como *scatterplot*) son una de las herramientas más utilizadas ya que rápidamente permiten explorar la posible existencia de una relación entre dos variables numéricas. Un diagrama de dispersión es un gráfico de puntos bidimensionales cuyas coordenadas en los ejes x e y quedan definidas por los valores de las variables contrastadas. Cuando existe una relación *positiva* entre estas variables, la mayoría de los puntos se distribuyen como si pertenecieran a una recta con pendiente positiva. Cuando la relación es *negativa*, los puntos se ubican en torno a una recta imaginaria con pendiente negativa. Mientras más fuerte sea la relación más clara va a ser la distribución de los puntos en una recta. Si no hay relación entre las variables, entonces los puntos estan dispersos en una región plana.
 Tomemos en cuenta, por ejemplo, la *mortalidad* y relacionémosla con las variables *latitud* y *longitud* utilizando la función `plot()`.
 ```
@@ -451,7 +457,9 @@ Cabe destacar que el coeficiente de correlación de Pearson indica el grado de r
 Al tener en cuenta los rankings, la correlación de Spearman evalúa la relación monotónica entre dos variables continuas. En una relación monotónica,
 las variables tienden a cambiar juntas, no necesariamente a una tasa constante (lineal). El coeficiente $\rho$ es utilizado a menudo para evaluar relaciones con variables ordinales.
 
-####2.4.4.2 Relaciones entre variables cuantitativas y cualitativas
+
+#### 2.4.4.2 Relaciones entre variables cuantitativas y cualitativas
+
 
 Cuando las variables a estudiar son cualitativas y cuantitativas, es útil estudiar lo que se llama *distribuciones marginales*, como un indicador del comportamiento de la variable cuantitativa en los distintos grupos de la variable cualitativa. Por ejemplo, vamos a analizar lo que sucede con la *mortalidad* en los dos grupos de estados, definidos según se rodeen o no por un océano.
 ```
@@ -481,7 +489,9 @@ También es posible combinar más de dos variables en un mismo análisis, por ej
 
 **Ejercicio**: Discuta las gráficas.
 
-####2.4.4.3 Relaciones entre variables cualitativas
+
+#### 2.4.4.3 Relaciones entre variables cualitativas
+
 En nuestra base de datos no contamos con dos variables categóricas a contrastar. Para demostrar el uso de los métodos descriptivos de variables categóricas vamos a considerar una nueva variable, que será una versión categorizada de la *Mortalidad*. Esto no es sólo a modo de ejemplo, ya que en muchos casos puede ser muy útil transformar una variable en otra. Para definir nuestra nueva variable vamos a tener en cuenta los quartiles que obtuvimos anteriormente. Nuestras categorías de interés las llamaremos *Baja*, *Media*, *Alta* y *Muy alta* en referencia al rango de valores de mortalidad que representan. La primera de ellas abarcará los valores entre el mínimo y el $Q_1$, la segunda entre el $Q_1$ y el $Q_2$, la tercera entre $Q_2$ y $Q_3$ y la cuarta entre el $Q_3$ y el máximo. Esto lo haremos con la función `cut()` de `R`.
 ```
 > mortalityCat<-cut(x=USmelanoma$mortality, breaks = quantile(USmelanoma$mortality), include.lowest = TRUE)
@@ -552,7 +562,7 @@ En términos generales la plantilla básica para crear cualquier gráfico es:
 ```
 > ggplot(data = <DATA>) + <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>))
 ```
-Un gráfico en `ggplot2` siempre se inicia con la función `ggplot()`, la cual crea un sistema de coordenadas. El primer argumento de esta función, `data`, se corresponde con el conjunto de datos sobre el que se graficará. La sintáxis se basa en sumar capas (`layers`) a ese objeto mediante las `GEOM_FUNCTION()` que definen el tipo de gráficos que se harán. Las propiedades de estos gráficos como valores en eje *x*, e *y*, color de línea o de relleno, tamaño, forma se definen mediante las *aesthetic*. La función `aes()` es la encargada de establecer cómo es el mapeo entre las propiedades gráficas y las variables del conjunto de datos. Las *aesthetic* pueden ser comunes para todas las capas, si se definen dentro de la función `ggplot()` o específicas si se definen en cada `GEOM_FUNCTION()`.
+Un gráfico en `ggplot2` siempre se inicia con la función `ggplot()`, la cual crea un sistema de coordenadas. El primer argumento de esta función, `data`, se corresponde con el conjunto de datos sobre el que se graficará. La sintaxis se basa en sumar capas (`layers`) a ese objeto mediante las `GEOM_FUNCTION()` que definen el tipo de gráficos que se harán. Las propiedades de estos gráficos como valores en eje *x*, e *y*, color de línea o de relleno, tamaño, forma se definen mediante las *aesthetic*. La función `aes()` es la encargada de establecer cómo es el mapeo entre las propiedades gráficas y las variables del conjunto de datos. Las *aesthetic* pueden ser comunes para todas las capas, si se definen dentro de la función `ggplot()` o específicas si se definen en cada `GEOM_FUNCTION()`.
 
 Por ejemplo, construyamos el diagrama de dispersión de las variables *mortalidad* y *latitud* del dataset `USmelanoma`.
 
@@ -568,7 +578,7 @@ Por ejemplo, construyamos el diagrama de dispersión de las variables *mortalida
 
 ### 2.5.3 Mapeo entre variables y propiedades gráficas
 
-Un *aesthetic* es una propiedad visual de los objetos en los gráficos. *Aesthetics* incluyen cosas como tamaño, forma o color de puntos. En el gráfico anterior hemos utilizado dos parámetros básicos de un *aesthetic*, `x` e `y`. Estos dos parámetros sirven para especificar cuáles dos variables del `data.frame` `USmelanoma` serán graficadas en los ejes *x* e *y*, respectivamente. Ahora bien, estas no son las únicas propiedades gráficas que pueden modificarse en un objeto `ggplot`. Por ejemplo, podríamos estar interesados en agregar una tercer vaiable, asociada a una clase particular de cada observación, como la variable `Ocean`. Hay diferentes formas de incluir la información de esta tercer variable, una de ellas podría ser mediante la forma de los puntos:
+Un *aesthetic* es una propiedad visual de los objetos en los gráficos. *Aesthetics* incluyen cosas como tamaño, forma o color de puntos. En el gráfico anterior hemos utilizado dos parámetros básicos de un *aesthetic*, `x` e `y`. Estos dos parámetros sirven para especificar cuáles dos variables del `data.frame` `USmelanoma` serán graficadas en los ejes *x* e *y*, respectivamente. Ahora bien, estas no son las únicas propiedades gráficas que pueden modificarse en un objeto `ggplot`. Por ejemplo, podríamos estar interesados en agregar una tercera vaiable, asociada a una clase particular de cada observación, como la variable `Ocean`. Hay diferentes formas de incluir la información de esta tercera variable, una de ellas podría ser mediante la forma de los puntos:
 
 ```
 > g1<-g+geom_point(aes(shape=ocean, size=2))
@@ -625,7 +635,7 @@ Es posible tambien construir facetas a partir de la combinación de dos variable
 
 ***Figura 15***: *Gráfico de dispersión de las variables latitud y longitud, faceteados según los valores de la variable océano y los grupos de mortalidad definidos previamente.*
 
-###2.5.5 Objetos geométricos
+### 2.5.5 Objetos geométricos
 
 Un *geom* es un objeto geométrico que es utilizado por un gráfico `ggplot` para representar datos. Es común describir los gráficos en base al tipo de *geom* que se usa para obtenerlos. Por ejemplo, un gráfico de barras *bar chart* usa *bar geoms*, un diagrama de líneas *line chart* usa *line geoms*, los diagramas de cajas *boxplots* usan *boxplot geoms*, etc. Aunque no se cumple esto para todos los tipos de gráficos. En nuestro ejemplo anterior construímos un diagrama de dispersión *scatterplot* utilizando *point geom*.
 Para cambiar un `geom` en un gráfico es necesario cambiar la `GEOM_FUNCTION()` agregada a `ggplot()`. Adicionalmente, muchas veces es posible representar gráficamente las mismas variables *x* e *y* en gráficos diferentes que representan la misma información. Por ejemplo:
@@ -815,7 +825,7 @@ En el ejemplo anterior hemos controlado la escala continua en ambos ejes definie
 ```
 
 ![Figura27](https://github.com/gamerino/RCourse/blob/master/Imagenes/boxplotScales.png?raw=true)
-1
+
 ***Figura 27***: *Diagrama de cajas para la variable mortalidad, agrupando los estados según la variable océano y con ajuste de escalas.*
 
 #### 2.5.8.2 Control de escala de colores/formas/tamaños
@@ -1024,11 +1034,11 @@ El conjunto de datos contiene 236 observaciones y 6 variables:
 
 ###2.6.2 Exploración multivariada
 
-¿Cómo elegimos qué gráficos analizar? Siempre debemos tener en cuenta el objetivo del estudio!
+¿Cómo elegimos qué gráficos analizar? ¡Siempre debemos tener en cuenta el objetivo del estudio!
 
 En este caso, el objetivo es determinar si el tratamiento con Progabide es efectivo para reducir el número de ataques epilépticos. Para ello se seleccionaron 59 personas y se las dividió en dos grupos, uno que recibió el tratamiento con Progabide y el otro con placebo. Un aspecto que debe verificarse en las primeras etapas del análisis es que la principal característica que diferencie a los sujetos de cada grupo sea justamente el tratamiento recibido. Es decir, que no haya otra variable que me permita agrupar a los sujetos en los mismos grupos.
 
-Analicemos por ejemplo lo que sucede con la edad de los sujetos. Según la tabla resumen previamante obtenida, la edad de los sujetos varía entre 18 y 42 años. Un buen diseño del experimento aseguraría que este rango etáreo este representado en los dos grupos experimentales (placebo y Progabide). Por el contrario, un mal diseño consideraría por ejemplo, administrar placebo a los pacientes de 18 a 35 años y Progabide a los que tienen entre 36 y 42. Este mal diseño implicaría que se *confundan* las variables *tratemiento* y *edad*.
+Analicemos, por ejemplo, lo que sucede con la edad de los sujetos. Según la tabla resumen previamente obtenida, la edad de los sujetos varía entre 18 y 42 años. Un buen diseño del experimento aseguraría que este rango etáreo esté representado en los dos grupos experimentales (placebo y Progabide). Por el contrario, un mal diseño consideraría, por ejemplo, administrar placebo a los pacientes de 18 a 35 años y Progabide a los que tienen entre 36 y 42. Este mal diseño implicaría que se *confundan* las variables *tratemiento* y *edad*.
 
 Utilicemos los gráficos descriptivos para confirmar que se ha realizado un buen diseño del experimento. Para ello, obtengamos el diagrama de violín de la variable edad, para cada uno de los grupos experimentales.
 
